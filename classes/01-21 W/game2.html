@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3x5 Grid</title>
+    <style>
+      /* Page setup for printing in 8.5x11 landscape format */
+      @page {
+        size: 11in 8.5in; /* Set page size to 11x8.5 inches (landscape) */
+        margin: 1in; /* Margin around the content */
+      }
+
+      /* Body styling to center content */
+      body {
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center; /* Horizontally center the grid */
+        align-items: center;     /* Vertically center the grid */
+        height: 100vh;           /* Full viewport height */
+        background-color: #fff;  /* White background */
+      }
+
+      /* Container for the grid */
+      .grid-container {
+        display: grid;
+        grid-template-columns: repeat(5, 1.75in); /* 5 columns, each 1.75 inches wide */
+        grid-template-rows: repeat(3, 1.75in);    /* 3 rows, each 1.75 inches tall */
+        gap: 0; /* No gap between grid items */
+        width: 8.75in;  /* Total grid width */
+        height: 5.25in; /* Total grid height */
+        position: absolute;
+        top: 23%; /*  0.75in;    /* Move the grid down by 0.75 inches */
+        left: 50%;      /* Center the grid horizontally */
+        transform: translateX(-50%); /* Adjust for true centering */
+      }
+
+      /* Individual grid items */
+      .grid-item {
+        width: 1.75in;
+        height: 1.75in;
+        display: flex;
+        justify-content: center; /* Center content horizontally */
+        align-items: center;     /* Center content vertically */
+        position: relative;      /* Position for layering */
+        border: 1px solid black; /* Border to create grid cells */
+      }
+
+      /* Border removal classes */
+      .grid-item.no-top { border-top: none; }
+      .grid-item.no-left { border-left: none; }
+      .grid-item.no-right { border-right: none; }
+      .grid-item.no-bottom { border-bottom: none; }
+
+
+      /* Circle styles (blue and red) */
+      .circle-blue,
+      .circle-red {
+        width: 1in;
+        height: 1in;
+        border-radius: 50%; /* Makes the element circular */
+        z-index: 1; /* Below the number */
+        cursor: move; /* Indicate that it's draggable */
+      }
+
+      .circle-blue { background-color: blue; }
+      .circle-red { background-color: red; }
+
+      /* Adjust layout for print media */
+      @media print {
+        body {
+          margin: 0;
+          padding: 0;
+          height: auto; /* Remove fixed height */
+          display: block; /* Ensure it fits the printed page */
+        }
+
+        .grid-container {
+          width: 8.75in; /* Grid width for printing */
+          height: 5.25in; /* Grid height for printing */
+          position: absolute;
+          top: 0.75in;    /* Grid position for printing */
+          left: 50%;
+          transform: translateX(-50%); /* Keep it horizontally centered */
+        }
+      }
+    </style>
+  <style>:is([id*='google_ads_iframe'],[id*='taboola-'],.taboolaHeight,.taboola-placeholder,#top-ad,#credential_picker_container,#credentials-picker-container,#credential_picker_iframe,[id*='google-one-tap-iframe'],#google-one-tap-popup-container,.google-one-tap__module,.google-one-tap-modal-div,#amp_floatingAdDiv,#ez-content-blocker-container) {display:none!important;min-height:0!important;height:0!important;}</style></head>
+  <body>
+    <div class="grid-container">
+      <!-- ***ROW 1*** --->
+      <div class="grid-item no-bottom" id="cell1"><div class="circle-red" id="circle2" draggable="true" style="opacity: 1;"></div></div>
+      <div class="grid-item no-top no-left no-right" id="cell2"></div>
+      <div class="grid-item no-top no-right no-left no-bottom" id="cell3"></div>
+      <div class="grid-item no-top no-right no-left no-bottom" id="cell4"></div>
+      <div class="grid-item no-bottom" id="cell5"><div class="circle-blue" id="circle1" draggable="true" style="opacity: 1;"></div></div>
+
+      <!-- ***ROW 2*** --->
+      <div class="grid-item no-top no-bottom no-right" id="cell6"><div class="circle-red" id="circle4" draggable="true" style="opacity: 1;"></div></div>
+      <div class="grid-item no-left no-bottom no-right no-bottom" id="cell7"></div>
+      <div class="grid-item no-left no-bottom no-right" id="cell8"></div>
+      <div class="grid-item no-left no-bottom no-right" id="cell9"></div>
+      <div class="grid-item no-left no-top no-bottom" id="cell10"><div class="circle-blue" id="circle5" draggable="true" style="opacity: 1;"></div></div>
+
+      <!-- ***ROW 3*** --->
+      <div class="grid-item no-top" id="cell11"><div class="circle-red" id="circle6" draggable="true" style="opacity: 1;"></div></div>
+      <div class="grid-item no-left no-right no-bottom" id="cell12"></div>
+      <div class="grid-item no-top" id="cell13"></div>
+      <div class="grid-item no-left no-right no-bottom" id="cell14"></div>
+      <div class="grid-item no-top" id="cell15"><div class="circle-blue" id="circle3" draggable="true" style="opacity: 1;"></div></div>
+    </div>
+
+    <script>
+      // Enable drag-and-drop functionality
+      const circles = document.querySelectorAll('.circle-blue, .circle-red');
+      const gridItems = document.querySelectorAll('.grid-item');
+
+      let draggedElement = null;
+
+      // Handle the drag start event
+      circles.forEach(circle => {
+        circle.addEventListener('dragstart', (e) => {
+          draggedElement = e.target;
+          setTimeout(() => {
+            draggedElement.style.opacity = 0.5; // Make the dragged element semi-transparent
+          }, 0);
+        });
+
+        // Handle drag end event
+        circle.addEventListener('dragend', () => {
+          setTimeout(() => {
+            draggedElement.style.opacity = 1; // Reset the opacity after the drag ends
+            draggedElement = null;
+          }, 0);
+        });
+      });
+
+      // Allow dropping on grid cells
+      gridItems.forEach(item => {
+        item.addEventListener('dragover', (e) => {
+          e.preventDefault(); // Enable drop
+        });
+
+        item.addEventListener('drop', (e) => {
+          const target = e.target;
+
+          // Ensure target is a valid drop target (no circle already inside)
+          if (!target.querySelector('.circle-blue') && !target.querySelector('.circle-red') && target.classList.contains('grid-item')) {
+            target.appendChild(draggedElement); // Drop the dragged element into the target cell
+          }
+        });
+      });
+    </script>
+  <!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body></html>
