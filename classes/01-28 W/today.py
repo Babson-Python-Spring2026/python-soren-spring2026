@@ -34,7 +34,7 @@ x = input('Enter an integer')
 
 x = 5
 y = 7
-x = y
-y = x
+x,y = y,x
+
 print(x)
 print(y)
