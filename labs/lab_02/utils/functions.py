@@ -52,9 +52,7 @@ def safe_get(d, key, default = 'NOKEY'):
 
 def display_menu(options):
     for i, option in enumerate(options, start=1):
-        print(f"{i}. {option[0]}")
-
-    return len(options)
+        print(f"{i}. {option}")
 
 def get_menu_choice(options):
     while True:
@@ -73,20 +71,3 @@ def read_file(path):
 def write_file(path, text):
     with open(path, "w", encoding="utf-8") as f:
         f.write(text)
-
-def get_selection(choices, prompt):
-    while True:
-        s = input(prompt)
-
-        if s == "":
-            return None   # Signal: go back
-
-        try:
-            choice_num = int(s)
-            if not (1 <= choice_num <= choices):
-                prompt = f"Please enter a number between 1 and {choices}: "
-                continue
-        except ValueError:
-            prompt = f"Only numbers between 1 and {choices}: "
-        else:
-            return choice_num
