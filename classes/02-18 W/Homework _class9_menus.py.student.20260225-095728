@@ -32,11 +32,18 @@ The left hand side (LHS) is provided below. Your job:
 2) explain in your own words what the program does
     a) Try to include state, transitions and invariants
     b) Does menu control come from logic or program structure
+    The program uses a structure of nested loops and conditional statements to navigate through menu options.
+    Choice is the most recent selection by the user. to_top is assumed to be false unless its triggered to go back to top.
+    Other transitions are going up a level if the answer is none and going a level further if there is a valid answer.
+    The invariants are that only one menu level is active at a  time, no answer moves up one level, once you reach the end
+    you go back up to the top.
 
 3) assume you are at a leaf endpoint. Instead of returning to level 3
    return to level 1
 
-4) How many discrete paths are in this menu system
+4) How many discrete paths are in this menu system 
+There are 8. For clients: View Client Summary, Manage Client Cash, New Individual, New Joint.
+For portfolios: Buy, Sell, Holdings Snapshot, P/L Report
 '''
 '''
 OIM 3600 - Menu Navigation Assignment Rubric
@@ -121,9 +128,12 @@ THIS ASSIGNMENT WILL BE DUE 2/25 (NEXT WEDNESDAY) SO YOU CAN ASK QUESTIONS NEXT 
 
 import functions2 as fn2
 
+to_top = False
+
 while True:
     fn2.clear_screen()
     fn2.print_header('Top Menu level 1')
+    to_top = False
     options=['Clients', 'Portfolios'] #level 1 options
     fn2.display_menu(options)
     choice = fn2.get_menu_choice(options)
@@ -134,6 +144,8 @@ while True:
         break
     elif choice == 1:
         while True:
+            if to_top:
+                break
             fn2.clear_screen()
             fn2.print_header('Clients level 2')
             options=['Select Client', 'Create Client'] #level 2 options
@@ -146,6 +158,8 @@ while True:
                 break
             elif choice == 1:
                 while True:
+                    if to_top:
+                        break
                     fn2.clear_screen()
                     fn2.print_header('Select Client level 3')
                     options=['View Client Summary', 'Manage Client Cash'] #level 3 options
@@ -162,10 +176,11 @@ while True:
                         fn2.print_header('View Client Summary level 4')
                         # no options leaf
                         print('you have reached View Client Summary')
-                        print('returning to level 3') 
-                        fn2.pause(3)
+                        print('returning to level 1') 
+                        fn2.pause(1)
                         
-                        continue # not needed but shows intent
+                        to_top = True
+                        break
                            
                     elif choice == 2:
                         # no while statement leaf
@@ -173,13 +188,17 @@ while True:
                         fn2.print_header('Manage Client Cash level 4')
                         # no options leaf
                         print('you have reached Manage Client Cash')
-                        print('returning to level 3') 
-                        fn2.pause(3)
+                        print('returning to level 1') 
+                        fn2.pause(1)
 
-                        continue # not needed but shows intent
+                        to_top = True
+
+                        break
 
             elif choice == 2:
                 while True:
+                    if to_top:
+                        break
                     fn2.clear_screen()
                     fn2.print_header('Create Client level 3')
                     options=['New Individual', 'New Joint'] #level 3 options
@@ -196,10 +215,11 @@ while True:
                         fn2.print_header('New Individual level 4')
                         # no options leaf
                         print('you have reached New Individual')
-                        print('returning to level 3') 
-                        fn2.pause(3)
-
-                        continue # not needed but shows intent
+                        print('returning to level 1') 
+                        fn2.pause(1)
+                        
+                        to_top = True
+                        break
                            
                     elif choice == 2:
                         # no while statement leaf
@@ -207,15 +227,20 @@ while True:
                         fn2.print_header('New Joint level 4')
                         # no options leaf
                         print('you have reached New Joint')
-                        print('returning to level 3') 
-                        fn2.pause(3) 
+                        print('returning to level 1') 
+                        fn2.pause(1) 
 
-                        continue # not needed but shows intent   
+                        to_top = True
+                        break
+  
     elif choice == 2:
         while True:
+            if to_top:
+                break
             fn2.clear_screen()
-            fn2.print_header('Portfolios level 2')
-            options=['Trade', 'Performance'] #level 2 options
+            fn2.print_header('Portfolios level 2')            
+            options = ['Trade', 'Performance'] # level 2
+            
             fn2.display_menu(options)
             choice = fn2.get_menu_choice(options)
 
@@ -223,11 +248,15 @@ while True:
                 print('return to level 1')
                 fn2.pause(1)
                 break
+
             elif choice == 1:
                 while True:
+                    if to_top:
+                        break
+
                     fn2.clear_screen()
                     fn2.print_header('Trade level 3')
-                    options=['Buy', 'Sell'] #level 3 options
+                    options = ['Buy', 'Sell']  # level 3
                     fn2.display_menu(options)
                     choice = fn2.get_menu_choice(options)
 
@@ -235,33 +264,35 @@ while True:
                         print('return to level 2')
                         fn2.pause(1)
                         break
+
                     elif choice == 1:
-                        # no while statement leaf
                         fn2.clear_screen()
                         fn2.print_header('Buy level 4')
-                        # no options leaf
-                        print('you have reached Buy page')
-                        print('returning to level 3') 
-                        fn2.pause(3)
-                        
-                        continue # not needed but shows intent
-                           
+                        print('you have reached Buy')
+                        print('returning to level 1')
+                        fn2.pause(1)
+
+                        to_top = True
+                        break
+
                     elif choice == 2:
-                        # no while statement leaf
                         fn2.clear_screen()
                         fn2.print_header('Sell level 4')
-                        # no options leaf
-                        print('you have reached Sell Page')
-                        print('returning to level 3') 
-                        fn2.pause(3)
+                        print('you have reached Sell')
+                        print('returning to level 1')
+                        fn2.pause(1)
 
-                        continue # not needed but shows intent
+                        to_top = True
+                        break
 
             elif choice == 2:
                 while True:
+                    if to_top:
+                        break
+
                     fn2.clear_screen()
                     fn2.print_header('Performance level 3')
-                    options=['Holdings Snapshot', 'P/L Report'] #level 3 options
+                    options = ['Holdings Snapshot', 'P/L Report']  # level 3
                     fn2.display_menu(options)
                     choice = fn2.get_menu_choice(options)
 
@@ -269,24 +300,33 @@ while True:
                         print('return to level 2')
                         fn2.pause(1)
                         break
+
                     elif choice == 1:
-                        # no while statement leaf
                         fn2.clear_screen()
                         fn2.print_header('Holdings Snapshot level 4')
-                        # no options leaf
                         print('you have reached Holdings Snapshot')
-                        print('returning to level 3') 
-                        fn2.pause(3)
+                        print('returning to level 1')
+                        fn2.pause(1)
 
-                        continue # not needed but shows intent
-                           
+                        to_top = True
+                        break
+
                     elif choice == 2:
-                        # no while statement leaf
                         fn2.clear_screen()
                         fn2.print_header('P/L Report level 4')
-                        # no options leaf
                         print('you have reached P/L Report')
-                        print('returning to level 3') 
-                        fn2.pause(3) 
+                        print('returning to level 1')
+                        fn2.pause(1)
 
-                        continue # not needed but shows intent   
+                        to_top = True
+                        break
+            
+
+            print("This side of our menu is not yet implemented. ") 
+            fn2.pause(2)
+            fn2.clear_screen()
+            exit()
+        
+
+
+
