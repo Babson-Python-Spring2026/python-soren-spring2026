@@ -1,0 +1,40 @@
+START
+  |
+  +-- board = create_board()
+  +-- x_moves = True
+  +-- clear_screen()
+  |
+  +-- WHILE True
+        |
+        +-- display_board(board)
+        |
+        +-- IF x_moves == True
+        |        |
+        |        +-- move = get_human_move(board)
+        |
+        +-- ELSE
+        |        |
+        |        +-- print("Computer thinking...")
+        |        +-- pause(2)
+        |        +-- move = get_computer_move(board)
+        |
+        +-- is_valid = is_valid_move(board, move)
+        |
+        +-- IF not is_valid[0]
+        |        |
+        |        +-- continue   (restart loop)
+        |
+        +-- place_move(board, is_valid[1], x_moves)
+        |
+        +-- clear_screen()
+        |
+        +-- status = game_over(board, x_moves)
+        |
+        +-- IF status
+        |        |
+        |        +-- clear_screen()
+        |        +-- display_board(board)
+        |        +-- print(status + " wins the game")
+        |        +-- break
+        |
+        +-- x_moves = not x_moves
