@@ -27,6 +27,7 @@ def create_board() -> list[int]:
     Returns:
         A list containing the numbers 1 through 9.
     """
+    return [1, 2, 3, 4, 5, 6, 7, 8, 9]
     pass
 
 
@@ -66,6 +67,8 @@ def check_tie(board: list[int]) -> bool:
         True  → if no open squares remain
         False → otherwise
     """
+    return all(value in (10, -10) for value in board)
+
     pass
 
 
@@ -84,6 +87,29 @@ def check_winner(board: list[int]) -> str | None:
     Returns:
         'X', 'O', or None
     """
+    winning_lines = [
+        # Rows
+        [board[0], board[1], board[2]],
+        [board[3], board[4], board[5]],
+        [board[6], board[7], board[8]],
+        # Columns
+        [board[0], board[3], board[6]],
+        [board[1], board[4], board[7]],
+        [board[2], board[5], board[8]],
+        # Diagonals
+        [board[0], board[4], board[8]],
+        [board[2], board[4], board[6]],
+    ]
+
+    for line in winning_lines:
+        total = sum(line)
+        if total == 30:
+            return "X"
+        if total == -30:
+            return "O"
+
+    return None
+
     pass
 
 
@@ -96,6 +122,14 @@ def game_over(board: list[int], x_moves: bool) -> str | None:
     - If the board is full and no winner, return 'TIE'
     - Otherwise return None
     """
+    winner = check_winner(board)
+    if winner is not None:
+        return winner
+
+    if check_tie(board):
+        return "TIE"
+
+    return None
     pass
 
 
@@ -106,6 +140,8 @@ def get_human_move(board: list[int]) -> str:
     Returns:
         The raw input string entered by the user.
     """
+    return input("Choose an open square (1-9): ")
+
     pass
 
 
@@ -120,6 +156,12 @@ def get_computer_move(board: list[int]) -> int:
     Returns:
         An integer representing the chosen square number.
     """
+    for value in board:
+        if value not in (10, -10):
+            return value
+
+    raise ValueError("No open squares available.")
+
     pass
 
 
@@ -136,6 +178,21 @@ def is_valid_move(board: list[int], move: str) -> tuple[bool, int | None]:
         (True, index)  → if valid
         (False, None)  → otherwise
     """
+    try:
+        square = int(move)
+    except ValueError:
+        return (False, None)
+
+    if square < 1 or square > 9:
+        return (False, None)
+
+    index = square - 1
+
+    if board[index] in (10, -10):
+        return (False, None)
+
+    return (True, index)
+
     pass
 
 
@@ -148,6 +205,7 @@ def place_move(board: list[int], index: int, x_moves: bool) -> None:
     - If x_moves is False, place -10
     - Modify the board in place
     """
+    board[index] = 10 if x_moves else -10
     pass
 
 def play_game() -> None:
@@ -175,4 +233,38 @@ def play_game() -> None:
     Output:
     - Prints the game progression and final result to the console.
     """
-    pass
+    board = create_board()
+    x_moves = True
+
+    while True:
+        display_board(board)
+
+        if x_moves:
+            move = get_human_move(board)
+        else:
+            computer_square = get_computer_move(board)
+            print(f"Computer chooses square {computer_square}")
+            move = str(computer_square)
+
+        valid, index = is_valid_move(board, move)
+
+        if not valid or index is None:
+            print("Invalid move. Try again.")
+            continue
+
+        place_move(board, index, x_moves)
+
+        result = game_over(board, x_moves)
+        if result is not None:
+            display_board(board)
+            if result == "TIE":
+                print("It's a tie!")
+            else:
+                print(f"{result} wins!")
+            break
+
+        x_moves = not x_moves
+
+
+if __name__ == "__main__":
+    play_game()
