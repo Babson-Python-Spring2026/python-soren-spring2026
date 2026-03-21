@@ -1,3 +1,12 @@
+'''
+Partial but genuine work. Several functions are implemented, and the file shows clear effort, 
+though it still feels unfinished and a bit rushed in places. For an intro course, 
+this is more of a partial completion than a failure.
+
+Grade 80
+
+'''
+
 """
 TIC TAC TOE — FUNCTION SCAFFOLD
 
