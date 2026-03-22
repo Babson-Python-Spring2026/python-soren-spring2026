@@ -1,3 +1,31 @@
+'''
+Soren — 8 / 10
+
+Overall
+
+Solid submission with clear reasoning.
+
+Strengths
+
+Good explanation of state and transitions.
+Correct invariants.
+Clear explanation of output.
+
+Weaknesses
+
+Some comments slightly repetitive.
+A few sections could be more detailed.
+
+AI likelihood
+
+Moderate.
+
+Estimated probability: 30–40%
+
+GRADE 90
+
+'''
+
 """
 Homework: Reading Code with State / Transitions / Invariants (Tic-Tac-Toe)
 
