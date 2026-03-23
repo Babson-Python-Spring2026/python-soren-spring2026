@@ -179,3 +179,6 @@ def play_game() -> None:
     - Prints the game progression and final result to the console.
     """
     pass
+
+import os
+print(os.getcwd())

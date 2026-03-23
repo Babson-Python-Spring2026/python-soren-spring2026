@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style>
+code {
+    font-family: Consolas, "Courier New", monospace;
+    font-variant-ligatures: none;
+    font-feature-settings: "liga" 0;
+}
+</style>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Part I — Foundations of Programming in Python (Version 1 Draft)</title>
+<style>
+:root{--bg:#f6f5f2;--paper:#ffffff;--text:#1f2933;--muted:#52606d;--line:#d8dee4;--heading:#102a43;--concept:#e8f3ff;--exercise:#e8f7ea;--mental:#f1eaff;--warning:#fdecea;--design:#fff7d6;--code:#f5f7fa;--table:#f0f4f8;--nav:#eef2f6}
+*{box-sizing:border-box} html{scroll-behavior:smooth}
+body{margin:0;font-family:Georgia,"Times New Roman",serif;color:var(--text);background:var(--bg);line-height:1.7}
+.page{max-width:1360px;margin:0 auto;padding:28px 20px 90px}
+header,.toc,.main,.wide,.practice-card{background:var(--paper);border:1px solid var(--line);border-radius:18px}
+header{padding:30px 34px;margin-bottom:22px}
+.topnote{background:var(--nav);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:0 0 18px;color:var(--muted);font-size:.98rem}
+h1,h2,h3,h4{color:var(--heading);line-height:1.2} h1{font-size:2.45rem;margin:0 0 10px} h2{font-size:1.85rem;margin:0 0 18px} h3{font-size:1.24rem;margin:0 0 10px} h4{font-size:1.07rem;margin:18px 0 8px}
+p,li{font-size:1.04rem}.lede{font-size:1.12rem;max-width:86ch}.muted{color:var(--muted)}
+.toc{padding:18px 24px;margin:20px 0 34px}.toc ol{columns:2;column-gap:42px;margin:10px 0 0;padding-left:22px}.toc li{break-inside:avoid;margin-bottom:6px}
+.section-title{margin-top:38px;margin-bottom:14px;border-top:2px solid var(--line);padding-top:24px}
+.section{display:grid;grid-template-columns:minmax(0,2.3fr) minmax(300px,.92fr);gap:28px;align-items:start;margin-bottom:18px}
+.main{padding:28px 30px}.wide{padding:28px 30px;margin-bottom:18px}
+.sidebar{position:sticky;top:14px;display:flex;flex-direction:column;gap:16px}
+.panel{border:1px solid var(--line);border-radius:16px;padding:14px 16px;box-shadow:0 1px 2px rgba(16,42,67,.05)} .panel h3{font-size:1rem;margin-bottom:8px}
+.concept{background:var(--concept)} .exercise{background:var(--exercise)} .mental{background:var(--mental)} .warning{background:var(--warning)} .design{background:var(--design)}
+pre,code{font-family:"Cascadia Code",Consolas,Menlo,Monaco,monospace;font-size:.93rem}
+pre{background:var(--code);border:1px solid #e6eaef;border-radius:12px;padding:14px 16px;overflow:auto;margin:12px 0 16px}
+.diagram{font-family:"Cascadia Code",Consolas,monospace;background:#fafbfc;border:1px solid #e6eaef;border-left:5px solid #9fb3c8;border-radius:10px;padding:12px 14px;white-space:pre;overflow:auto;margin:12px 0 16px}
+table{width:100%;border-collapse:collapse;margin:12px 0 18px;background:var(--paper)} th,td{border:1px solid var(--line);padding:10px 12px;vertical-align:top} th{background:var(--table);text-align:left}
+.callout-list{margin:8px 0 0;padding-left:20px}
+.section-questions{margin-top:20px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:#fafcff}.section-questions h4{margin-top:0}
+.practice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.practice-card{padding:16px 18px}
+.footer-note{margin-top:24px;padding:16px 18px;border-radius:14px;background:#f8fafc;border:1px solid var(--line)}
+@media (max-width:980px){.toc ol{columns:1}.section{grid-template-columns:1fr}.sidebar{position:static}.practice-grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="page">
+<header>
+<div class="topnote"><strong>Design note:</strong> this workbook is meant to be read on screen while students code in VS Code. It is written to support prediction, experimentation, and modification in <code>scratch.py</code>, not passive reading.</div>
+<h1>Part I — Foundations of Programming in Python</h1>
+<p class="lede">This workbook is the foundation for the rest of the course. The goal is not to memorize Python syntax. The goal is to understand how Python stores information, how Python changes information, and how to investigate behavior when something is unclear. This is a learning document, not a compact reference document.</p>
+<p class="muted"><strong>Recommended workflow:</strong> predict what the code will do, run it, observe carefully, change one thing, and run it again.</p>
+</header>
+
+<section class="toc"><h2>Contents</h2><ol>
+<li><a href="#sec1">How to Use This Workbook</a></li>
+<li><a href="#sec2">Computers Store Data and Change Data</a></li>
+<li><a href="#sec3">Objects and Data Types</a></li>
+<li><a href="#sec4">Working with Strings</a></li>
+<li><a href="#sec5">Working with Lists</a></li>
+<li><a href="#sec6">Working with Tuples</a></li>
+<li><a href="#sec7">Working with Dictionaries</a></li>
+<li><a href="#sec8">Variables, References, and Objects</a></li>
+<li><a href="#sec9">Mutability, Immutability, Aliasing, and Copying</a></li>
+<li><a href="#sec10">Expressions, Statements, and Operations</a></li>
+<li><a href="#sec11">Collections and Data Representation</a></li>
+<li><a href="#sec12">Boolean Logic, Comparisons, and Control Flow</a></li>
+<li><a href="#sec13">Loops, Range, and Trace Tables</a></li>
+<li><a href="#sec14">Nested Lists, 2-D, 3-D, and 4-D Structures</a></li>
+<li><a href="#sec15">Functions, Methods, and Function Signatures</a></li>
+<li><a href="#sec16">Importing Modules and Paths in VS Code</a></li>
+<li><a href="#sec17">Files and JSON</a></li>
+<li><a href="#sec18">Using AI the Right Way</a></li>
+<li><a href="#sec19">Python Mental Model Summary</a></li>
+<li><a href="#sec20">Integrated Problems and Transition to Part II: STI</a></li>
+</ol></section>
+
+<h2 class="section-title" id="sec1">1. How to Use This Workbook</h2>
+<section class="section"><article class="main">
+<p>Our first job is to build language fluency and a reliable mental model of how Python behaves. You are not just learning Python. You are learning how to investigate a system.</p>
+<p>Whenever something feels unclear, do not stare at the code passively. Create a tiny exercise and run it. Small exercises are one of the fastest ways to turn confusion into understanding.</p>
+<p>A good exercise is usually only three to ten lines long.</p>
+<h4>Recommended working habit</h4>
+<p>Create a file called <code>scratch.py</code> in VS Code. Use it whenever you want to test a small idea without touching your main program.</p>
+<pre>a = [1, 2]
+b = a
+b.append(3)
+
+print(a)
+print(b)</pre>
+<p>Then change one thing and rerun. For example, replace <code>b.append(3)</code> with <code>b = b + [3]</code>. Does the behavior stay the same?</p>
+<div class="section-questions"><h4>Section 1 Questions</h4><ol><li>Why is a small test file like <code>scratch.py</code> useful?</li><li>What is the advantage of changing only one thing at a time in an experiment?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel exercise"><h3>▶ Exercise Panel — Use a Scratch File</h3><p>When something in Python is unclear, open <code>scratch.py</code> in VS Code and test the smallest possible version of the idea.</p></div>
+<div class="panel mental"><h3>🧠 Mental Model Panel</h3><p>Learning to program is partly learning to ask better questions. Small exercises produce evidence.</p></div>
+<div class="panel concept"><h3>💡 Environment Reminder</h3><p>In this course, students open the folder <code>student_repo</code> in VS Code. That folder lives under <code>C:\PythonClass</code>.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec2">2. Computers Store Data and Change Data</h2>
+<section class="section"><article class="main">
+<p>Nearly every program can be understood using two questions:</p>
+<ul><li>What information is stored?</li><li>What operations change that information?</li></ul>
+<p>A spreadsheet stores numbers and updates them when formulas run. A game stores positions and scores and updates them when the player acts. A banking program stores balances and changes them when transactions occur. A portfolio program stores clients, positions, and cash, then changes them when a trade is recorded.</p>
+<pre>balance = 100
+print(balance)
+balance = balance + 25
+print(balance)</pre>
+<p>Before running the code, predict the output. Then run it. Then change the starting value and rerun.</p>
+<h4>Questions worth asking</h4>
+<ul><li>What value is stored before the update?</li><li>What value is stored after the update?</li><li>Which line changes the stored value?</li><li>What value is produced by <code>balance + 25</code>?</li><li>Would the same pattern hold if we updated the value twice?</li></ul>
+<div class="section-questions"><h4>Section 2 Questions</h4><ol><li>In the example above, which line performs the update?</li><li>What is the difference between the value stored before the update and the value produced by <code>balance + 25</code>?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel concept"><h3>💡 Concept Panel</h3><p>The central idea of this section is simple: computers store data and change data.</p></div>
+<div class="panel warning"><h3>⚠ Warning Panel</h3><p>When you read code, do not treat all lines as doing the same thing. Ask:</p><ul class="callout-list"><li>Is this line computing a value?</li><li>Is this line creating or rebinding a reference?</li><li>Is this line changing an existing object?</li><li>Is this line controlling the flow of execution?</li></ul></div>
+</aside></section>
+
+<h2 class="section-title" id="sec3">3. Objects and Data Types</h2>
+<section class="section"><article class="main">
+<p>In Python, every value you work with is an object. Numbers are objects. Strings are objects. Lists and dictionaries are objects.</p>
+<div class="diagram">object = data + operations</div>
+<table>
+<tr><th>Type</th><th>Example</th><th>What it models</th></tr>
+<tr><td><code>int</code></td><td><code>7</code></td><td>Whole numbers</td></tr>
+<tr><td><code>float</code></td><td><code>3.14</code></td><td>Decimal numbers</td></tr>
+<tr><td><code>str</code></td><td><code>"apple"</code></td><td>Text</td></tr>
+<tr><td><code>bool</code></td><td><code>True</code></td><td>True/False conditions</td></tr>
+<tr><td><code>list</code></td><td><code>[1, 2, 3]</code></td><td>Ordered sequence</td></tr>
+<tr><td><code>tuple</code></td><td><code>(3, 5)</code></td><td>Fixed ordered grouping</td></tr>
+<tr><td><code>set</code></td><td><code>{1, 2, 3}</code></td><td>Unique values</td></tr>
+<tr><td><code>dict</code></td><td><code>{"AAPL": 10}</code></td><td>Key/value mapping</td></tr>
+</table>
+<pre>x = 7
+y = 3.14
+name = "Alice"
+flag = True
+items = [1, 2, 3]
+
+print(type(x))
+print(type(y))
+print(type(name))
+print(type(flag))
+print(type(items))</pre>
+<div class="section-questions"><h4>Section 3 Questions</h4><ol><li>What is the difference between a number and a numeral?</li><li>What kind of data structure would you choose for fast lookup by name?</li><li>Explain what the phrase <code>object = data + operations</code> means in your own words.</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel concept"><h3>💡 What is a String?</h3><p>A string is text made from characters you can type on a keyboard.</p><pre>"hello"
+"AAPL"
+"123 Main Street"</pre></div>
+<div class="panel concept"><h3>💡 What is a List?</h3><p>A list is an ordered sequence, like a shopping list.</p><pre>["milk", "bread", "eggs"]</pre></div>
+<div class="panel concept"><h3>💡 What is a Dictionary?</h3><p>A dictionary stores keys and values. A <strong>key</strong> is the label used to look up a value.</p><pre>{"AAPL": 10, "MSFT": 5}</pre></div>
+<div class="panel mental"><h3>🧠 Number vs Numeral</h3><p><code>7</code> is a number. <code>"7"</code> is text that represents a number.</p><pre>7 + 7        # 14
+"7" + "7"    # "77"</pre></div>
+<div class="panel design"><h3>🧩 Symbols Matter</h3><p><code>[]</code> is used for lists, indexing, and slicing.<br><code>{}</code> is used for dictionaries (and sets).<br><code>()</code> is used for grouping, tuples, and function calls.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec4">4. Working with Strings</h2>
+<section class="section"><article class="main">
+<p>A string is a sequence of characters. Students need a basic toolkit for manipulating strings because strings appear everywhere: names, menu choices, file paths, stock tickers, dates, and reports.</p>
+<pre>text = "Babson College"</pre>
+<h4>Indexing and slicing</h4>
+<p>The general slicing pattern is:</p>
+<div class="diagram">text[start:stop:step]</div>
+<p><strong>start</strong> is where the slice begins, <strong>stop</strong> is where it ends (not included), and <strong>step</strong> is how many positions to move each time.</p>
+<pre>print(text[0])      # first character
+print(text[2:8])    # from index 2 up to but not including 8
+print(text[2:])     # from index 2 to the end
+print(text[:5])     # from the beginning up to but not including 5
+print(text[::2])    # every second character
+print(text[-1])     # last character
+print(text[-3:])    # last 3 characters</pre>
+<p>Negative values count backward from the end of the string. So <code>-1</code> means “last position,” <code>-2</code> means “second-to-last,” and so on.</p>
+<div class="diagram">text = "Babson"
+
+index:    0   1   2   3   4   5
+char :    B   a   b   s   o   n
+
+neg idx: -6  -5  -4  -3  -2  -1</div>
+<h4>Most used string methods</h4>
+<table>
+<tr><th>Method</th><th>Example</th><th>Result</th></tr>
+<tr><td><code>.upper()</code></td><td><code>"hello".upper()</code></td><td><code>"HELLO"</code></td></tr>
+<tr><td><code>.lower()</code></td><td><code>"HELLO".lower()</code></td><td><code>"hello"</code></td></tr>
+<tr><td><code>.strip()</code></td><td><code>" hi ".strip()</code></td><td><code>"hi"</code></td></tr>
+<tr><td><code>.split(",")</code></td><td><code>"a,b,c".split(",")</code></td><td><code>['a','b','c']</code></td></tr>
+<tr><td><code>.replace()</code></td><td><code>"cat".replace("c","b")</code></td><td><code>"bat"</code></td></tr>
+<tr><td><code>.find()</code></td><td><code>"apple".find("p")</code></td><td><code>1</code></td></tr>
+<tr><td><code>.join(...)</code></td><td><code>",".join(["a","b","c"])</code></td><td><code>"a,b,c"</code></td></tr>
+</table>
+<p><code>join</code> matters because many programs build text from pieces.</p>
+<pre>words = ["Computational", "Thinking", "with", "Python"]
+sentence = " ".join(words)
+print(sentence)</pre>
+<h4>f-Strings</h4>
+<p>This workbook teaches a small, practical subset of the part that comes after the colon <code>:</code>.</p>
+<div class="diagram">f"{value:[fill][align][width][.precision][type]}"</div>
+<h4>The 4 slots (in order)</h4>
+<ol><li><strong>Fill + Align</strong> (optional)</li><li><strong>Width</strong> (optional; minimum field width)</li><li><strong>.Precision</strong> (optional)</li><li><strong>Type</strong> (optional)</li></ol>
+<h4>Align</h4><ul><li><code>&lt;</code> left</li><li><code>&gt;</code> right</li><li><code>^</code> center</li></ul>
+<h4>Fill</h4><p>Any single character, but it only works when align is present. Examples: <code>0&gt;</code>, <code>.^</code>, <code>-&lt;</code>.</p>
+<h4>Width</h4><p>A number like <code>10</code> meaning minimum width.</p>
+<h4>Precision</h4><p><code>.2</code> is common with floats, so <code>.2f</code> means 2 digits after the decimal.</p>
+<h4>Type (common)</h4><ul><li><code>d</code> integer</li><li><code>f</code> fixed-point float</li><li><code>%</code> percent</li></ul>
+<h4>Golden examples</h4>
+<pre>n = 42
+x = 12.5
+p = 0.3789
+name = "Alice"
+
+print(f"{n:>5}")       # right-align, width 5
+print(f"{n:0>5}")      # zero-fill, right-align, width 5
+print(f"{x:.2f}")      # 2 decimals
+print(f"{x:8.2f}")     # width 8, 2 decimals
+print(f"{p:.1%}")      # percent, 1 decimal
+print(f"{name:^10}")   # center, width 10</pre>
+<h4>Using f-strings to build a small table</h4>
+<pre>ticker = "AAPL"
+shares = 10
+price = 205.4
+
+print(f"{'Ticker':^10} {'Shares':^10} {'Price':^10}")
+print(f"{ticker:^10} {shares:^10d} {price:>10.2f}")</pre>
+<div class="section-questions"><h4>Section 4 Questions</h4><ol><li>What is the difference between indexing and slicing?</li><li>Use <code>.join()</code> to convert a list of words into one sentence.</li><li>Write an f-string that prints a price with 2 decimal places.</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel concept"><h3>💡 String Toolkit</h3><p>The goal is not to memorize every method. The goal is to know the common ones you will actually use.</p></div>
+<div class="panel exercise"><h3>▶ Exercise Panel</h3><pre>text = " alice "
+print(text.strip())
+print(text.upper())
+print(text.replace("a", "A"))</pre><p>Predict before running.</p></div>
+<div class="panel exercise"><h3>▶ Exercise Panel — Play with f-Strings</h3><p>Copy the table example into VS Code and change the alignment, width, fill, and precision options. What changes visually?</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec5">5. Working with Lists</h2>
+<section class="section"><article class="main">
+<p>A list is an ordered sequence of objects. Lists are mutable, so they are one of the most important data structures in beginner Python.</p>
+<pre>numbers = [3, 7, 2]</pre>
+<pre>mixed = [10, "AAPL", True]
+nested = [[1, 2], [3, 4]]
+records = [{"ticker": "AAPL", "shares": 10}, {"ticker": "MSFT", "shares": 5}]</pre>
+<table>
+<tr><th>Method</th><th>Example</th><th>What it does</th></tr>
+<tr><td><code>.append(x)</code></td><td><code>a.append(5)</code></td><td>Add one item to the end</td></tr>
+<tr><td><code>.extend([...])</code></td><td><code>a.extend([4,5])</code></td><td>Add multiple items</td></tr>
+<tr><td><code>.insert(i,x)</code></td><td><code>a.insert(1,9)</code></td><td>Insert at a position</td></tr>
+<tr><td><code>.remove(x)</code></td><td><code>a.remove(3)</code></td><td>Remove by value</td></tr>
+<tr><td><code>.pop()</code></td><td><code>a.pop()</code></td><td>Remove and return last item</td></tr>
+<tr><td><code>.sort()</code></td><td><code>a.sort()</code></td><td>Sort in place</td></tr>
+<tr><td><code>.reverse()</code></td><td><code>a.reverse()</code></td><td>Reverse in place</td></tr>
+<tr><td><code>.copy()</code></td><td><code>b = a.copy()</code></td><td>Make a shallow copy</td></tr>
+</table>
+<div class="section-questions"><h4>Section 5 Questions</h4><ol><li>What is the difference between <code>.append()</code> and <code>.extend()</code>?</li><li>Create a copy of a list and show that mutating the copy does not change the original.</li><li>Write a list containing a number, a string, and another list.</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel warning"><h3>⚠ Important</h3><p>Many list methods mutate the list. That means they change the existing object.</p></div>
+<div class="panel exercise"><h3>▶ Exercise Panel</h3><pre>items = [2, 4, 6]
+items.append(8)
+items.pop()
+print(items)</pre></div>
+<div class="panel mental"><h3>🧠 Side Panel</h3><p><code>a.append(3)</code> mutates. <code>a = a + [3]</code> creates a new list and rebinds the variable.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec6">6. Working with Tuples</h2>
+<section class="section"><article class="main">
+<p>A tuple is an ordered grouping that is typically not changed.</p>
+<pre>point = (3, 5)
+date = (2026, 1, 20)
+location = (42.3, -71.2)</pre>
+<p>Tuples support indexing and iteration, but not list-style mutation methods like <code>append()</code>.</p>
+<p>Tuples are useful for communication and defensive programming. They tell the reader that the values represent one fixed concept.</p>
+<div class="section-questions"><h4>Section 6 Questions</h4><ol><li>Why might a tuple be a better choice than a list for a date or location?</li><li>What happens if you try to call <code>append()</code> on a tuple?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel concept"><h3>💡 Side Panel</h3><p>Use a tuple when you want to treat a grouping as one fixed package.</p></div>
+<div class="panel exercise"><h3>▶ Exercise Panel</h3><p>Try indexing a tuple and a list. Then try calling <code>append()</code> on both. What happens?</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec7">7. Working with Dictionaries</h2>
+<section class="section"><article class="main">
+<p>A dictionary maps keys to values. A key is the label used to look up the corresponding value.</p>
+<pre>prices = {"AAPL": 205, "MSFT": 417}</pre>
+<h4>Access and update</h4>
+<pre>print(prices["AAPL"])
+prices["GOOG"] = 180</pre>
+<h4>Three common interfaces in beginner Python</h4>
+<pre>prices["AAPL"]    # key lookup
+text.upper()      # method call
+len(text)         # function call</pre>
+<table>
+<tr><th>Method</th><th>Example</th><th>What it does</th></tr>
+<tr><td><code>.keys()</code></td><td><code>d.keys()</code></td><td>View all keys</td></tr>
+<tr><td><code>.values()</code></td><td><code>d.values()</code></td><td>View all values</td></tr>
+<tr><td><code>.items()</code></td><td><code>d.items()</code></td><td>View key/value pairs</td></tr>
+<tr><td><code>.get(k)</code></td><td><code>d.get("AAPL")</code></td><td>Safe lookup</td></tr>
+<tr><td><code>.update({...})</code></td><td><code>d.update({"TSLA":3})</code></td><td>Add or update entries</td></tr>
+<tr><td><code>.pop(k)</code></td><td><code>d.pop("AAPL")</code></td><td>Remove and return a value</td></tr>
+</table>
+<pre>portfolio = {"AAPL": 10, "MSFT": 5}
+
+for key in portfolio.keys():
+    print(key)
+
+for value in portfolio.values():
+    print(value)
+
+for key, value in portfolio.items():
+    print(key, value)
+
+names = ["Alice", "Bob", "Cara"]
+scores = [88, 91, 79]
+
+for i, name in enumerate(names):
+    print(i, name)
+
+for name, score in zip(names, scores):
+    print(name, score)</pre>
+<div class="section-questions"><h4>Section 7 Questions</h4><ol><li>What is a key?</li><li>What is the difference between <code>[key]</code>, dot notation, and a function call?</li><li>Loop through a dictionary using <code>.keys()</code>, <code>.values()</code>, and <code>.items()</code>.</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel exercise"><h3>▶ Exercise Panel — Run and Describe</h3><p>Copy each example into <code>scratch.py</code>. Run it. Then describe what each one does.</p><pre>portfolio = {"AAPL": 10, "MSFT": 5}
+
+print(portfolio["AAPL"])
+print(portfolio.keys())
+print(portfolio.values())
+print(portfolio.items())
+
+for key in portfolio.keys():
+    print(key)
+
+for value in portfolio.values():
+    print(value)
+
+for key, value in portfolio.items():
+    print(key, value)</pre></div>
+<div class="panel warning"><h3>⚠ Side Panel</h3><p><code>d["missing"]</code> can fail. <code>d.get("missing")</code> is often safer.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec8">8. Variables, References, and Objects</h2>
+<section class="section"><article class="main">
+<p>A variable is not an object. A variable is a label that refers to an object. It is better to think of a variable as a label than as a box.</p>
+<div class="diagram">variable name  →  reference  →  object</div>
+<pre>a = [1, 2]
+b = a
+
+print(id(a))
+print(id(b))</pre>
+<div class="diagram">a ─┐
+   ├──► [1, 2]
+b ─┘</div>
+<p>This is aliasing. Two variables are different names for the same object.</p>
+<div class="section-questions"><h4>Section 8 Questions</h4><ol><li>What does it mean for two variables to be aliases?</li><li>What does <code>id()</code> help you reason about?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel mental"><h3>🧠 Python Manages Memory</h3><p><code>id()</code> helps you reason about object identity. Python handles the underlying memory details.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec9">9. Mutability, Immutability, Aliasing, and Copying</h2>
+<section class="section"><article class="main">
+<p>This is one of the most important conceptual sections in the workbook.</p>
+<p>Some objects can change after they are created. Lists and dictionaries are common mutable objects.</p>
+<p>Integers, floats, strings, and tuples behave as immutable objects in our examples.</p>
+<p>When the value of an immutable object appears to change, Python creates a new object and the variable starts referring to that new object.</p>
+<pre>a = [1, 2]
+b = a
+b.append(3)
+print(a)
+print(b)</pre>
+<pre>x = 10
+y = x
+x = 20
+print(x)
+print(y)</pre>
+<pre>a = [1, 2, 3]
+b = a.copy()
+b.append(4)
+print(a)
+print(b)</pre>
+<table>
+<tr><th>Action</th><th>What happens</th></tr>
+<tr><td>Mutation</td><td>The existing object changes</td></tr>
+<tr><td>Rebinding</td><td>The variable starts referring to a different object</td></tr>
+<tr><td>Aliasing</td><td>Two variables refer to the same object</td></tr>
+<tr><td>Copying</td><td>A new object is created with similar contents</td></tr>
+</table>
+<div class="section-questions"><h4>Section 9 Questions</h4><ol><li>What is the difference between mutation and rebinding?</li><li>Why does <code>b = a</code> not create a second list?</li><li>Why are variables labels rather than objects?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel warning"><h3>⚠ Common Mistake</h3><p><code>b = a</code> does not create a second list. It creates a second reference.</p></div>
+<div class="panel exercise"><h3>▶ Exercise Panel</h3><p>Replace <code>b.append(3)</code> with <code>b = b + [3]</code>. Then print <code>a</code> and <code>b</code>. Explain the difference.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec10">10. Expressions, Statements, and Operations</h2>
+<section class="section"><article class="main">
+<p>These distinctions matter because they help you debug and reason more precisely about what code is doing.</p>
+<table>
+<tr><th>Category</th><th>Meaning</th><th>Examples</th></tr>
+<tr><td>Expression</td><td>Produces a value</td><td><code>3 + 5</code>, <code>len(items)</code></td></tr>
+<tr><td>Operation</td><td>Computation used inside an expression</td><td><code>+</code>, <code>*</code>, function call</td></tr>
+<tr><td>Statement</td><td>Performs an action in the program</td><td><code>x = 5</code>, <code>print(x)</code></td></tr>
+</table>
+<pre>x = len(items) + 3</pre>
+<p>Here, <code>len(items) + 3</code> is the expression. The function call and the <code>+</code> are operations inside that expression. The assignment is the statement.</p>
+<div class="section-questions"><h4>Section 10 Questions</h4><ol><li>In <code>x = len(items) + 3</code>, which part is the statement?</li><li>Which parts are operations?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel mental"><h3>🧠 Side Panel</h3><p>Operations are generally part of expressions. Statements organize actions in the program.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec11">11. Collections and Data Representation</h2>
+<section class="section"><article class="main">
+<p>Different representations make different operations easier. This is one of the deepest ideas in programming.</p>
+<pre>positions_a = [("AAPL", 10), ("MSFT", 5)]
+positions_b = {"AAPL": 10, "MSFT": 5}</pre>
+<pre>portfolio = {
+    "client": "Alice",
+    "cash": 12000,
+    "positions": [
+        {"ticker": "AAPL", "shares": 10},
+        {"ticker": "MSFT", "shares": 5}
+    ],
+    "notes": ["retirement", "taxable account"]
+}</pre>
+<table>
+<tr><th>From</th><th>To</th><th>Why?</th></tr>
+<tr><td>Parallel lists</td><td>Dictionary</td><td>Fast lookup by key</td></tr>
+<tr><td>Dictionary</td><td>List of pairs</td><td>Easy iteration / sorting</td></tr>
+<tr><td>List of lists</td><td>Flat list</td><td>Simpler processing</td></tr>
+<tr><td>Raw records</td><td>Grouped dictionary</td><td>Easier reporting by category</td></tr>
+</table>
+<div class="section-questions"><h4>Section 11 Questions</h4><ol><li>Why might a dictionary be better than two parallel lists?</li><li>Convert a dictionary into a list of pairs.</li><li>Explain what it means to “reshape data.”</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel design"><h3>🧩 Design Panel</h3><p>Ask: what representation makes the next operation easier?</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec12">12. Boolean Logic, Comparisons, and Control Flow</h2>
+<section class="section"><article class="main">
+<p>Boolean values represent True or False. They are the basis for decisions in a program.</p>
+<h4>Comparison operators</h4>
+<table>
+<tr><th>Operator</th><th>Meaning</th></tr>
+<tr><td><code>==</code></td><td>equal to</td></tr>
+<tr><td><code>!=</code></td><td>not equal to</td></tr>
+<tr><td><code>&lt;</code></td><td>less than</td></tr>
+<tr><td><code>&gt;</code></td><td>greater than</td></tr>
+<tr><td><code>&lt;=</code></td><td>less than or equal to</td></tr>
+<tr><td><code>&gt;=</code></td><td>greater than or equal to</td></tr>
+</table>
+<h4>Logical operators</h4>
+<pre>a and b
+a or b
+not a
+x in collection</pre>
+<p>Be careful not to confuse <code>not x</code> with <code>x != y</code>.</p>
+<pre>not is_member      # negate a truth value
+x != y             # compare two values for inequality</pre>
+<h4>Arithmetic operators</h4>
+<pre>+   -   *   /   //   %   **</pre>
+<p>Evaluation is usually left to right, but <code>**</code> behaves differently. When precedence matters, use parentheses.</p>
+<pre>3 + 4 * 5
+(3 + 4) * 5
+2 ** 3 ** 2</pre>
+<h4>Selection with if / elif / else</h4>
+<pre>score = 75
+
+if score >= 90:
+    print("A")
+elif score >= 80:
+    print("B")
+elif score >= 70:
+    print("C")
+else:
+    print("Below C")</pre>
+<p>Python checks conditions from top to bottom and stops once one branch succeeds.</p>
+<h4>De Morgan's Laws</h4>
+<p>These are two very useful rewrite rules for boolean expressions:</p>
+<pre>not (A and B) == (not A) or (not B)
+not (A or B)  == (not A) and (not B)</pre>
+<p>Truth tables are an important tool for checking whether two logical expressions are equivalent.</p>
+<h4>Truth table for <code>not (A and B)</code></h4>
+<table>
+<tr><th>A</th><th>B</th><th>A and B</th><th>not (A and B)</th><th>not A</th><th>not B</th><th>(not A) or (not B)</th></tr>
+<tr><td>True</td><td>True</td><td>True</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
+<tr><td>True</td><td>False</td><td>False</td><td>True</td><td>False</td><td>True</td><td>True</td></tr>
+<tr><td>False</td><td>True</td><td>False</td><td>True</td><td>True</td><td>False</td><td>True</td></tr>
+<tr><td>False</td><td>False</td><td>False</td><td>True</td><td>True</td><td>True</td><td>True</td></tr>
+</table>
+<h4>Truth table for <code>not (A or B)</code></h4>
+<table>
+<tr><th>A</th><th>B</th><th>A or B</th><th>not (A or B)</th><th>not A</th><th>not B</th><th>(not A) and (not B)</th></tr>
+<tr><td>True</td><td>True</td><td>True</td><td>False</td><td>False</td><td>False</td><td>False</td></tr>
+<tr><td>True</td><td>False</td><td>True</td><td>False</td><td>False</td><td>True</td><td>False</td></tr>
+<tr><td>False</td><td>True</td><td>True</td><td>False</td><td>True</td><td>False</td><td>False</td></tr>
+<tr><td>False</td><td>False</td><td>False</td><td>True</td><td>True</td><td>True</td><td>True</td></tr>
+</table>
+<h4>Check the same laws in Python</h4>
+<pre>cases = [(True, True), (True, False), (False, True), (False, False)]
+
+for a, b in cases:
+    left = not (a and b)
+    right = (not a) or (not b)
+    print(a, b, left, right)
+
+print()
+
+for a, b in cases:
+    left = not (a or b)
+    right = (not a) and (not b)
+    print(a, b, left, right)</pre>
+<div class="section-questions"><h4>Section 12 Questions</h4><ol><li>Contrast <code>not x</code> with <code>x != y</code>.</li><li>Why does order matter in an <code>if / elif / else</code> chain?</li><li>Run the De Morgan examples. Why do the last two columns match?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel exercise"><h3>▶ Exercise Panel — Circle a List with %</h3><pre>colors = ["red", "green", "blue"]
+
+for i in range(8):
+    print(colors[i % len(colors)])</pre><p>Why does the list repeat instead of failing?</p></div>
+<div class="panel warning"><h3>⚠ Side Panel</h3><p>Do not memorize large precedence tables. Use parentheses when clarity matters.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec13">13. Loops, Range, and Trace Tables</h2>
+<section class="section"><article class="main">
+<p>Loops repeat work. They are where programs begin to feel dynamic over time.</p>
+<h4>for loops</h4>
+<pre>numbers = [2, 4, 6]
+for x in numbers:
+    print("Number:", x)
+    print("Double:", x * 2)</pre>
+<p>The loop variable <code>x</code> takes on one value at a time from the list.</p>
+<h4>range</h4>
+<pre>range(stop)
+range(start, stop)
+range(start, stop, step)</pre>
+<pre>for i in range(5):
+    print(i)
+
+for i in range(2, 8):
+    print(i)
+
+for i in range(2, 10, 2):
+    print(i)
+
+for i in range(10, 0, -2):
+    print(i)</pre>
+<h4>Accumulation</h4>
+<pre>numbers = [2, 4, 6]
+total = 0
+for x in numbers:
+    total = total + x
+print(total)</pre>
+<table>
+<tr><th>Step</th><th>x</th><th>total</th></tr>
+<tr><td>start</td><td>—</td><td>0</td></tr>
+<tr><td>after iteration 1</td><td>2</td><td>2</td></tr>
+<tr><td>after iteration 2</td><td>4</td><td>6</td></tr>
+<tr><td>after iteration 3</td><td>6</td><td>12</td></tr>
+</table>
+<h4>while loops</h4>
+<pre>count = 0
+while count < 3:
+    print(count)
+    count = count + 1</pre>
+<h4><code>break</code>, <code>continue</code>, and <code>pass</code></h4>
+<pre>for x in [1, 2, 3, 4]:
+    if x == 3:
+        break
+    print(x)</pre>
+<pre>for x in [1, 2, 3, 4]:
+    if x == 3:
+        continue
+    print(x)</pre>
+<pre>if True:
+    pass</pre>
+<p><code>break</code> exits the loop. <code>continue</code> skips to the next iteration. <code>pass</code> is a placeholder that does nothing.</p>
+<div class="section-questions"><h4>Section 13 Questions</h4><ol><li>Use <code>range(start, stop, step)</code> to print even numbers from 2 to 10.</li><li>What is the purpose of an accumulator variable like <code>total</code>?</li><li>What is the difference between <code>break</code> and <code>continue</code>?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel exercise"><h3>▶ Exercise Panel — Run and Describe</h3><p>Run each example and describe what each highlighted statement does.</p><pre>for x in [1, 2, 3, 4]:
+    if x == 3:
+        break
+    print(x)
+
+for x in [1, 2, 3, 4]:
+    if x == 3:
+        continue
+    print(x)
+
+if True:
+    pass</pre></div>
+<div class="panel mental"><h3>🧠 Side Panel — Why Trace?</h3><p>Tracing makes program behavior visible. It is especially useful when loops feel confusing.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec14">14. Nested Lists, 2-D, 3-D, and 4-D Structures</h2>
+<section class="section"><article class="main">
+<p>A 2-D list is usually best thought of as a <strong>list of lists</strong>.</p>
+<h4>Build a 2-D list with nested loops</h4>
+<pre>board = []
+
+for row in range(2):
+    current_row = []
+
+    for col in range(3):
+        current_row.append(0)
+
+    board.append(current_row)
+
+print(board)</pre>
+<div class="diagram">board[row][column]
+
+board[0]     → [0, 0, 0]
+board[1]     → [0, 0, 0]
+board[0][2]  → 0</div>
+<h4>Build a 3-D list with nested loops</h4>
+<pre>cube = []
+
+for layer in range(2):
+    board = []
+
+    for row in range(2):
+        current_row = []
+
+        for col in range(2):
+            current_row.append(0)
+
+        board.append(current_row)
+
+    cube.append(board)
+
+print(cube)</pre>
+<pre>x = [
+    [["a", "b"], ["c", "d"]],
+    [[1, 2], [3, 4]]
+]</pre>
+<div class="diagram">x[0]       → [["a", "b"], ["c", "d"]]
+x[0][0]    → ["a", "b"]
+x[0][0][0] → "a"</div>
+<h4>Build a 4-D list with nested loops</h4>
+<pre>hyper = []
+
+for block in range(2):
+    cube = []
+
+    for layer in range(2):
+        board = []
+
+        for row in range(2):
+            current_row = []
+
+            for col in range(2):
+                current_row.append(0)
+
+            board.append(current_row)
+
+        cube.append(board)
+
+    hyper.append(cube)
+
+print(hyper)</pre>
+<h4>A dangerous pattern</h4>
+<pre>bad_board = [[0] * 3] * 2
+bad_board[0][0] = 99
+print(bad_board)</pre>
+<p>This creates repeated references to the same inner list.</p>
+<pre>good_board = []
+
+for row in range(2):
+    current_row = []
+
+    for col in range(3):
+        current_row.append(0)
+
+    good_board.append(current_row)
+
+print(good_board)</pre>
+<div class="section-questions"><h4>Section 14 Questions</h4><ol><li>What does <code>x[0]</code> mean in the 3-D example? What about <code>x[0][0]</code> and <code>x[0][0][0]</code>?</li><li>Why is <code>bad_board</code> dangerous?</li><li>Create a 3-D list with nested loops and explain what each dimension means.</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel warning"><h3>⚠ Trap Exercise</h3><p>Run the <code>bad_board</code> example, mutate one cell, and explain why more than one row changes.</p></div>
+<div class="panel concept"><h3>💡 Side Panel — 1-D vs 2-D</h3><p>A single loop often corresponds to a 1-D sequence. A nested loop often corresponds to a 2-D structure.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec15">15. Functions, Methods, and Function Signatures</h2>
+<section class="section"><article class="main">
+<p>A function packages a computation behind a name. The goal is not just shorter code. The goal is clearer thinking, less repetition, and better decomposition.</p>
+<h4>Why functions matter: a report writer example</h4>
+<pre># repeated code
+ticker = "AAPL"
+shares = 10
+price = 205.4
+value = shares * price
+print(f"{ticker:^10} {shares:^10d} {price:>10.2f} {value:>12.2f}")
+
+ticker = "MSFT"
+shares = 5
+price = 417.2
+value = shares * price
+print(f"{ticker:^10} {shares:^10d} {price:>10.2f} {value:>12.2f}")</pre>
+<pre>def print_header():
+    print(f"{'Ticker':^10} {'Shares':^10} {'Price':^10} {'Value':^12}")
+    print("-" * 46)
+
+def print_row(ticker, shares, price):
+    value = shares * price
+    print(f"{ticker:^10} {shares:^10d} {price:>10.2f} {value:>12.2f}")
+
+def print_report(positions):
+    print_header()
+
+    for ticker, shares, price in positions:
+        print_row(ticker, shares, price)
+
+positions = [
+    ("AAPL", 10, 205.4),
+    ("MSFT", 5, 417.2),
+    ("GOOG", 3, 152.8)
+]
+
+print_report(positions)</pre>
+<pre>def add(a, b):
+    return a + b
+
+print(add(3, 4))</pre>
+<ul><li><strong>Function signature:</strong> <code>add(a, b)</code></li><li><strong>Parameters:</strong> names in the definition</li><li><strong>Arguments:</strong> values passed in the call</li><li><strong>Return value:</strong> the value sent back to the caller</li></ul>
+<pre>def square(x):
+    return x * x
+
+def show_square(x):
+    print(x * x)</pre>
+<pre>len(items)       # function call
+items.append(3)  # method call</pre>
+<div class="section-questions"><h4>Section 15 Questions</h4><ol><li>Why is the report writer example better with functions than with repeated print statements?</li><li>What is the difference between a parameter and an argument?</li><li>What is the difference between <code>return</code> and <code>print</code>?</li><li>Did <code>show_square</code> return anything?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel mental"><h3>🧠 Visual Model</h3><div class="diagram">definition → parameters
+call       → arguments</div></div>
+<div class="panel concept"><h3>💡 Functions Can Call Functions</h3><p>In the report example, <code>print_report()</code> calls <code>print_header()</code> and <code>print_row()</code>. This is one way programmers decompose larger tasks.</p></div>
+<div class="panel exercise"><h3>▶ Exercise Panel</h3><p>Copy the report-writer code into VS Code. Run it. Then work through the example line by line and trace which function calls which.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec16">16. Importing Modules and Paths in VS Code</h2>
+<section class="section"><article class="main">
+<p>Python programs can import code written by others. This lets you reuse existing functionality instead of writing everything from scratch.</p>
+<pre>import math
+print(math.sqrt(16))
+
+from math import sqrt
+print(sqrt(16))</pre>
+<h4>Project structure in this course</h4>
+<p>Students open <code>student_repo</code> in VS Code. That folder is located under <code>C:\PythonClass</code>.</p>
+<div class="diagram">C:\PythonClass
+└── student_repo
+    ├── src
+    │   └── main.py
+    ├── lib
+    │   └── utils.py
+    ├── data
+    │   └── prices.csv
+    └── sandbox
+        └── experiments.py</div>
+<h4>Current working directory (cwd)</h4>
+<p>The current working directory is the folder Python treats as “where I am right now.” Relative paths are interpreted from there.</p>
+<pre>import os
+print(os.getcwd())</pre>
+<h4>Absolute vs relative paths</h4>
+<table>
+<tr><th>Type</th><th>Example</th><th>Meaning</th></tr>
+<tr><td>Absolute path</td><td><code>C:\PythonClass\student_repo\data\prices.csv</code></td><td>Full path from the drive root</td></tr>
+<tr><td>Relative path</td><td><code>data\prices.csv</code></td><td>Path relative to the current working folder</td></tr>
+<tr><td>Relative path</td><td><code>.\data\prices.csv</code></td><td>The current folder, then the data folder</td></tr>
+<tr><td>Relative path</td><td><code>..\other_repoile.txt</code></td><td>Go up one folder, then into another folder</td></tr>
+</table>
+<ul><li><code>.</code> means the current folder</li><li><code>..</code> means the parent folder</li><li><code>\</code> and <code>/</code> are path separators; on Windows you will commonly see <code>\</code></li></ul>
+<p>In VS Code, once students open <code>student_repo</code> as the project root, they often do not need to write <code>.</code> explicitly. A relative path like <code>data\prices.csv</code> is usually enough.</p>
+<div class="section-questions"><h4>Section 16 Questions</h4><ol><li>What is the difference between an absolute path and a relative path?</li><li>What does <code>.</code> mean? What does <code>..</code> mean?</li><li>Why do students often not need to write <code>.</code> explicitly when working inside <code>student_repo</code>?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel concept"><h3>💡 Course Context</h3><p>For this course, the current working directory is almost always <code>student_repo</code> or something inside it.</p></div>
+<div class="panel concept"><h3>💡 Moving Up Folders</h3><p>You can chain <code>..\..</code> to move up more than one level in a path.</p></div>
+<div class="panel exercise"><h3>▶ Exercise Panel — Sandbox Path Tests</h3><p>Inside <code>student_repo\sandbox</code>, create a few folders and files. Then test paths from one file to another.</p><div class="diagram">student_repo
+└── sandbox
+    ├── test_a
+    │   └── hello.py
+    └── test_b
+        └── run_test.py</div><p>Then experiment with imports and paths using both absolute and relative styles.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec17">17. Files and JSON</h2>
+<section class="section"><article class="main">
+<p>Programs often need to save data between runs. Files let information persist after the program stops.</p>
+<h4>Reading text files</h4>
+<pre>with open("data.txt", "r") as f:
+    print(f.read())
+
+with open("data.txt", "r") as f:
+    print(f.readline())
+    print(f.readline())
+
+with open("data.txt", "r") as f:
+    lines = f.readlines()
+    print(lines)</pre>
+<h4>Writing and appending</h4>
+<p>When writing multiple lines, remember to add <code>
+</code> where needed.</p>
+<pre>with open("notes.txt", "w") as f:
+    f.write("Hello\\n")
+    f.write("World\\n")
+
+with open("notes.txt", "a") as f:
+    f.write("Another line\\n")</pre>
+<h4>File position and <code>seek()</code></h4>
+<pre>with open("data.txt", "r") as f:
+    print(f.read(5))
+    f.seek(0)
+    print(f.read(5))</pre>
+<p>In beginner text-file work, <code>seek()</code> is not common. It is more commonly discussed with binary files.</p>
+<h4>What is a binary file?</h4>
+<p>A text file stores characters. A binary file stores raw bytes. Images, audio files, executable files, and many custom file formats are binary files.</p>
+<h4>First pattern: CSV</h4>
+<p><strong>a) Create the object in Python</strong></p>
+<pre>positions = [
+    ("AAPL", 10),
+    ("MSFT", 5)
+]
+
+print(positions)</pre>
+<p><strong>b) Write it out to a CSV file</strong></p>
+<pre>positions = [
+    ("AAPL", 10),
+    ("MSFT", 5)
+]
+
+with open("positions.csv", "w") as f:
+    f.write("ticker,shares\\n")
+    for ticker, shares in positions:
+        f.write(f"{ticker},{shares}\\n")</pre>
+<p><strong>c) Read it in from CSV</strong></p>
+<pre>with open("positions.csv", "r") as f:
+    print(f.read())</pre>
+<p><strong>d) Recreate the object</strong></p>
+<pre>positions = []
+
+with open("positions.csv", "r") as f:
+    next(f)  # skip header
+
+    for line in f:
+        ticker, shares = line.strip().split(",")
+        positions.append((ticker, int(shares)))
+
+print(positions)</pre>
+<h4>Second pattern: JSON</h4>
+<p><strong>a) Create the object in Python</strong></p>
+<pre>positions = [
+    {"ticker": "AAPL", "shares": 10},
+    {"ticker": "MSFT", "shares": 5}
+]
+
+print(positions)</pre>
+<p><strong>b) Write it out to a JSON file</strong></p>
+<pre>import json
+
+positions = [
+    {"ticker": "AAPL", "shares": 10},
+    {"ticker": "MSFT", "shares": 5}
+]
+
+with open("positions.json", "w") as f:
+    json.dump(positions, f, indent=2)</pre>
+<p><strong>c) Read it in from JSON</strong></p>
+<pre>with open("positions.json", "r") as f:
+    print(f.read())</pre>
+<p><strong>d) Recreate the object</strong></p>
+<pre>import json
+
+with open("positions.json", "r") as f:
+    positions = json.load(f)
+
+print(positions)</pre>
+<p>With CSV-like text, you often have to split strings, convert types, and build the object manually. With JSON, the structure is already represented. That is one reason JSON makes life easier.</p>
+<div class="section-questions"><h4>Section 17 Questions</h4><ol><li>What is the difference between <code>read()</code>, <code>readline()</code>, and <code>readlines()</code>?</li><li>What is the difference between write mode and append mode?</li><li>Why does JSON make reconstruction of structured objects easier than CSV-like text?</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel exercise"><h3>▶ Exercise Panel — Run and Describe</h3><p>Copy each file example into <code>scratch.py</code>. Run it. Then describe what each one does.</p><pre>with open("data.txt", "r") as f:
+    print(f.read())
+
+with open("data.txt", "r") as f:
+    print(f.readline())
+
+with open("data.txt", "r") as f:
+    print(f.readlines())</pre></div>
+<div class="panel concept"><h3>💡 Why JSON Matters</h3><p>JSON gives us a standard, readable way to store structured objects between runs.</p></div>
+</aside></section>
+
+<h2 class="section-title" id="sec18">18. Using AI the Right Way</h2>
+<section class="section"><article class="main">
+<p>AI can help learning, but it can also prevent learning if used poorly.</p>
+<h4>Good uses</h4>
+<ul><li>Ask for an explanation of an error message</li><li>Ask for a simpler example of a concept</li><li>Ask for hints or questions to think about</li><li>Ask for a trace of code you do not understand</li><li>Ask for feedback on your reasoning</li></ul>
+<h4>Bad uses</h4>
+<ul><li>Submitting AI-generated code you do not understand</li><li>Copying a full solution instead of reasoning through the problem</li><li>Using AI to bypass the learning process</li></ul>
+<p>A good rule: if you cannot explain the code, you should not submit it.</p>
+<div class="section-questions"><h4>Section 18 Questions</h4><ol><li>Give one good use of AI in this course.</li><li>Give one bad use of AI in this course.</li></ol></div>
+</article><aside class="sidebar">
+<div class="panel warning"><h3>⚠ Warning Panel</h3><p>AI should support your thinking, not replace it.</p></div>
+</aside></section>
+
+
+<h2 class="section-title" id="sec19">19. Python Mental Model Summary</h2>
+<section class="section">
+  <article class="main">
+    <p>This section pulls together the main ideas from Part I into one place. Think of it as a compact reference page you can keep open while coding.</p>
+
+    <h4>Variable → Reference → Object</h4>
+    <p>A variable is <strong>not</strong> an object. A variable is a label that refers to an object.</p>
+    <div class="diagram">x = 10
+y = x
+x = 20
+
+After rebinding:
+x ──► 20
+y ──► 10</div>
+
+    <h4>Mutation vs Rebinding</h4>
+    <div class="diagram">mutation  → object changes
+rebinding → variable refers to a new object</div>
+    <pre>numbers.append(4)        # mutation
+numbers = numbers + [4]  # rebinding</pre>
+
+    <h4>Objects contain data and operations</h4>
+    <div class="diagram">list
+  data       → [1, 2, 3]
+  operations → append(), pop(), sort()
+
+string
+  data       → "Babson"
+  operations → upper(), split()</div>
+
+    <h4>Three common interfaces in Python</h4>
+    <div class="diagram">object[key]
+object.method()
+function(object)</div>
+    <pre>portfolio["AAPL"]   # key lookup
+numbers.append(4)   # method call
+len(numbers)        # function call</pre>
+
+    <h4>Expressions vs Statements vs Operations</h4>
+    <div class="diagram">Expression → produces a value
+Statement  → performs an action
+Operation  → transforms data</div>
+
+    <h4>Core control-flow tools</h4>
+    <div class="diagram">if / elif / else → decisions
+for              → iterate over elements
+range()          → generate sequences
+break            → exit loop
+continue         → skip iteration</div>
+
+    <h4>Data structures you now know</h4>
+    <table>
+      <tr><th>Structure</th><th>Example</th><th>When used</th></tr>
+      <tr><td>list</td><td><code>[1, 2, 3]</code></td><td>ordered sequence</td></tr>
+      <tr><td>tuple</td><td><code>(x, y)</code></td><td>fixed grouped data</td></tr>
+      <tr><td>dictionary</td><td><code>{"AAPL": 10}</code></td><td>key → value lookup</td></tr>
+      <tr><td>string</td><td><code>"text"</code></td><td>text data</td></tr>
+    </table>
+
+    <h4>Programs manage state</h4>
+    <div class="diagram">state       → stored data
+transitions → code that changes state
+invariants  → conditions that must remain true</div>
+
+    <div class="section-questions">
+      <h4>Section 19 Questions</h4>
+      <ol>
+        <li>What is the difference between mutation and rebinding?</li>
+        <li>What are the three common interfaces for interacting with objects?</li>
+        <li>Why is it useful to think of a variable as a label rather than as an object?</li>
+      </ol>
+    </div>
+  </article>
+  <aside class="sidebar">
+    <div class="panel mental">
+      <h3>🧠 Debugging Strategy</h3>
+      <ol>
+        <li>Simplify the program.</li>
+        <li>Print intermediate values.</li>
+        <li>Check types with <code>type()</code>.</li>
+        <li>Test small pieces in <code>scratch.py</code>.</li>
+        <li>Verify assumptions.</li>
+      </ol>
+    </div>
+  </aside>
+</section>
+
+<h2 class="section-title" id="sec20">20. Integrated Problems and Transition to Part II: STI</h2>
+
+<section class="section"><article class="main">
+<h4>Integrated Problems</h4>
+<div class="practice-grid">
+<div class="practice-card"><h3>Easy (7)</h3><ol><li>Predict the output of a simple assignment example.</li><li>Identify the type of <code>"7"</code>.</li><li>Explain what <code>len([10,20,30])</code> returns.</li><li>Write an f-string that prints a name and score.</li><li>Use <code>.get()</code> on a dictionary.</li><li>What does <code>range(4)</code> produce?</li><li>Why is <code>scratch.py</code> useful?</li></ol></div>
+<div class="practice-card"><h3>Medium (7)</h3><ol start="8"><li>Convert parallel lists into a dictionary.</li><li>Convert a dictionary into a list of pairs.</li><li>Explain what <code>text[2:5]</code> returns.</li><li>Fill in a trace table for an accumulator loop.</li><li>Read a JSON example and describe the structure.</li><li>Write a relative path from <code>student_repo</code> to a file in a subfolder.</li><li>Write a text file, then append one more line.</li></ol></div>
+<div class="practice-card"><h3>Hard but Fair (7)</h3><ol start="15"><li>Explain why <code>b = a</code> is not copying.</li><li>Design a good representation for portfolio holdings.</li><li>Trace a nested loop over a 2-D list.</li><li>Explain how a 2-D list models a board.</li><li>Compare <code>a.append(3)</code> and <code>a = a + [3]</code>.</li><li>Create a 3-D list and explain what each dimension means.</li><li>State one good and one bad use of AI in this course.</li></ol></div>
+</div>
+<h4>Transition to Part II: State–Transition–Invariant (STI)</h4>
+<p>Programs often model real systems. To model a system well, we need a better vocabulary for describing how the system works.</p>
+<table>
+<tr><th>Idea</th><th>Meaning</th><th>Bank account example</th></tr>
+<tr><td>State</td><td>Information describing the system</td><td>balance</td></tr>
+<tr><td>Transitions</td><td>Operations that change the state</td><td>deposit, withdraw</td></tr>
+<tr><td>Invariants</td><td>Properties that must remain true</td><td>balance should not become negative</td></tr>
+</table>
+<div class="diagram">Example: Tic-Tac-Toe
+
+State:
+  board
+  current player
+
+Transitions:
+  place mark
+  switch player
+
+Invariants:
+  each square is X, O, or blank
+  only one mark per square</div>
+<p>Part I was about understanding how Python behaves. Part II will begin with abstraction, decomposition, pattern recognition, and algorithms, then gradually formalize system descriptions using <strong>State, Transitions, and Invariants</strong>.</p>
+<div class="footer-note"><strong>Closing thought:</strong> By the end of this part, you should not expect to know all of Python. That is not the goal. The goal is to understand enough syntax, structure, and behavior to reason about programs and prepare for computational modeling.</div>
+</article><aside class="sidebar">
+<div class="panel design"><h3>🧩 STI Bridge</h3><p><strong>State</strong>: what information describes the system?<br><strong>Transition</strong>: what changes it?<br><strong>Invariant</strong>: what must stay true?</p></div>
+</aside></section>
+
+</div>
+</body>
+</html>
