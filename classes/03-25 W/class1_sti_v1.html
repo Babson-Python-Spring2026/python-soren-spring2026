@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computational Thinking with Python — Part II — Class 1</title>
+  <style>
+    @page { size: 8.5in 11in; margin: 0.55in; }
+    :root {
+      --ink:#1f2937; --muted:#5b6472; --line:#d6dbe3; --band:#eaf1fb; --panel:#f7f9fc;
+      --panel2:#eef5ef; --warm:#fff8ea; --warmline:#ead9b3; --accent:#264b7f; --accent2:#2f6b46; --code:#f4f6f8;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Aptos","Segoe UI",Arial,sans-serif; color:var(--ink); line-height:1.36; background:white; }
+    .page { width:8.5in; min-height:11in; margin:0 auto; padding:0.55in; page-break-after:always; position:relative; }
+    .section-band { background:linear-gradient(90deg,var(--band),#f7fbff); border:1px solid #cfd8e7; border-radius:12px; padding:14px 18px; margin-bottom:18px; }
+    .section-band h1,.section-band h2 { margin:0; color:var(--accent); font-weight:700; letter-spacing:0.2px; }
+    .subtitle { margin-top:6px; color:var(--muted); font-size:0.96rem; }
+    .two-col { display:grid; grid-template-columns:3fr 1.15fr; gap:18px; align-items:start; }
+    h2 { color:var(--accent); font-size:1.2rem; margin:18px 0 8px; }
+    h3 { color:var(--accent); font-size:1rem; margin:16px 0 6px; }
+    p { margin:8px 0; }
+    ul,ol { margin:8px 0 10px 20px; }
+    li { margin:4px 0; }
+    table { width:100%; border-collapse:collapse; margin:10px 0 12px; font-size:0.95rem; }
+    th,td { border:1px solid var(--line); padding:8px 9px; vertical-align:top; }
+    th { background:#f4f7fb; text-align:left; color:var(--accent); }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:12px; }
+    .panel.green { background:var(--panel2); border-color:#cfdfd3; }
+    .panel.warm { background:var(--warm); border-color:var(--warmline); }
+    .panel h3 { margin-top:0; color:var(--accent2); }
+    .code { background:var(--code); border:1px solid #dfe4ea; border-radius:10px; padding:12px 14px; font-family:Consolas,"Courier New",monospace; font-size:0.94rem; white-space:pre-wrap; margin:10px 0; }
+    .exercise { border:1px solid var(--line); border-left:5px solid var(--accent); border-radius:10px; padding:12px 14px; margin:14px 0; break-inside:avoid; }
+    .question-lines div { border-bottom:1px solid #cfd5df; height:22px; margin:3px 0; }
+    .small { color:var(--muted); font-size:0.92rem; }
+    .footer { position:absolute; left:0.55in; right:0.55in; bottom:0.28in; display:flex; justify-content:space-between; font-size:0.84rem; color:var(--muted); }
+    .callout { padding:10px 12px; border-radius:10px; background:#fffaf0; border:1px solid #ead9b3; margin:10px 0; }
+    .tight li { margin:2px 0; }
+    .video-link { display:inline-block; padding:10px 14px; border:1px solid #cfd8e7; border-radius:10px; background:#f7fbff; color:var(--accent); text-decoration:none; font-weight:600; margin:8px 0 2px; }
+    .formula { border:1px solid var(--line); border-radius:10px; background:#fbfcfe; padding:10px 12px; margin:10px 0; font-weight:600; color:var(--accent); text-align:center; }
+    .timeline td:first-child, .timeline th:first-child { width:18%; }
+    .mini { font-size:0.9rem; color:var(--muted); }
+  </style>
+</head>
+<body>
+
+<section class="page">
+  <div class="section-band">
+    <h1>Computational Thinking with Python — Part II</h1>
+    <div class="subtitle"><strong>Class 1 — Programs as Systems</strong><br>Start with a real system, then see how simple Python structures combine to model more complicated problems.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Class goal</h2>
+      <p>Most programming courses begin with syntax. Today we begin with a different idea: a program can be understood as a <strong>system</strong>. A system has a current condition, some ways its condition changes, and some truths that should remain true as time passes.</p>
+      <p>We will use three connected questions all semester:</p>
+      <table>
+        <tr><th>STI idea</th><th>Core question</th></tr>
+        <tr><td><strong>State</strong></td><td>What information represents the current condition of the system?</td></tr>
+        <tr><td><strong>Transitions</strong></td><td>How does the state change?</td></tr>
+        <tr><td><strong>Invariants</strong></td><td>What rules must remain true as the system changes?</td></tr>
+      </table>
+
+      <h2>Opening exercise: watch a system</h2>
+      <p>We will begin with a short music video clip. The point is not music analysis. The point is to practice describing a system at a moment in time.</p>
+      <p><a class="video-link" href="David Bowie &amp; Mick Jagger - Dancing In The Street.webm">
+▶ Play the video clip
+</a></p>
+      <p class="small">Place the HTML file and the video file in the same folder before opening the page.</p>
+
+      <div class="exercise">
+        <h3>Exercise 1.1 — Freeze the video</h3>
+        <p>Imagine we pause the video at a random moment. What information would describe the system at that moment?</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="exercise">
+        <h3>Exercise 1.2 — What belongs in the state?</h3>
+        <ol>
+          <li>Circle or list the items below that are clearly part of the video state at one frozen moment: camera angle, current lyric, performer position, viewer opinion, lighting, current second in the song, whether the song is good, who is on screen.</li>
+          <li>What is the difference between an <em>observation</em> and an <em>interpretation</em>?</li>
+        </ol>
+        <div class="question-lines"><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="exercise">
+        <h3>Exercise 1.3 — Move from state to STI</h3>
+        <ol>
+          <li>How does the video’s state change?</li>
+          <li>What remains true throughout the clip?</li>
+        </ol>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="callout"><strong>Big idea:</strong> even before we look at code, we can already talk about a system in terms of its state, its transitions, and its invariants.</div>
+
+      <h2>The STI model</h2>
+      <div class="formula">A computational system = current state + transitions + invariants that must hold</div>
+      <p>Programming becomes easier when we stop seeing code as just a list of statements and instead ask: what system are we trying to represent?</p>
+
+      <div class="exercise">
+        <h3>Exercise 1.4 — Rephrase STI in your own words</h3>
+        <p>Write a short definition for each term.</p>
+        <ul class="tight"><li>state</li><li>transition</li><li>invariant</li></ul>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Insight</h3>
+        <p>STI is a general way of thinking, not just about coding problems.</p>
+      </div>
+      <div class="panel green">
+        <h3>Questions to keep asking</h3>
+        <ul>
+          <li>What is the system right now?</li>
+          <li>How does it change?</li>
+          <li>What must stay true?</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>Bridge to Python</h3>
+        <p>Now let’s see how very simple programming structures let us describe systems of our own.</p>
+      </div>
+      <div class="panel warm">
+        <h3>Pacing note</h3>
+        <p>Take your time with this discussion. Deciding what the system's state is, and how to represent it, usually determines the structure of the entire program. It is often the most important design step.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Class 1 — The simple building blocks of Python</h2>
+    <div class="subtitle">Small structures by themselves may look simple. Combined carefully, they let us model much richer systems.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Simple structures we already know</h2>
+      <p>Python programs are built from a small number of basic structures. Today we will review them not as syntax topics, but as tools for building systems.</p>
+      <table>
+        <tr><th>Structure</th><th>General purpose</th><th>Where it may appear in STI</th></tr>
+        <tr><td>variables</td><td></td><td></td></tr>
+        <tr><td>expressions</td><td></td><td></td></tr>
+        <tr><td>if statements</td><td></td><td></td></tr>
+        <tr><td>loops</td><td></td><td></td></tr>
+        <tr><td>dictionaries / lists</td><td></td><td></td></tr>
+        <tr><td>functions</td><td></td><td></td></tr>
+      </table>
+
+      <div class="exercise">
+        <h3>Exercise 1.5 — Match each structure to its purpose</h3>
+        <p>For each row in the table above, write what the structure usually does and how it may relate to state, transitions, or invariants.</p>
+      </div>
+
+      <h2>Build-up sequence: one small idea at a time</h2>
+      <p>The examples below grow by adding just one new idea at a time. Notice how each new structure expands what kind of system we can represent.</p>
+
+      <h3>Step 1 — A variable stores one piece of state</h3>
+      <div class="code">score = 0</div>
+
+      <h3>Step 2 — An expression computes a new value</h3>
+      <div class="code">score = score + 10</div>
+
+      <h3>Step 3 — A conditional lets a change happen only sometimes</h3>
+      <div class="code">if answer == "correct":
+    score = score + 10</div>
+
+      <h3>Step 4 — A loop lets the system repeat a transition</h3>
+      <div class="code">for answer in answers:
+    if answer == "correct":
+        score = score + 10</div>
+
+      <h3>Step 5 — A dictionary lets us store structured state</h3>
+      <div class="code">student = {"name": "Ana", "score": 30, "section": "A"}</div>
+
+      <h3>Step 6 — A function packages a reusable change</h3>
+      <div class="code">def add_points(score, points):
+    return score + points</div>
+
+      <div class="exercise">
+        <h3>Exercise 1.6 — What new capability is added at each step?</h3>
+        <p>For each step above, write one sentence describing what the new structure allows us to do that earlier steps could not do as easily.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="exercise">
+        <h3>Exercise 1.7 — Which steps are most connected to state, which to transitions, and which to invariants?</h3>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel green">
+        <h3>Key message</h3>
+        <p>Loops, variables, conditionals, collections, and functions are not isolated tricks. They are the pieces from which system behavior is built.</p>
+      </div>
+      <div class="panel">
+        <h3>Design habit</h3>
+        <p>When a system feels “complicated,” try breaking it into small structures you already understand.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Class 1 — Even a tiny loop is already a system</h2>
+    <div class="subtitle">Once we shift our lens, even very short programs can be read as systems with state, transitions, and invariants.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>A tiny system</h2>
+      <div class="code">count = 0
+
+for ch in text:
+    if ch.isalpha():
+        count += 1</div>
+
+      <div class="exercise">
+        <h3>Exercise 1.8 — Read the tiny system through STI</h3>
+        <table>
+          <tr><th>STI lens</th><th>Your answer</th></tr>
+          <tr><td>State</td><td></td></tr>
+          <tr><td>How the state changes</td><td></td></tr>
+          <tr><td>Invariant</td><td></td></tr>
+        </table>
+      </div>
+
+      <div class="exercise">
+        <h3>Exercise 1.9 — Identify the structures inside the loop</h3>
+        <p>Name at least four basic Python structures used in the code above and briefly state what each one contributes.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="exercise">
+        <h3>Exercise 1.10 — Trace two passes by hand</h3>
+        <p>Suppose <code>text = "A?"</code>. Fill in the table.</p>
+        <table>
+          <tr><th>Moment</th><th>Current <code>ch</code></th><th>Is alphabetic?</th><th>Value of <code>count</code></th></tr>
+          <tr><td>before loop begins</td><td></td><td></td><td></td></tr>
+          <tr><td>after first pass</td><td></td><td></td><td></td></tr>
+          <tr><td>after second pass</td><td></td><td></td><td></td></tr>
+        </table>
+      </div>
+
+      <div class="exercise">
+        <h3>Exercise 1.11 — What exactly is the invariant?</h3>
+        <p>Complete the sentence precisely: “At the start of each pass through the loop, <code>count</code> equals …”</p>
+        <div class="question-lines"><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="callout"><strong>Important:</strong> an invariant usually describes what is true <em>so far</em>, not the final answer at the end.</div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Why this matters</h3>
+        <p>If you can do STI on a tiny loop, you are starting to see code as a dynamic system rather than static text.</p>
+      </div>
+      <div class="panel">
+        <h3>Preview</h3>
+        <p>Next we move from a tiny loop to a larger system that feels more realistic.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Class 1 — Combining simple parts into a larger system</h2>
+    <div class="subtitle">A portfolio tracker sounds more complicated, but it is still built from the same few ingredients.</div>
+  </div>
+
+  <h2>A first portfolio snapshot</h2>
+  <div class="code">cash = 10000
+positions = {"AAPL": 10, "MSFT": 5}
+prices = {"AAPL": 190, "MSFT": 420}</div>
+
+  <div class="exercise">
+    <h3>Exercise 1.12 — Identify the state</h3>
+    <table>
+      <tr><th>Candidate piece of information</th><th>Stored state?</th><th>Why?</th></tr>
+      <tr><td><code>cash</code></td><td></td><td></td></tr>
+      <tr><td><code>positions</code></td><td></td><td></td></tr>
+      <tr><td><code>prices</code></td><td></td><td></td></tr>
+      <tr><td><code>portfolio_value</code></td><td></td><td></td></tr>
+    </table>
+  </div>
+
+  <div class="exercise">
+    <h3>Exercise 1.13 — Break the larger system into smaller pieces</h3>
+    <p>List the simple Python structures hidden inside this portfolio example.</p>
+    <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <h2>From snapshot to computation</h2>
+  <div class="code">total_stock_value = 0
+for ticker in positions:
+    total_stock_value += positions[ticker] * prices[ticker]
+
+portfolio_value = cash + total_stock_value</div>
+
+  <div class="exercise">
+    <h3>Exercise 1.14 — Stored state versus derived state</h3>
+    <ol>
+      <li>Which values are already stored before this code runs?</li>
+      <li>Which values are computed by the code?</li>
+      <li>Why might it be dangerous to store <code>portfolio_value</code> directly instead of computing it?</li>
+    </ol>
+    <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <h2>Compare two designs</h2>
+  <table>
+    <tr><th>Model A stores</th><th>Model B stores</th></tr>
+    <tr><td><code>cash</code>, <code>positions</code>, <code>prices</code>, <code>portfolio_value</code></td><td><code>cash</code>, <code>positions</code>, <code>prices</code></td></tr>
+  </table>
+
+  <div class="exercise">
+    <h3>Exercise 1.15 — Which design is better?</h3>
+    <p>Which model is better for this early version of the system, and why?</p>
+    <div class="question-lines"><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <h2>Add one rule for a legal purchase</h2>
+  <div class="code">ticker = "AAPL"
+shares_to_buy = 3
+cost = prices[ticker] * shares_to_buy
+
+if cost <= cash:
+    cash -= cost
+    positions[ticker] += shares_to_buy</div>
+
+  <div class="exercise">
+    <h3>Exercise 1.16 — Why do we need the <code>if</code> statement?</h3>
+    <ol>
+      <li>How does the state change if the condition is true?</li>
+      <li>What rule is the <code>if</code> statement trying to protect?</li>
+    </ol>
+    <div class="question-lines"><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Class 1 — In-class exercises</h2>
+    <div class="subtitle">These are designed for about 10 minutes each. You probably will not finish all of them in class. Unfinished work can become homework.</div>
+  </div>
+
+  <table class="timeline">
+    <tr><th>Exercise</th><th>Focus</th></tr>
+    <tr><td>A</td><td>Describe state for a music app that finds songs by lyrics.</td></tr>
+    <tr><td>B</td><td>Describe state for a portfolio management system.</td></tr>
+    <tr><td>C</td><td>Describe state for Tic-Tac-Toe.</td></tr>
+    <tr><td>D</td><td>Describe state for an online shopping cart.</td></tr>
+    <tr><td>E</td><td>Describe state for an airline seat map.</td></tr>
+    <tr><td>F</td><td>Describe state for a classroom attendance tracker.</td></tr>
+  </table>
+
+  <div class="exercise">
+    <h3>Exercise A — Music app by lyrics</h3>
+    <ol>
+      <li>What information should the system store?</li>
+      <li>What Python structures might represent that information?</li>
+      <li>What information might be derived rather than stored?</li>
+    </ol>
+    <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <div class="exercise">
+    <h3>Exercise B — Portfolio management system</h3>
+    <ol>
+      <li>List the main pieces of state.</li>
+      <li>Choose likely Python structures for each piece.</li>
+      <li>Name one value that should probably be derived.</li>
+    </ol>
+    <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <div class="exercise">
+    <h3>Exercise C — Tic-Tac-Toe</h3>
+    <ol>
+      <li>What should be stored to describe the current game?</li>
+      <li>What could be derived from that stored state?</li>
+      <li>What Python structure would you use for the board?</li>
+    </ol>
+    <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>5</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Class 1 — More in-class exercises and closing</h2>
+    <div class="subtitle">The main class arc should already feel complete. These provide extra practice and overflow to homework.</div>
+  </div>
+
+  <div class="exercise">
+    <h3>Exercise D — Shopping cart</h3>
+    <ol>
+      <li>What state does the cart need right now?</li>
+      <li>What values can be derived?</li>
+      <li>What data structure would you use for the cart contents?</li>
+    </ol>
+    <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <div class="exercise">
+    <h3>Exercise E — Airline seat map</h3>
+    <ol>
+      <li>What information must be stored to represent the current seat map?</li>
+      <li>Which information is naturally organized as a collection?</li>
+      <li>What might be derived from the stored state?</li>
+    </ol>
+    <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <div class="exercise">
+    <h3>Exercise F — Classroom attendance tracker</h3>
+    <ol>
+      <li>What state describes attendance after one class meeting?</li>
+      <li>What state describes attendance across the semester?</li>
+      <li>What should be stored, and what should be computed when needed?</li>
+    </ol>
+    <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <h2>Looking ahead</h2>
+  <p>Today we treated programs as systems. In the next three classes we will separate the three parts of STI so that each one gets careful attention.</p>
+  <ul>
+    <li><strong>Class 2 — State:</strong> how to describe a system well and represent it in Python</li>
+    <li><strong>Class 3 — Transitions:</strong> how systems change over time</li>
+    <li><strong>Class 4 — Invariants:</strong> what rules must remain true as the system changes</li>
+  </ul>
+
+  <div class="callout"><strong>Closing thought:</strong> complicated systems are often built from only a few simple structures used carefully.</div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>6</span></div>
+</section>
+
+</body>
+</html>
