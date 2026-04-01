@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computational Thinking with Python — Part II — Portfolio Data Reset</title>
+  <style>
+    @page { size: 8.5in 11in; margin: 0.55in; }
+    :root {
+      --ink:#1f2937; --muted:#5b6472; --line:#d6dbe3; --band:#eaf1fb; --panel:#f7f9fc;
+      --panel2:#eef5ef; --warm:#fff8ea; --warmline:#ead9b3; --accent:#264b7f; --accent2:#2f6b46; --code:#f4f6f8;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Aptos","Segoe UI",Arial,sans-serif; color:var(--ink); line-height:1.36; background:white; }
+    .page { width:8.5in; min-height:11in; margin:0 auto; padding:0.55in; page-break-after:always; position:relative; }
+    .section-band { background:linear-gradient(90deg,var(--band),#f7fbff); border:1px solid #cfd8e7; border-radius:12px; padding:14px 18px; margin-bottom:18px; }
+    .section-band h1,.section-band h2 { margin:0; color:var(--accent); font-weight:700; letter-spacing:0.2px; }
+    .subtitle { margin-top:6px; color:var(--muted); font-size:0.96rem; }
+    .two-col { display:grid; grid-template-columns:3fr 1.15fr; gap:18px; align-items:start; }
+    h2 { color:var(--accent); font-size:1.2rem; margin:18px 0 8px; }
+    h3 { color:var(--accent); font-size:1rem; margin:16px 0 6px; }
+    p { margin:8px 0; }
+    ul,ol { margin:8px 0 10px 20px; }
+    li { margin:4px 0; }
+    table { width:100%; border-collapse:collapse; margin:10px 0 12px; font-size:0.95rem; }
+    th,td { border:1px solid var(--line); padding:8px 9px; vertical-align:top; }
+    th { background:#f4f7fb; text-align:left; color:var(--accent); }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:12px; }
+    .panel.green { background:var(--panel2); border-color:#cfdfd3; }
+    .panel.warm { background:var(--warm); border-color:var(--warmline); }
+    .panel h3 { margin-top:0; color:var(--accent2); }
+    .code { background:var(--code); border:1px solid #dfe4ea; border-radius:10px; padding:12px 14px; font-family:Consolas,"Courier New",monospace; font-size:0.94rem; white-space:pre-wrap; margin:10px 0; }
+    .exercise { border:1px solid var(--line); border-left:5px solid var(--accent); border-radius:10px; padding:12px 14px; margin:14px 0; break-inside:avoid; }
+    .question-lines div { border-bottom:1px solid #cfd5df; height:22px; margin:3px 0; }
+    .footer { position:absolute; left:0.55in; right:0.55in; bottom:0.28in; display:flex; justify-content:space-between; font-size:0.84rem; color:var(--muted); }
+    .callout { padding:10px 12px; border-radius:10px; background:#fffaf0; border:1px solid #ead9b3; margin:10px 0; }
+    .formula { border:1px solid var(--line); border-radius:10px; background:#fbfcfe; padding:10px 12px; margin:10px 0; font-weight:600; color:var(--accent); text-align:center; }
+    .mini { font-size:0.9rem; color:var(--muted); }
+  </style>
+</head>
+<body>
+
+<section class="page">
+  <div class="section-band">
+    <h1>Computational Thinking with Python — Part II</h1>
+    <div class="subtitle"><strong>Portfolio Data Reset — Better Order, Clearer Files, Better Questions</strong></div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Why this class needs a reset</h2>
+      <p>In the last class, you were being asked to write code before you had a stable understanding of what the files meant, what the important market events were, and how the files fit together. In this class, the order is changed on purpose.</p>
+
+      <h2>The right order for this material</h2>
+      <table>
+        <tr><th>Stage</th><th>Why it comes here</th></tr>
+        <tr><td>1. Minimum market concepts</td><td>You need a small vocabulary before the files make sense.</td></tr>
+        <tr><td>2. Representation choices</td><td>You need to see why we chose <code>$$$$</code>, floats for shares, and explicit invariants.</td></tr>
+        <tr><td>3. File-by-file inspection</td><td>Before coding, you should know what one row in each file means.</td></tr>
+        <tr><td>4. Validation files</td><td>Market-date and ticker-universe files support later input checking.</td></tr>
+        <tr><td>5. AI-assisted checking</td><td>Now you can ask better questions because you understand the files.</td></tr>
+        <tr><td>6. Transaction-file design</td><td>Only after the input data is understood should you build the event log.</td></tr>
+        <tr><td>7. JSON and folder structure</td><td>Once more files exist, organization starts to matter.</td></tr>
+      </table>
+
+      <div class="callout"><strong>Class principle:</strong> you are not trying to learn finance in general. You only need the concepts required to understand how state changes should appear in the files and in the portfolio system.</div>
+
+      <h2>Keep the Foundations Workbook open while coding</h2>
+      <p>The workbook in <code>classes/03-23 M</code> is not just background reading. It is a working reference. Keep it open while you code so you can quickly look up loops, dictionaries, paths, files, JSON, and function patterns.</p>
+      <div class="code">Recommended workflow
+1) Think about the problem
+2) Look for a similar pattern in the workbook
+3) Test a small version in scratch.py
+4) Then write the full code</div>
+      <p>Good programmers do not memorize everything. They know how to find a good pattern quickly and adapt it.</p>
+
+      <div class="exercise">
+        <h3>Exercise 1 — What should be open?</h3>
+        <p>Before you start coding, list the three things you should have available on screen and briefly state the role of each one.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Workflow reminder</h3>
+        <p>VS Code is where you write and run code. The workbook is your reference. ChatGPT is for structured help, not blind copying.</p>
+      </div>
+      <div class="panel green">
+        <h3>Goal for this class</h3>
+        <p>Move from “I see some files” to “I understand the system these files represent.”</p>
+      </div>
+      <div class="panel">
+        <h3>Why order matters</h3>
+        <p>If the files are not understood, you will ask weak AI questions, write weak checking code, and make mistakes that feel mysterious.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Minimum market concepts and price ideas</h2>
+    <div class="subtitle">Only the concepts needed for this system.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>The minimum concepts you need</h2>
+      <table>
+        <tr><th>Concept</th><th>Minimal system meaning</th></tr>
+        <tr><td>Stock</td><td>A thing identified by a ticker that can have a price and a number of shares.</td></tr>
+        <tr><td>Dividend</td><td>A cash event. If you own the stock, cash is distributed to you.</td></tr>
+        <tr><td>Split</td><td>A share transformation. Share count changes and price scale changes, but value should not jump just because of the split.</td></tr>
+        <tr><td>Spin-off</td><td>A new asset appears. In this teaching dataset, selected spin-offs are simplified and treated like dividend-style cash events.</td></tr>
+        <tr><td>Raw price</td><td>The actual day price used for valuation in the rebuilt file.</td></tr>
+        <tr><td>Adjusted price</td><td>A helper series. In the rebuilt file, it is adjusted only for true splits.</td></tr>
+      </table>
+
+      <div class="formula">Raw price is the primary input for valuation. Adjusted price is a helper series.</div>
+
+      <h2>A guiding principle — follow the money</h2>
+      <p>In finance, a useful rule is: <strong>follow the money</strong>. In this portfolio system, you want to represent history as closely as possible. For that reason, you want to use the actual price that occurred, also called the raw price.</p>
+      <p>Vendor-style data from sources like <code>yfinance</code> is mainly designed for analyzing returns of individual stocks, not for valuing portfolios through time. That is why the teaching files were rebuilt to keep more of the important events explicit.</p>
+      <div class="code">In this system
+Price  → what the market did
+Cash   → what was paid out or added
+Shares → how ownership changed</div>
+
+      <h2>Short example — why a split is different</h2>
+      <div class="code">Before a 2-for-1 split
+Shares = 10
+Raw Price = 100
+Value = 10 × 100 = 1000
+
+After the split
+Shares = 20
+Raw Price = 50
+Value = 20 × 50 = 1000</div>
+      <p>The split changed the representation of the position, not its value. This is why a raw-price system must explicitly update shares when a split occurs.</p>
+
+      <h2>Dividend example — $5 per share</h2>
+      <div class="code">Shares outstanding = the total number of shares that all investors together own
+
+Firm-level view before the dividend
+Shares Outstanding = 1,000
+Raw Price = 100
+Total Firm Value = 1,000 × 100 = 100,000
+
+Dividend paid
+Dividend per Share = 5
+Total Cash Leaving Firm = 1,000 × 5 = 5,000
+
+Firm-level view after the dividend (assuming no market movement)
+New Firm Value = 95,000
+New Raw Price ≈ 95
+
+Your position before the dividend
+Shares = 10
+Raw Price = 100
+Your Position Value = 10 × 100 = 1000
+
+Cash received
+Cash Received = 10 × 5 = 50
+
+Your position after the dividend
+Shares = 10
+Raw Price = 95
+Stock Value = 10 × 95 = 950
+Cash Received = 50
+Total Investor Value = 950 + 50 = 1000</div>
+      <p>When a dividend is paid, value leaves the firm and goes to the shareholder. That is why the raw price typically drops by about the amount of the dividend on the ex-dividend date. If there is no market movement, the correct return is 0 once the cash received is included.</p>
+
+      <h2>Spin-off example — value moves into a new asset</h2>
+      <div class="code">Shares outstanding = the total number of shares that all investors together own
+
+Firm-level view before the spin-off
+Shares Outstanding = 1,000
+Raw Price = 100
+Total Firm Value = 1,000 × 100 = 100,000
+
+Spin-off event
+Suppose part of the firm worth 20,000 is spun off into a new company
+
+Firm-level view after the spin-off
+Original Firm Value = 80,000
+New Spin-off Company Value = 20,000
+Total Value = 80,000 + 20,000 = 100,000
+
+Your position before the spin-off
+Shares = 10
+Raw Price = 100
+Your Position Value = 10 × 100 = 1000
+
+Your position after the spin-off
+Original Stock Price = 80
+Value of Your Original Shares = 10 × 80 = 800
+Value of Your New Spin-off Shares = 200
+Total Investor Value = 800 + 200 = 1000</div>
+      <p>In reality, a spin-off gives you shares in a new company, not cash. In this teaching dataset, selected spin-offs are simplified and treated like dividend-style cash events. That simplification is equivalent to assuming you immediately sell the new spin-off shares for cash. The value is the same; only the representation is simplified.</p>
+
+      <div class="callout"><strong>Key idea:</strong> splits change representation. Dividends and spin-offs move value. In every case, you want the system to keep track of where that value goes.</div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Keep it simple</h3>
+        <p>You only need enough finance to understand what events change portfolio state.</p>
+      </div>
+      <div class="panel green">
+        <h3>Useful sentence</h3>
+        <p>Adjusted price moves the price. A raw-price system moves the shares and cash.</p>
+      </div>
+      <div class="panel">
+        <h3>Return reminder</h3>
+        <p>A price drop is not always a loss. It may be a transfer of value.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Representation, uniform processing, and invariants</h2>
+    <div class="subtitle">Why we use <code>$$$$</code>, why <code>shares</code> is a float, and what the invariant really means.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>The possible confusion</h2>
+      <p>You may reasonably ask: if stock shares should be integers, why store <code>shares</code> as a float? And if cash is a ticker, are the records really being processed the same way?</p>
+
+      <h2>Two possible designs</h2>
+      <table>
+        <tr><th>Design</th><th>Main benefit</th><th>Main cost</th></tr>
+        <tr><td>Cash separate from stock positions</td><td>Easy to say stock shares are integers</td><td>Portfolio logic must special-case cash</td></tr>
+        <tr><td>Cash represented as ticker <code>$$$$</code></td><td>All records can be processed in one loop</td><td>Need an explicit invariant to keep stock-share counts valid</td></tr>
+      </table>
+
+      <h2>If cash is separate</h2>
+      <div class="code">cash = 1000.00
+
+positions = [
+    {"ticker":"AAPL", "shares":10, "price":100},
+    {"ticker":"MSFT", "shares":5, "price":200}
+]
+
+value = cash
+for pos in positions:
+    value += pos["shares"] * pos["price"]</div>
+      <p>Here, cash is not processed the same way as stock positions. The code must handle cash separately and then loop through the stock positions.</p>
+
+      <h2>If cash is a ticker</h2>
+      <div class="code">positions = [
+    {"ticker":"$$$$", "shares":1000.0, "price":1.0},
+    {"ticker":"AAPL", "shares":10.0, "price":100},
+    {"ticker":"MSFT", "shares":5.0, "price":200}
+]
+
+value = 0.0
+for pos in positions:
+    value += pos["shares"] * pos["price"]</div>
+      <p>Now one loop works for every record. This is the main reason the representation is attractive.</p>
+
+      <h2>So why the invariant?</h2>
+      <div class="code">Representation
+shares is stored as a float for every position-like record
+
+Invariant
+for all tickers except $$$$, shares == int(shares)</div>
+      <p>This is not a contradiction. It is a tradeoff. You simplified the processing code, so you must enforce a rule that keeps ordinary stock-share counts valid.</p>
+
+      <div class="callout"><strong>Key distinction:</strong> representation is about making computation easier. Invariants are about making the stored data valid.</div>
+
+      <h2>Design choices that simplify the system</h2>
+      <ul>
+        <li>Reduce special-case logic</li>
+        <li>Give each file one clear job</li>
+        <li>Make important events explicit</li>
+        <li>Separate representation from invariants</li>
+        <li>Prefer local edits over unnecessary rewrites</li>
+      </ul>
+      <p>A simpler design does not just make coding easier. It also makes debugging easier because there are fewer places where an error could be hiding.</p>
+
+      <div class="exercise">
+        <h3>Exercise 2 — Compare the two designs</h3>
+        <p>Write one sentence explaining what becomes simpler in the <code>$$$$</code> design and one sentence explaining what rule must then be enforced.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Important idea</h3>
+        <p>A representation can be uniform even when different records obey different constraints.</p>
+      </div>
+      <div class="panel green">
+        <h3>Why <code>$$$$</code> helps</h3>
+        <p>It reduces special-case programming and makes cash part of the same overall state representation.</p>
+      </div>
+      <div class="panel">
+        <h3>Tradeoff language</h3>
+        <p>You moved complexity out of the value-computation code and into a data invariant.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>The rebuilt teaching files</h2>
+    <div class="subtitle">Each file should represent one clear idea.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Why the rebuilt files are better for this class</h2>
+      <p>The original vendor-style files created too much cognitive load:</p>
+      <table>
+        <tr><th>Source of cognitive load</th><th>Why it made learning harder</th></tr>
+        <tr><td>Too many price columns</td><td>You saw more columns than you needed at the start.</td></tr>
+        <tr><td>Adjusted series with hidden transformations</td><td>You could not easily see what actually happened on a date.</td></tr>
+        <tr><td>Corporate actions spread across files</td><td>You had to merge and interpret several tables at once.</td></tr>
+        <tr><td>Real-world edge cases</td><td>Spin-offs and vendor conventions added difficulty before the portfolio model was stable.</td></tr>
+      </table>
+      <p>So the teaching files were rebuilt to separate ideas more cleanly: prices in one file, cash-style distributions in one file, and true splits in one file.</p>
+
+      <h2>File 1 — <code>portfolio_prices_raw_and_split_adjusted.csv</code></h2>
+      <table>
+        <tr><th>Column</th><th>Meaning</th></tr>
+        <tr><td><code>Date</code></td><td>Trading date</td></tr>
+        <tr><td><code>Ticker</code></td><td>Stock symbol</td></tr>
+        <tr><td><code>raw_close</code></td><td>The actual price used for valuation in the teaching model</td></tr>
+        <tr><td><code>adjusted_close</code></td><td>A split-only-adjusted helper series</td></tr>
+      </table>
+
+      <h2>File 2 — <code>portfolio_dividends_with_spinoffs.csv</code></h2>
+      <table>
+        <tr><th>Column</th><th>Meaning</th></tr>
+        <tr><td><code>Date</code></td><td>Ex-date in the teaching dataset</td></tr>
+        <tr><td><code>Ticker</code></td><td>Ticker paying the cash-style event</td></tr>
+        <tr><td><code>Dividend</code></td><td>Distribution amount</td></tr>
+      </table>
+      <p>This file includes ordinary dividends and the selected simplified spin-off events.</p>
+
+      <h2>File 3 — <code>portfolio_splits_true_splits_only.csv</code></h2>
+      <table>
+        <tr><th>Column</th><th>Meaning</th></tr>
+        <tr><td><code>Date</code></td><td>Date of true split</td></tr>
+        <tr><td><code>Ticker</code></td><td>Ticker splitting</td></tr>
+        <tr><td><code>Split Ratio</code></td><td>Factor by which shares change</td></tr>
+      </table>
+      <p>In this rebuilt teaching set, the split file contains only true split events.</p>
+
+      <h2>How to inspect each file</h2>
+      <ol>
+        <li>Open the file and read the header row carefully.</li>
+        <li>Look at a few rows at the top, middle, and bottom.</li>
+        <li>Ask what one row is supposed to represent.</li>
+        <li>Ask what would count as an invalid row.</li>
+        <li>Ask how this file connects to the other files.</li>
+      </ol>
+
+      <div class="exercise">
+        <h3>Exercise 3 — File-by-file inspection</h3>
+        <p>For each file, write one sentence describing what a row represents and one possible error that could appear in that file.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Modeling note</h3>
+        <p>The rebuilt files are designed for this course. They are not a claim that the original vendor files were wrong.</p>
+      </div>
+      <div class="panel green">
+        <h3>Teaching advantage</h3>
+        <p>Each file now has a clearer role, which lowers cognitive load and makes checking easier.</p>
+      </div>
+      <div class="panel">
+        <h3>Inspection reminder</h3>
+        <p>A program that runs is not automatically a program that is correct. Structure first, then rows.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Validation files built from the pricing data</h2>
+    <div class="subtitle">Build files that help validate later user input.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Why create a market-date file?</h2>
+      <p>A market-date file is useful because not every date that looks like a date is valid for portfolio actions. A date is valid only if it appears in the trading calendar represented by the pricing file.</p>
+
+      <h2>Why a ticker list is not enough</h2>
+      <p>A ticker is not simply valid forever. A ticker is valid during a specific interval of dates that matches the pricing file. So the universe file cannot just be a list of symbols. It must include start and end dates, and a ticker may need multiple records if it has multiple valid intervals.</p>
+
+      <div class="code">One possible representation
+ticker, start_date, end_date
+
+Default convention
+end_date = 99999999 means valid through the end of the pricing table</div>
+
+      <h2>AI prompt ideas</h2>
+      <div class="code">Prompt 1
+I have a CSV pricing file with columns Date, Ticker, raw_close, adjusted_close.
+Write Python code that builds a sorted JSON file of unique market dates.
+
+Prompt 2
+Using the same pricing file and the market-date file, write Python code that builds a ticker-universe file.
+For each ticker, find one or more continuous valid date ranges.
+Represent each range with start_date and end_date.
+Use 99999999 as the end_date when the ticker remains valid through the end of the pricing table.</div>
+
+      <div class="callout"><strong>Important follow-up:</strong> after AI writes the code, inspect the output visually. A program that runs is not automatically a program that is correct.</div>
+
+      <div class="exercise">
+        <h3>Exercise 4 — Count valid symbols by trading day</h3>
+        <p>Write Python code that creates a file showing, for each valid market date, how many symbols are valid on that date. Use the market-date file and the ticker-universe file. Then inspect the first few rows, last few rows, and any dates where the count changes.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Validation idea</h3>
+        <p>Later, when a user enters a ticker and a date, the system can check both the market-date file and the ticker-universe file.</p>
+      </div>
+      <div class="panel green">
+        <h3>Why this matters</h3>
+        <p>Validity is often conditional on time, not just on the name of the ticker.</p>
+      </div>
+      <div class="panel">
+        <h3>Inspection reminder</h3>
+        <p>Check first date, last date, boundaries, gaps, and any ticker with more than one interval.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>5</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Using AI to build and test a data checker</h2>
+    <div class="subtitle">AI can help build the first version, but understanding and testing remain essential.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>How to use AI well here</h2>
+      <p>A good use of AI is to upload the rebuilt files, explain what each file represents, and ask AI to create a data checker. Then ask AI a second question: what kinds of errors can this checker catch, and what kinds can it not catch?</p>
+      <p>That second question matters because a checker is always based on assumptions. Understanding those assumptions is part of understanding the data.</p>
+
+      <h2>What the checker should try to catch</h2>
+      <ul>
+        <li>wrong columns</li>
+        <li>duplicate records</li>
+        <li>missing or impossible values</li>
+        <li>dividend or split dates not found in the pricing file</li>
+        <li>unexpected split records</li>
+        <li>split-adjusted price inconsistencies</li>
+        <li>ex-dividend drop mismatches</li>
+        <li>missing market-date rows for a ticker</li>
+      </ul>
+
+      <h2>How to test the checker properly</h2>
+      <ol>
+        <li>Make a second copy of the data files. Never destroy the original data.</li>
+        <li>Introduce deliberate errors into the copied files.</li>
+        <li>Modify the checker so it reads the copied file names.</li>
+        <li>Run the updated checker and see what it flags.</li>
+      </ol>
+
+      <h2>Why modify the code rather than ask AI to redo everything?</h2>
+      <p>If only the file names changed, then the logic of the checker did not change. In that situation, it is usually better to make the local edit yourself than to ask AI to regenerate the whole program. Rewriting a working program can quietly change logic that was already correct.</p>
+
+      <div class="code">Typical local edit
+PRICES_FILE = BASE_DIR / "prices_copy.csv"
+DIVIDENDS_FILE = BASE_DIR / "dividends_copy.csv"
+SPLITS_FILE = BASE_DIR / "splits_copy.csv"</div>
+
+      <div class="callout"><strong>Testing principle:</strong> a checker becomes meaningful only when you deliberately try to break the data and see what the checker notices.</div>
+
+      <div class="exercise">
+        <h3>Exercise 5 — Deliberately break the copied files</h3>
+        <p>Create at least four errors in the copied data files. Try to include errors from different categories rather than four versions of the same mistake.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Good AI prompt pattern</h3>
+        <p>Explain the files first, then ask for code, then ask for limitations, then inspect the result yourself.</p>
+      </div>
+      <div class="panel green">
+        <h3>What this process teaches</h3>
+        <p>It deepens your understanding of both the files and the assumptions built into the checker.</p>
+      </div>
+      <div class="panel">
+        <h3>Never do this</h3>
+        <p>Do not overwrite original source data just because you want to test a checker.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>6</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>The next design step — transactions as the event log</h2>
+    <div class="subtitle">A simpler system has fewer files to consult later.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>What the transaction file should be</h2>
+      <p>The transaction file is the dated event log for the portfolio system. It should support at least these transaction types:</p>
+      <table>
+        <tr><th>TYPE</th><th>Meaning</th></tr>
+        <tr><td>BUY</td><td>Purchase shares</td></tr>
+        <tr><td>SELL</td><td>Sell shares</td></tr>
+        <tr><td>CNTRB</td><td>Cash contribution</td></tr>
+        <tr><td>WDRW</td><td>Cash withdrawal</td></tr>
+        <tr><td>DIV</td><td>Dividend-style cash event added from the dividend file</td></tr>
+        <tr><td>SPLT</td><td>Split event added from the true-splits file</td></tr>
+      </table>
+
+      <h2>Why include DIV and SPLT here?</h2>
+      <p>By including <code>DIV</code> and <code>SPLT</code> in the transaction file, later portfolio processing can rely on a single dated event log instead of repeatedly consulting separate event files. That reduces cognitive load.</p>
+      <p>At that point, the core system can be described using four main files:</p>
+      <ul>
+        <li>ticker universe</li>
+        <li>pricing file</li>
+        <li>transactions file</li>
+        <li>market dates file</li>
+      </ul>
+      <p>Each file has one clear purpose, which makes the system easier to design and easier to debug.</p>
+
+      <h2>Should the transaction file include all dividend events?</h2>
+      <p>Yes. The better design is to add all dividend records from the dividend file, not just the ones that match positions currently held in one account. Later transactions may make those records relevant, and the broader event history is useful for reconstruction and testing. The same idea supports adding all split events as <code>SPLT</code>.</p>
+
+      <h2>What happens if you start from scratch?</h2>
+      <p>If you choose “start from scratch,” the transaction file should still begin with the market events that already happened.</p>
+      <div class="code">If you choose START FROM SCRATCH
+1) Create a new transaction file
+2) Load all DIV records into it
+3) Load all SPLT records into it
+4) Then allow manual transaction entry</div>
+      <p>Even if you do nothing, events still happen in the market. The transaction file records those events.</p>
+
+      <div class="callout"><strong>Key idea:</strong> the transaction file is broader than user-entered trades. It is the dated event log for the portfolio system.</div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Cognitive-load win</h3>
+        <p>Putting DIV and SPLT into transactions means later code does not have to keep looking back into other event files.</p>
+      </div>
+      <div class="panel green">
+        <h3>Important distinction</h3>
+        <p>Some transaction rows are system-generated from source data. Some are entered by a user.</p>
+      </div>
+      <div class="panel">
+        <h3>Core files</h3>
+        <p>Universe, prices, transactions, and market dates now form the main working system.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>7</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Wrapper, <code>create_transaction(...)</code>, and seeded history</h2>
+    <div class="subtitle">Keep session control separate from single-transaction logic.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Wrapper vs. single-transaction function</h2>
+      <p>The one-time choice to start from scratch or load an existing transaction file belongs in a wrapper. That choice should be asked only once. After that, the program should stay in a loop so you can add multiple transactions until you exit.</p>
+      <div class="code">Wrapper responsibilities
+- ask whether to start from scratch or load an existing file
+- create or load the transaction history
+- stay in a loop and repeatedly call create_transaction(...)
+
+create_transaction(...) responsibilities
+- create one valid transaction record
+- append it to the transaction structure/file
+- return control to the wrapper</div>
+
+      <h2>Important invariants</h2>
+      <div class="code">Account-level invariant
+cash balance must never be negative
+
+Position-level invariant
+shares for any ticker must never be negative</div>
+
+      <h2>Ask AI to generate the code</h2>
+      <div class="code">Prompt 3 — wrapper + create_transaction
+Write Python code for a portfolio transaction-entry system.
+Use a wrapper that asks only once whether to start from scratch or load an existing transaction file.
+If start from scratch is chosen, create a new transaction file and preload DIV and SPLT records.
+Then stay in a loop so multiple transactions can be added until exit.
+Create a function create_transaction(...) that adds one valid record at a time.
+Use uppercase TYPE values: BUY, SELL, CNTRB, WDRW, DIV, SPLT.
+Enforce these invariants: resulting cash balance must never be negative and resulting ticker share counts must never be negative.</div>
+
+      <h2>Ask AI to generate an initial seeded transaction file</h2>
+      <p>A second useful AI task is to create a plausible initial transaction file so the system can be tested without always starting from scratch. For this, upload your actual files so the seeded history is consistent with the real dates, tickers, prices, dividends, and splits.</p>
+
+      <div class="code">Prompt 4 — seeded transactions from uploaded files
+Using the uploaded pricing file, market-date file, and ticker-universe file, create an initial CSV transaction file for this portfolio system with about 25 to 30 dated records.
+Use uppercase TYPE values: BUY, SELL, CNTRB, WDRW, DIV, SPLT.
+Use only valid market dates.
+Use only tickers valid on those dates.
+Use plausible prices based on the uploaded pricing file.
+Include multiple tickers, repeated buys and sells for the same ticker, several contributions and withdrawals, dividend events, and at least one split event.
+Keep the sequence plausible through time.
+Keep the resulting cash balance nonnegative and ticker share counts nonnegative.</div>
+
+      <h2>What to do after AI generates the file</h2>
+      <ol>
+        <li>Inspect the header row and check that the field names match the design.</li>
+        <li>Scan the dates from top to bottom and make sure the sequence is plausible.</li>
+        <li>Look for repeated tickers and verify that buys, sells, dividends, and splits all appear.</li>
+        <li>Do a visual reasonableness check on cash activity and share activity.</li>
+        <li>Then use the file to test portfolio reconstruction.</li>
+      </ol>
+
+      <div class="exercise">
+        <h3>Exercise 6 — Design the next prompts</h3>
+        <p>Write one prompt for the wrapper, one prompt for <code>create_transaction(...)</code>, and one prompt for a seeded transaction file. Then list three things you would inspect manually before trusting the output.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Why seeding helps</h3>
+        <p>It lets you test richer portfolio behavior without repeatedly rebuilding history by hand.</p>
+      </div>
+      <div class="panel green">
+        <h3>Prompt principle</h3>
+        <p>AI works best when the files, constraints, and invariants are explicit.</p>
+      </div>
+      <div class="panel">
+        <h3>Scope reminder</h3>
+        <p>The wrapper handles session control. <code>create_transaction(...)</code> should handle one transaction at a time.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>8</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>JSON exercises and project organization</h2>
+    <div class="subtitle">Use organization to reduce friction later.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Convert the files to JSON as in-class exercises</h2>
+      <p>This remains a useful exercise. It reinforces that the same information can be represented in more than one format and prepares you for later persistence design.</p>
+      <ul>
+        <li>convert market dates to JSON</li>
+        <li>convert ticker universe to JSON</li>
+        <li>convert transactions to JSON</li>
+        <li>compare CSV and JSON representations</li>
+      </ul>
+
+      <h2>One possible project layout</h2>
+      <div class="code">student_repo/
+    data/
+        source/
+        system/
+        test/
+    scripts/
+        check/
+        convert/
+        functions/
+    scratch/</div>
+
+      <table>
+        <tr><th>Folder</th><th>Purpose</th></tr>
+        <tr><td><code>data/source</code></td><td>Original data. Do not modify.</td></tr>
+        <tr><td><code>data/system</code></td><td>Files used directly by the portfolio system.</td></tr>
+        <tr><td><code>data/test</code></td><td>Copied or modified files used for experiments and checker testing.</td></tr>
+        <tr><td><code>scripts/check</code></td><td>Data-checking scripts.</td></tr>
+        <tr><td><code>scripts/convert</code></td><td>CSV ↔ JSON conversion scripts.</td></tr>
+        <tr><td><code>scripts/functions</code></td><td>Reusable functions such as <code>create_transaction(...)</code>.</td></tr>
+        <tr><td><code>scratch</code></td><td>Small experiments and quick tests.</td></tr>
+      </table>
+
+      <div class="callout"><strong>Design principle:</strong> good organization reduces cognitive load too. If each folder has one clear job, you waste less time deciding where things belong.</div>
+
+      <div class="exercise">
+        <h3>Exercise 7 — Where should this file go?</h3>
+        <p>For each of these, say which folder it belongs in and why: original pricing file, rebuilt transactions JSON, copied file with deliberate errors, checker script, and reusable transaction function.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Why organize early?</h3>
+        <p>Once more scripts and files exist, poor structure starts creating unnecessary confusion.</p>
+      </div>
+      <div class="panel green">
+        <h3>Useful habit</h3>
+        <p>Separate source data from system data and from test data.</p>
+      </div>
+      <div class="panel">
+        <h3>Debugging connection</h3>
+        <p>A cleaner structure makes it easier to narrow down where an error is coming from.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>9</span></div>
+</section>
+
+</body>
+</html>

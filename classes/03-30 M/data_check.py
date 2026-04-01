@@ -2,6 +2,11 @@ import pandas as pd
 import numpy as np
 from pathlib import Path
 
+import os
+
+# Get the current working directory as a string
+print(os.getcwd())
+
 BASE_DIR = Path(__file__).parent
 
 PRICES_FILE = BASE_DIR / "sp100_daily_prices.csv"

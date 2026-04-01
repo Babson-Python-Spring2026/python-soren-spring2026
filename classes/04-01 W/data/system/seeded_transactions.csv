@@ -1,0 +1,31 @@
+DATE,TYPE,TICKER,SHARES,PRICE,CASH,FACTOR,NOTE
+20250102,CNTRB,$$$$,,,50000.0,,Initial funding
+20250106,BUY,AAPL,40.0,245.0,,,Open AAPL position
+20250108,DIV,CMCSA,,,0.290534,,Per-share distribution from source file
+20250110,BUY,CMCSA,200.0,36.337335,,,Open CMCSA position
+20250210,DIV,AAPL,,,0.25,,Per-share distribution from source file
+20250212,BUY,HON,30.0,205.112148,,,Open HON position
+20250221,BUY,NFLX,4.0,1003.150024,,,Open NFLX position
+20250228,DIV,HON,,,1.065033,,Per-share distribution from source file
+20250314,SELL,CMCSA,50.0,35.407916,,,Trim CMCSA
+20250402,DIV,CMCSA,,,0.309278,,Per-share distribution from source file
+20250415,WDRW,$$$$,,,3000.0,,Owner withdrawal
+20250505,BUY,CMCSA,60.0,34.428525,,,Add CMCSA
+20250512,DIV,AAPL,,,0.26,,Per-share distribution from source file
+20250516,DIV,HON,,,1.065033,,Per-share distribution from source file
+20250702,DIV,CMCSA,,,0.309278,,Per-share distribution from source file
+20250811,DIV,AAPL,,,0.26,,Per-share distribution from source file
+20250815,DIV,HON,,,1.065033,,Per-share distribution from source file
+20250903,SELL,HON,5.0,214.106634,,,Trim HON
+20251001,DIV,CMCSA,,,0.309278,,Per-share distribution from source file
+20251030,DIV,HON,,,12.3125,,Synthetic spin-off distribution from notes
+20251110,DIV,AAPL,,,0.26,,Per-share distribution from source file
+20251114,DIV,HON,,,1.19,,Per-share distribution from source file
+20251117,SPLT,NFLX,,,,10.0,10-for-1 split from source file
+20251201,SELL,NFLX,10.0,109.129997,,,Partial NFLX sale after split
+20260105,DIV,CMCSA,,,1.866,,Synthetic spin-off distribution from notes
+20260114,DIV,CMCSA,,,0.33,,Per-share distribution from source file
+20260203,CNTRB,$$$$,,,5000.0,,Additional funding
+20260209,DIV,AAPL,,,0.26,,Per-share distribution from source file
+20260227,DIV,HON,,,1.19,,Per-share distribution from source file
+20260302,SELL,AAPL,15.0,264.720001,,,Trim AAPL
