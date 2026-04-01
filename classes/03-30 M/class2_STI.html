@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<!-- saved from url=(0057)file:///C:/Users/Bob/Downloads/class2_state_extended.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Computational Thinking with Python — Part II — Class 2</title>
+  <style>
+    @page { size: 8.5in 11in; margin: 0.55in; }
+    :root {
+      --ink:#1f2937; --muted:#5b6472; --line:#d6dbe3; --band:#eaf1fb; --panel:#f7f9fc;
+      --panel2:#eef5ef; --warm:#fff8ea; --warmline:#ead9b3; --accent:#264b7f; --accent2:#2f6b46; --code:#f4f6f8;
+    }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:"Aptos","Segoe UI",Arial,sans-serif; color:var(--ink); line-height:1.36; background:white; }
+    .page { width:8.5in; min-height:11in; margin:0 auto; padding:0.55in; page-break-after:always; position:relative; }
+    .section-band { background:linear-gradient(90deg,var(--band),#f7fbff); border:1px solid #cfd8e7; border-radius:12px; padding:14px 18px; margin-bottom:18px; }
+    .section-band h1,.section-band h2 { margin:0; color:var(--accent); font-weight:700; letter-spacing:0.2px; }
+    .subtitle { margin-top:6px; color:var(--muted); font-size:0.96rem; }
+    .two-col { display:grid; grid-template-columns:3fr 1.15fr; gap:18px; align-items:start; }
+    h2 { color:var(--accent); font-size:1.2rem; margin:18px 0 8px; }
+    h3 { color:var(--accent); font-size:1rem; margin:16px 0 6px; }
+    p { margin:8px 0; }
+    ul,ol { margin:8px 0 10px 20px; }
+    li { margin:4px 0; }
+    table { width:100%; border-collapse:collapse; margin:10px 0 12px; font-size:0.95rem; }
+    th,td { border:1px solid var(--line); padding:8px 9px; vertical-align:top; }
+    th { background:#f4f7fb; text-align:left; color:var(--accent); }
+    .panel { background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:12px 14px; margin-bottom:12px; }
+    .panel.green { background:var(--panel2); border-color:#cfdfd3; }
+    .panel.warm { background:var(--warm); border-color:var(--warmline); }
+    .panel h3 { margin-top:0; color:var(--accent2); }
+    .code { background:var(--code); border:1px solid #dfe4ea; border-radius:10px; padding:12px 14px; font-family:Consolas,"Courier New",monospace; font-size:0.94rem; white-space:pre-wrap; margin:10px 0; }
+    .exercise { border:1px solid var(--line); border-left:5px solid var(--accent); border-radius:10px; padding:12px 14px; margin:14px 0; break-inside:avoid; }
+    .question-lines div { border-bottom:1px solid #cfd5df; height:22px; margin:3px 0; }
+    .footer { position:absolute; left:0.55in; right:0.55in; bottom:0.28in; display:flex; justify-content:space-between; font-size:0.84rem; color:var(--muted); }
+    .callout { padding:10px 12px; border-radius:10px; background:#fffaf0; border:1px solid #ead9b3; margin:10px 0; }
+    .formula { border:1px solid var(--line); border-radius:10px; background:#fbfcfe; padding:10px 12px; margin:10px 0; font-weight:600; color:var(--accent); text-align:center; }
+    .mini { font-size:0.9rem; color:var(--muted); }
+  </style>
+</head>
+<body>
+
+<section class="page">
+  <div class="section-band">
+    <h1>Computational Thinking with Python — Part II</h1>
+    <div class="subtitle"><strong>Class 2 — Representation, Data, State</strong></div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Class goal</h2>
+      <p>Today we continue focusing on <strong>State</strong>, but we begin from a concrete design problem rather than a formal definition. At the end of the previous class, we wrote a function that lets us buy a stock. The code looks reasonable at first. But if we think more deeply about what the function is actually supposed to represent, the model begins to crack.</p>
+      <p>The larger goal here is to build two habits:</p>
+      <table>
+        <tbody><tr><th>Habit</th><th>Why it matters</th></tr>
+        <tr><td>Think deeply about repeated state changes</td><td>A function that seems fine on one call may fail once it is called again.</td></tr>
+        <tr><td>Account for every case through time</td><td>When modeling a dynamic system, every case must be handled exactly once.</td></tr>
+      </tbody></table>
+
+      <h2>Where we left off</h2>
+      <p>At the end of the previous class, we had a portfolio structure and a function that buys stock. This is our starting point today.</p>
+
+      <div class="code">port = {'cash':10000.00,
+        'positions' : [{'sym':'AAPL',
+                        'shares':10,
+                        'price':190.00},
+                       {'sym':'MSFT',
+                        'shares':5,
+                        'price':420.00}]}
+
+def buy_stock(port):
+    sym = input('Enter stock symbol you want to buy: ')
+
+    txt = 'Enter shares you want to buy: '
+    while True:
+        try:
+            shares = int(input(txt))
+            break
+        except ValueError:
+            txt = 'You must enter an integer: '
+
+    txt = f'Enter price of {sym}: '
+    while True:
+        try:
+            price = float(input(txt))
+            break
+        except ValueError:
+            txt = 'You must enter a float: '
+
+    if shares * price &gt; port['cash']:
+        print('insufficent cash. transaction denied')
+        return None
+    else:
+        new_position = {'sym': sym,
+                        'shares':shares,
+                        'price':price}
+
+        port['positions'].append(new_position)
+        return None</div>
+
+      <div class="exercise">
+        <h3>Exercise 2.1 — What exactly happens if the same stock is bought twice?</h3>
+        <p>Suppose the portfolio already contains AAPL and then <code>buy_stock(port)</code> is called and more AAPL is bought.</p>
+        <ol>
+          <li>Should the new purchase overwrite the old one?</li>
+          <li>Should the function append a second AAPL entry?</li>
+          <li>Should the two holdings be combined?</li>
+          <li>What information might be lost under each choice?</li>
+        </ol>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="callout"><strong>Big idea:</strong> the issue is not just whether the code runs. The deeper issue is whether we have thought carefully enough about what state the function is changing, what repeated calls mean, and what the system is supposed to remember.</div>
+
+      <h2>Thinking deeply before coding more</h2>
+      <p>When we design or examine a function, we have to think deeply about exactly what we want to accomplish. We must think carefully about all the possibilities for how the state could change, especially when the function is called repeatedly. A shallow solution may look correct on the first call and still fail as a model of the system.</p>
+      <p>This leads to a broader lesson. More generally, understanding <strong>why</strong> things are done the way they are is critical to success in programming. Most recurring patterns are not accidents.</p>
+      <p>The same idea applies not just to the code we write, but to the language itself. When something appears repeatedly in Python, it is worth asking: is this a coincidence, or is there a real design reason behind it?</p>
+      <p>Consider the Python language. Look at the <code>range</code> function and slicing. What exactly is Python doing, and why?</p>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Spanning the Possibility Space</h3>
+        <p>Before coding, ask:<br><strong>Have I considered all the ways this system can behave?</strong></p>
+        <ul>
+          <li>What states can exist?</li>
+          <li>What transitions are possible?</li>
+          <li>Where could things break?</li>
+        </ul>
+        <p><strong>Common failure modes:</strong></p>
+        <ul>
+          <li>Duplicate records</li>
+          <li>Missing data</li>
+          <li>Out-of-order rows</li>
+          <li>Invalid transitions</li>
+          <li>Non-trading days appearing in data</li>
+        </ul>
+        <p><strong>Key question:</strong><br>What would have to go wrong for this system to fail?</p>
+      </div>
+      <div class="panel green">
+        <h3>Core idea</h3>
+        <p>A representation can look fine at first and still break once the system evolves through time.</p>
+      </div>
+      <div class="panel">
+        <h3>Broader point</h3>
+        <p>Good programming involves understanding why representations are designed the way they are.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>1</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Class 2 — A recurring Python pattern</h2>
+    <div class="subtitle">Use a familiar Python pattern to see how a representation choice can make programming easier.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Where has this pattern appeared already?</h2>
+      <ul>
+        <li><code>range(start, end)</code></li>
+        <li>Slices such as <code>text[start:end]</code></li>
+      </ul>
+      <p>Both behave the same way: the start is included, and the end is excluded.</p>
+
+      <div class="exercise">
+        <h3>Exercise 2.2 — Work concretely first, then summarize</h3>
+        <p>Below are two ways to represent adjacent intervals.</p>
+
+        <div class="code">Inclusive / Exclusive:
+[0,5) and [5,10)
+actual values: [0,1,2,3,4] and [5,6,7,8,9]
+
+Inclusive / Inclusive:
+[0,5] and [5,10]
+actual values: [0,1,2,3,4,5] and [5,6,7,8,9,10]</div>
+
+        <ol>
+          <li>Using the values shown above, concatenate the two lists under each convention.</li>
+          <li>Use what you observe to complete the table below.</li>
+        </ol>
+
+        <table>
+          <tbody><tr><th>Property</th><th><code>[0,5)</code> + <code>[5,10)</code></th><th><code>[0,5]</code> + <code>[5,10]</code></th></tr>
+          <tr><td>Length formula</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          <tr><td>Concatenation result</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          <tr><td>Boundary handling</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+          <tr><td>Gap check</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        </tbody></table>
+
+        <p class="mini">After completing the table, answer this question: Which convention seems easier to program with, and why?</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="formula">Inclusive start, exclusive end</div>
+
+      <p>At first, this may look like a small Python convention. But it is really an example of a deliberate representation choice.</p>
+
+      <h2>Five reasons this pattern is so useful</h2>
+      <table>
+        <tbody><tr><th>Reason</th><th>Why it helps</th></tr>
+        <tr><td>Length is simple</td><td>The size is simply <code>end - start</code>, with no extra <code>+1</code>.</td></tr>
+        <tr><td>Concatenation is clean</td><td>Adjacent intervals fit together naturally without duplicate boundary values.</td></tr>
+        <tr><td>Gap checking is simple</td><td>Two intervals meet cleanly when the first interval’s end equals the second interval’s start.</td></tr>
+        <tr><td>No gaps, no duplicates</td><td>Each value belongs to exactly one interval rather than being missed or counted twice.</td></tr>
+        <tr><td>Natural for state changes</td><td>A new state can begin exactly at the boundary where the old one stops.</td></tr>
+      </tbody></table>
+
+      <div class="exercise">
+        <h3>Exercise 2.3 — Apply the same idea to time</h3>
+        <p>Suppose one interval runs from Jan 15 to Feb 10 and the next begins on Feb 10.</p>
+        <ol>
+          <li>What ambiguity appears if both intervals include Feb 10?</li>
+          <li>How does inclusive start, exclusive end avoid that problem?</li>
+        </ol>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="callout"><strong>Key idea:</strong> good representations cover the possibilities exactly once. This Python pattern is a reminder that useful representations are chosen for reasons. The same standard should be used when modeling systems through time.</div>
+    </main>
+
+    <aside>
+      <div class="panel green">
+        <h3>Pattern to notice</h3>
+        <p><code>range</code> and slicing follow the same rule. That is a clue that the rule is probably useful.</p>
+      </div>
+      <div class="panel warm">
+        <h3>What to watch for</h3>
+        <p>Compare what happens at the boundary value. Does the representation handle the boundary automatically, or does extra logic have to be added?</p>
+      </div>
+      <div class="panel">
+        <h3>Looking ahead</h3>
+        <p>This same idea will matter later when representing holdings through time.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>2</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Class 2 — Returning to the portfolio problem</h2>
+    <div class="subtitle">Now apply the same standard of careful representation to the portfolio system.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>The current model is still too shallow</h2>
+      <p>The <code>buy_stock</code> function exposed one problem: repeated purchases of the same stock are not represented clearly. But the deeper problem is larger. The current design may let us store a portfolio at one moment, yet it does not let us answer many natural questions about the portfolio <strong>through time</strong>.</p>
+
+      <div class="exercise">
+        <h3>Exercise 2.4 — What questions should a real portfolio system answer?</h3>
+        <p>Write down at least four questions that a useful portfolio system should be able to answer.</p>
+        <p>Examples of the kind of questions to think about:</p>
+        
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="callout"><strong>Important shift:</strong> once time matters, it is no longer enough to store only the current position. We need a way to record the changes that happened over time.</div>
+
+      <h2>From positions to transactions</h2>
+      <p>If the portfolio changes over time, one natural idea is to store the <strong>transactions</strong> rather than only the current holdings. A transaction is a dated event that changes the state of the portfolio.</p>
+
+      <div class="exercise">
+        <h3>Exercise 2.5 — What belongs in a transactions file?</h3>
+        <p>Suppose a transactions file is the primary record of what happened. What transaction types would be needed for a simple equity portfolio?</p><div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        
+        
+        <p>For each transaction, what fields should be stored?</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <h2>A first transaction structure</h2>
+      <p>A reasonable first attempt might look like this:</p>
+
+      <table>
+        <tbody><tr><th>Field</th><th>Possible meaning</th></tr>
+        <tr><td>date</td><td>When the transaction occurred</td></tr>
+        <tr><td>trnType</td><td>contribution, withdrawal, buy, sell</td></tr>
+        <tr><td>ticker</td><td>The stock involved, if any</td></tr>
+        <tr><td>shares</td><td>Number of shares, if applicable</td></tr>
+        <tr><td>price</td><td>Transaction price per share, if applicable</td></tr>
+        <tr><td>cashAmount</td><td>Cash amount for a contribution or withdrawal</td></tr>
+      </tbody></table>
+
+      <div class="exercise">
+        <h3>Exercise 2.6 — Transactions as system history</h3>
+        <p>If transactions are stored through time, what current state and historical information should the system be able to reconstruct from that history?</p>
+        <ol>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ol>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <h2>What functions should this transaction system support?</h2>
+      <p>Once transactions become the main stored history, the next question is what functions and reports the system should be able to build from them.</p>
+
+      <table>
+        <tr><th>Function</th><th>Purpose</th></tr>
+        <tr><td><code>create_transaction(...)</code></td><td>Create one of four transaction types: contribution, withdrawal, buy, or sell</td></tr>
+        <tr><td><code>get_cash_balance(as_of_date)</code></td><td>Reconstruct the cash balance on a chosen day</td></tr>
+        <tr><td><code>build_portfolio(as_of_date)</code></td><td>Reconstruct the portfolio on a chosen day from transaction history</td></tr>
+        <tr><td><code>list_transactions_for_ticker(ticker)</code></td><td>Show the dated transaction history for one ticker</td></tr>
+      </table>
+
+      <div class="callout"><strong>Design choice:</strong> treat cash as ticker <code>$$$$</code>. Its price is always <code>1.00</code> and it is always valid. When a stock transaction is created, the matching cash transaction should also be added so the transaction history stays balanced.</div>
+
+      <h3>A first portfolio report</h3>
+      <p>A portfolio report built from transaction history might include:</p>
+      <table>
+        <tr><th>Field</th><th>Meaning</th></tr>
+        <tr><td>shares</td><td>Current shares held</td></tr>
+        <tr><td>cost</td><td>Cost basis of the position</td></tr>
+        <tr><td>market price</td><td>Price on the chosen valuation date</td></tr>
+        <tr><td>realized gain/loss</td><td>Gain or loss on shares that have already been sold</td></tr>
+        <tr><td>unrealized gain/loss</td><td>Gain or loss on shares still being held</td></tr>
+        <tr><td>total contributions</td><td>Total cash contributed to the portfolio</td></tr>
+        <tr><td>total withdrawals</td><td>Total cash withdrawn from the portfolio</td></tr>
+      </table>
+      <p>If a position goes to zero shares, it should still appear in a historical report so realized gains or losses are not lost.</p>
+
+      <div class="exercise">
+        <h3>Exercise 2.8 — What would the portfolio look like after a partial sale?</h3>
+        <p>Suppose the portfolio begins with a contribution of <code>$100,000</code>. Then:</p>
+        <ol>
+          <li>Buy <code>500</code> shares of <code>XYZ</code> at <code>$100</code> per share.</li>
+          <li>Assume the price rises by <code>$1</code> each day.</li>
+          <li>After <code>10</code> days, sell <code>100</code> shares.</li>
+        </ol>
+        <p>Assume no commissions and use FIFO. Build the portfolio report on the day of the sale. Show:</p>
+        <ul>
+          <li>remaining shares</li>
+          <li>remaining cost basis</li>
+          <li>cash balance</li>
+          <li>market price</li>
+          <li>market value</li>
+          <li>realized gain/loss</li>
+          <li>unrealized gain/loss</li>
+          <li>total portfolio value</li>
+        </ul>
+        <p class="mini">Extension: What should this report look like if all <code>500</code> shares were sold instead? Should <code>XYZ</code> still appear in the report?</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="exercise">
+        <h3>Exercise 2.7 — Use AI to help build one report</h3>
+        <p>Choose one target report: cash balance on a given day, portfolio on a given day, or transaction history for one ticker.</p>
+        <ol>
+          <li>First describe in plain English exactly what the function should return.</li>
+          <li>Then ask AI to write a first draft of the code.</li>
+          <li>Inspect the code carefully. What assumptions did AI make about the transaction file?</li>
+          <li>What test cases would you use to decide whether the code is correct?</li>
+        </ol>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel green">
+        <h3>Core move</h3>
+        <p>Instead of storing only “what the portfolio is now,” store the dated events that caused the portfolio to become what it is now.</p>
+      </div>
+      <div class="panel warm">
+        <h3>Notice the connection</h3>
+        <p>The portfolio is a dynamic system. Once time matters, the representation must account for every state change through time.</p>
+      </div>
+      <div class="panel">
+        <h3>Representation reminder</h3>
+        <p>A static snapshot may hide the very history needed to answer the most important questions.</p>
+      </div>
+      <div class="panel warm">
+        <h3>Naming convention reminder</h3>
+        <p>When field names begin to multiply, aim for names that are easy to understand, short, and used consistently across similar fields.</p>
+        <p>For example, a name like <code>trn_type</code> makes the role of the field explicit. Short coded values such as <code>CNTRB</code> and <code>WDRW</code> may also be useful if they are documented clearly and used consistently.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>3</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Class 2 — From transactions to valuation through time</h2>
+    <div class="subtitle">Once transactions are stored, the next natural question is what the portfolio is worth on any date.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>What else should a portfolio system do?</h2>
+      <p>If transactions let us reconstruct the holdings, then a natural next question is:</p>
+      <div class="formula">What is the portfolio worth on any given date?</div>
+      <p>That question introduces a new requirement. It is not enough to know how many shares are held. We also need a way to find the relevant prices on the date being examined.</p>
+
+      <div class="exercise">
+        <h3>Exercise 2.8 — What is needed to value the portfolio through time?</h3>
+        <p>List the kinds of information the system would need in order to compute portfolio value on any trading day.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <h2>Data resources the system will need</h2>
+      <p>To value the portfolio through time, the system will need more than a transactions file. It will need a small data ecosystem.</p>
+
+      <table>
+        <tbody><tr><th>Data resource</th><th>Why it is needed</th></tr>
+        <tr><td>Universe of tradable tickers</td><td>So the system knows which tickers exist in the market data universe at all</td></tr>
+        <tr><td>Availability dates for each ticker</td><td>So the system knows the start and end dates during which each ticker is eligible to appear in that universe</td></tr>
+        <tr><td>Market date file</td><td>So the system knows which dates the market is open and which dates are valid valuation dates</td></tr>
+        <tr><td>Pricing table</td><td>So the system can value positions on a chosen date</td></tr>
+        <tr><td>Dividends</td><td>So the system can model cash distributions or total return behavior correctly</td></tr>
+        <tr><td>Splits</td><td>So the system can adjust share counts correctly</td></tr>
+        <tr><td>Spin-offs and other corporate actions</td><td>So the system can model value leaving one asset and appearing in another</td></tr>
+      </tbody></table>
+
+      <div class="callout"><strong>Design note:</strong> one practical choice is to store dates as <code>YYYYMMDD</code>. That representation sorts naturally and can sometimes simplify early programs because many comparisons can be done directly without importing date objects right away.</div>
+
+      <div class="exercise">
+        <h3>Exercise 2.10 — Build a ticker availability file</h3>
+        <p>Create a <code>sp100_tickers.json</code> file that defines when each ticker is tradable using half-open intervals <code>[start, end)</code>.</p>
+        <p>Use these conventions:</p>
+        <ul>
+          <li>dates must follow the market date convention <code>YYYYMMDD</code></li>
+          <li>intervals are stored as <code>[start, end)</code></li>
+          <li>if a ticker is still active, use <code>99999999</code> as the end date</li>
+        </ul>
+        <p>Suppose ticker <code>XYZ</code> trades on every market date in January, does not trade in February, and then trades again from March onward. How should that be represented?</p>
+        <div class="code">{
+  "XYZ": [
+    {"start": "20250101", "end": "20250201"},
+    {"start": "20250301", "end": "99999999"}
+  ]
+}</div>
+        <p>Why is this better than assuming every ticker has only one start date and one end date?</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="exercise">
+        <h3>Exercise 2.10 — Build a market date file from the pricing data</h3>
+        <p>Start by getting your hands dirty with the data. Use the pricing file to extract the unique trading dates, sort them, and save them as a JSON file.</p>
+        <p>Your program should answer questions such as:</p>
+        <ul>
+          <li>How many unique market dates are in the file?</li>
+          <li>What is the first market date?</li>
+          <li>What is the last market date?</li>
+          <li>Does every ticker appear on every market date?</li>
+        </ul>
+        <p>What might this file later help us validate?</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="exercise">
+        <h3>Exercise 2.12 — Use AI to help build <code>sp100_tickers.json</code></h3>
+        <p>Now use AI to help write the code that builds the ticker availability file from the pricing file and the market dates file.</p>
+        <ol>
+          <li>Before using AI, explain in plain English what counts as one continuous trading interval.</li>
+          <li>Write a prompt that asks AI to find each ticker's continuous date ranges and convert them into <code>[start, end)</code> intervals.</li>
+          <li>Tell AI to use <code>99999999</code> for open-ended intervals.</li>
+          <li>After AI writes code, inspect the boundaries carefully. Did it really implement <code>start &lt;= date &lt; end</code>?</li>
+          <li>What test data would you create to check whether gaps are handled correctly?</li>
+        </ol>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <h2>A pricing table through time</h2>
+      <p>A pricing table is often stored one row per date. But for this course, it may be useful to think about a representation that also makes the valid interval explicit. For example, a pricing row could include a start date and an end date for the period during which the row is valid.</p>
+
+      <div class="exercise">
+        <h3>Exercise 2.12 — Would interval-based price rows make programming easier?</h3>
+        <p>Suppose each pricing row had:</p>
+        <ul>
+          <li>ticker</li>
+          <li>startDate (inclusive)</li>
+          <li>endDate (exclusive)</li>
+          <li>closePrice</li>
+          <li>adjClosePrice</li>
+        </ul>
+        <p>What might become easier? What might become less realistic compared with how market data is usually stored?</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+    </main>
+
+    <aside>
+      <div class="panel warm">
+        <h3>Same principle again</h3>
+        <p>Every point in time should map to exactly one valid representation of the portfolio and exactly one relevant price record.</p>
+      </div>
+      <div class="panel green">
+        <h3>Important distinction</h3>
+        <p>Close prices help value the portfolio. Adjusted prices are useful for return analysis. These are different purposes.</p>
+      </div>
+      <div class="panel">
+        <h3>Looking ahead</h3>
+        <p>Once holdings and prices are both available through time, the system can compute value through time.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>4</span></div>
+</section>
+
+<section class="page">
+  <div class="section-band">
+    <h2>Class 2 — Corporate actions and data interpretation</h2>
+    <div class="subtitle">A real system must decide what different corporate actions mean for state, not just for returns.</div>
+  </div>
+
+  <div class="two-col">
+    <main>
+      <h2>Not all data fields mean what they first appear to mean</h2>
+      <p>Once prices, dividends, and corporate actions are introduced, another important modeling question appears:</p>
+      <div class="formula">What does the data mean for the state of the portfolio?</div>
+
+      <p>A split, a dividend, and a spin-off may all affect value, but they do not affect the state of the portfolio in the same way.</p>
+
+      <table>
+        <tbody><tr><th>Event</th><th>What changes in the portfolio system?</th></tr>
+        <tr><td>Dividend</td><td>Cash is distributed; share count usually stays the same</td></tr>
+        <tr><td>Split</td><td>Share count changes; price adjusts; value is preserved</td></tr>
+        <tr><td>Spin-off</td><td>A new asset appears; value leaves one asset and appears in another</td></tr>
+      </tbody></table>
+
+      <div class="exercise">
+        <h3>Exercise 2.13 — Why is a spin-off not just a split?</h3>
+        <p>Write a short explanation of why a spin-off should not be modeled the same way as a true stock split.</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <h2>Using AI to help inspect the data and build reports</h2>
+      <p>One useful role for AI is to help write small programs that test ideas about the data or build reports from transaction history. For example, if close prices are price-only and adjusted close prices reflect total return, a short program can help check whether that relationship seems to hold and whether any rows look anomalous. In the same spirit, AI can help draft functions that reconstruct cash balance, portfolio state, or ticker history from transaction records.</p>
+      <p>But before asking AI to write that code, you really have to get your hands dirty and carefully examine the structure and content of each input file. What are the columns called? What does each field mean? What is one row supposed to represent? Are dates unique within a ticker? Are duplicate rows possible? Are there missing rows? Do dividends, splits, and prices appear to be aligned the way you think they are?</p>
+      <p>That matters because if the problem is not understood, AI may write code that looks plausible and is still wrong. It may check the wrong relationship, use the wrong key, or quietly assume a data structure that does not actually exist. Understanding the data and understanding the code remain essential.</p>
+      <p>A very good way to test whether your checking code really works is to deliberately introduce errors into otherwise clean files and see whether the program catches them. You can duplicate rows, delete rows, or change values. That kind of testing is often more informative than simply running the code once on data that appears fine.</p>
+
+      <div class="callout"><strong>AI reminder:</strong> AI can help test an idea, but only if the idea is understood clearly enough to ask the right question, inspect the output, and recognize when the code is based on the wrong assumptions. Good prompts begin with careful examination of the actual files.</div>
+
+      <div class="exercise">
+        <h3>Exercise 2.14 — What should be checked in the data?</h3>
+        <p>Suppose a short program is used to inspect pricing, dividends, and split information. What hypotheses should that program test?</p>
+        <p>What kinds of anomalies would be worth flagging?</p>
+        <p>As a testing strategy, suppose you intentionally modify a clean file in a few ways:</p>
+        <ul>
+          <li>duplicate a price row</li>
+          <li>delete a dividend row</li>
+          <li>change one price value</li>
+          <li>add a duplicate dividend row</li>
+        </ul>
+        <p>Which of these should your checking code catch directly, and which would require deeper investigation after being flagged?</p>
+        <div class="question-lines"><div></div><div></div><div></div><div></div><div></div><div></div></div>
+      </div>
+
+      <div class="callout"><strong>Closing idea for this section:</strong> the problem is often not that the data is “bad.” The problem is that data may be designed for one purpose and then used for a different purpose. A return-oriented representation is not always the right representation for a state-based portfolio system.</div>
+    </main>
+
+    <aside>
+      <div class="panel green">
+        <h3>Representation matters again</h3>
+        <p>Yahoo-style adjusted data is useful for return analysis. A state-based portfolio system needs raw events and explicit changes in holdings and cash.</p>
+      </div>
+      <div class="panel warm">
+        <h3>System question</h3>
+        <p>Does this event change cash, shares, or the set of assets being held?</p>
+      </div>
+      <div class="panel">
+        <h3>Next direction</h3>
+        <p>The next major step is to define the portfolio state more formally and decide what must be stored versus what can be derived.</p>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer"><span>Computational Thinking with Python — Part II</span><span>5</span></div>
+</section>
+
+
+
+</body></html>
