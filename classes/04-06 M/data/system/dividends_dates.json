@@ -1,0 +1,2140 @@
+{
+  "2025-02-10": [
+    {
+      "ticker": "AAPL",
+      "dividend": "0.25"
+    },
+    {
+      "ticker": "IBM",
+      "dividend": "1.67"
+    }
+  ],
+  "2025-05-12": [
+    {
+      "ticker": "AAPL",
+      "dividend": "0.26"
+    },
+    {
+      "ticker": "F",
+      "dividend": "0.15"
+    }
+  ],
+  "2025-08-11": [
+    {
+      "ticker": "AAPL",
+      "dividend": "0.26"
+    },
+    {
+      "ticker": "F",
+      "dividend": "0.15"
+    }
+  ],
+  "2025-11-10": [
+    {
+      "ticker": "AAPL",
+      "dividend": "0.26"
+    },
+    {
+      "ticker": "IBM",
+      "dividend": "1.68"
+    }
+  ],
+  "2026-02-09": [
+    {
+      "ticker": "AAPL",
+      "dividend": "0.26"
+    }
+  ],
+  "2025-01-15": [
+    {
+      "ticker": "ABBV",
+      "dividend": "1.64"
+    },
+    {
+      "ticker": "ABT",
+      "dividend": "0.59"
+    }
+  ],
+  "2025-04-15": [
+    {
+      "ticker": "ABBV",
+      "dividend": "1.64"
+    },
+    {
+      "ticker": "ABT",
+      "dividend": "0.59"
+    }
+  ],
+  "2025-07-15": [
+    {
+      "ticker": "ABBV",
+      "dividend": "1.64"
+    },
+    {
+      "ticker": "ABT",
+      "dividend": "0.59"
+    }
+  ],
+  "2025-10-15": [
+    {
+      "ticker": "ABBV",
+      "dividend": "1.64"
+    },
+    {
+      "ticker": "ABT",
+      "dividend": "0.59"
+    }
+  ],
+  "2026-01-16": [
+    {
+      "ticker": "ABBV",
+      "dividend": "1.73"
+    },
+    {
+      "ticker": "GD",
+      "dividend": "1.5"
+    }
+  ],
+  "2026-01-15": [
+    {
+      "ticker": "ABT",
+      "dividend": "0.63"
+    }
+  ],
+  "2025-01-16": [
+    {
+      "ticker": "ACN",
+      "dividend": "1.48"
+    }
+  ],
+  "2025-04-10": [
+    {
+      "ticker": "ACN",
+      "dividend": "1.48"
+    },
+    {
+      "ticker": "CRM",
+      "dividend": "0.416"
+    },
+    {
+      "ticker": "ORCL",
+      "dividend": "0.5"
+    },
+    {
+      "ticker": "T",
+      "dividend": "0.278"
+    },
+    {
+      "ticker": "VZ",
+      "dividend": "0.678"
+    }
+  ],
+  "2025-07-10": [
+    {
+      "ticker": "ACN",
+      "dividend": "1.48"
+    },
+    {
+      "ticker": "ORCL",
+      "dividend": "0.5"
+    },
+    {
+      "ticker": "T",
+      "dividend": "0.278"
+    },
+    {
+      "ticker": "VZ",
+      "dividend": "0.678"
+    }
+  ],
+  "2025-03-17": [
+    {
+      "ticker": "AIG",
+      "dividend": "0.4"
+    },
+    {
+      "ticker": "MRK",
+      "dividend": "0.81"
+    }
+  ],
+  "2025-06-13": [
+    {
+      "ticker": "AIG",
+      "dividend": "0.45"
+    },
+    {
+      "ticker": "AMT",
+      "dividend": "1.7"
+    },
+    {
+      "ticker": "GILD",
+      "dividend": "0.79"
+    },
+    {
+      "ticker": "KO",
+      "dividend": "0.51"
+    },
+    {
+      "ticker": "TMO",
+      "dividend": "0.43"
+    }
+  ],
+  "2025-09-16": [
+    {
+      "ticker": "AIG",
+      "dividend": "0.45"
+    }
+  ],
+  "2025-12-16": [
+    {
+      "ticker": "AIG",
+      "dividend": "0.45"
+    }
+  ],
+  "2026-03-16": [
+    {
+      "ticker": "AIG",
+      "dividend": "0.45"
+    },
+    {
+      "ticker": "META",
+      "dividend": "0.525"
+    },
+    {
+      "ticker": "MRK",
+      "dividend": "0.85"
+    }
+  ],
+  "2025-02-14": [
+    {
+      "ticker": "AMGN",
+      "dividend": "2.38"
+    },
+    {
+      "ticker": "COP",
+      "dividend": "0.78"
+    },
+    {
+      "ticker": "CVX",
+      "dividend": "1.71"
+    },
+    {
+      "ticker": "DUK",
+      "dividend": "1.045"
+    },
+    {
+      "ticker": "EMR",
+      "dividend": "0.528"
+    },
+    {
+      "ticker": "LLY",
+      "dividend": "1.5"
+    },
+    {
+      "ticker": "MMM",
+      "dividend": "0.73"
+    },
+    {
+      "ticker": "SBUX",
+      "dividend": "0.61"
+    },
+    {
+      "ticker": "SCHW",
+      "dividend": "0.27"
+    }
+  ],
+  "2025-05-16": [
+    {
+      "ticker": "AMGN",
+      "dividend": "2.38"
+    },
+    {
+      "ticker": "DUK",
+      "dividend": "1.045"
+    },
+    {
+      "ticker": "EMR",
+      "dividend": "0.528"
+    },
+    {
+      "ticker": "HON",
+      "dividend": "1.065033"
+    },
+    {
+      "ticker": "LLY",
+      "dividend": "1.5"
+    },
+    {
+      "ticker": "SBUX",
+      "dividend": "0.61"
+    }
+  ],
+  "2025-08-22": [
+    {
+      "ticker": "AMGN",
+      "dividend": "2.38"
+    }
+  ],
+  "2025-11-21": [
+    {
+      "ticker": "AMGN",
+      "dividend": "2.38"
+    },
+    {
+      "ticker": "NEE",
+      "dividend": "0.567"
+    },
+    {
+      "ticker": "RTX",
+      "dividend": "0.68"
+    }
+  ],
+  "2026-02-13": [
+    {
+      "ticker": "AMGN",
+      "dividend": "2.52"
+    },
+    {
+      "ticker": "DUK",
+      "dividend": "1.065"
+    },
+    {
+      "ticker": "EMR",
+      "dividend": "0.555"
+    },
+    {
+      "ticker": "F",
+      "dividend": "0.15"
+    },
+    {
+      "ticker": "LLY",
+      "dividend": "1.73"
+    },
+    {
+      "ticker": "MMM",
+      "dividend": "0.78"
+    },
+    {
+      "ticker": "SBUX",
+      "dividend": "0.62"
+    },
+    {
+      "ticker": "SCHW",
+      "dividend": "0.32"
+    }
+  ],
+  "2025-04-11": [
+    {
+      "ticker": "AMT",
+      "dividend": "1.7"
+    },
+    {
+      "ticker": "GD",
+      "dividend": "1.5"
+    }
+  ],
+  "2025-09-30": [
+    {
+      "ticker": "AMT",
+      "dividend": "1.7"
+    },
+    {
+      "ticker": "DE",
+      "dividend": "1.62"
+    },
+    {
+      "ticker": "MDLZ",
+      "dividend": "0.5"
+    },
+    {
+      "ticker": "USB",
+      "dividend": "0.52"
+    }
+  ],
+  "2025-12-29": [
+    {
+      "ticker": "AMT",
+      "dividend": "1.7"
+    },
+    {
+      "ticker": "GE",
+      "dividend": "0.36"
+    }
+  ],
+  "2025-03-20": [
+    {
+      "ticker": "AVGO",
+      "dividend": "0.59"
+    },
+    {
+      "ticker": "PM",
+      "dividend": "1.35"
+    }
+  ],
+  "2025-06-20": [
+    {
+      "ticker": "AVGO",
+      "dividend": "0.59"
+    }
+  ],
+  "2025-09-22": [
+    {
+      "ticker": "AVGO",
+      "dividend": "0.59"
+    },
+    {
+      "ticker": "META",
+      "dividend": "0.525"
+    }
+  ],
+  "2025-12-22": [
+    {
+      "ticker": "AVGO",
+      "dividend": "0.65"
+    }
+  ],
+  "2025-01-03": [
+    {
+      "ticker": "AXP",
+      "dividend": "0.7"
+    },
+    {
+      "ticker": "BMY",
+      "dividend": "0.62"
+    },
+    {
+      "ticker": "CSCO",
+      "dividend": "0.4"
+    }
+  ],
+  "2025-04-04": [
+    {
+      "ticker": "AXP",
+      "dividend": "0.82"
+    },
+    {
+      "ticker": "BMY",
+      "dividend": "0.62"
+    },
+    {
+      "ticker": "JPM",
+      "dividend": "1.4"
+    }
+  ],
+  "2025-07-03": [
+    {
+      "ticker": "AXP",
+      "dividend": "0.82"
+    },
+    {
+      "ticker": "BMY",
+      "dividend": "0.62"
+    },
+    {
+      "ticker": "CSCO",
+      "dividend": "0.41"
+    },
+    {
+      "ticker": "GD",
+      "dividend": "1.5"
+    },
+    {
+      "ticker": "JPM",
+      "dividend": "1.4"
+    }
+  ],
+  "2025-10-10": [
+    {
+      "ticker": "AXP",
+      "dividend": "0.82"
+    },
+    {
+      "ticker": "GD",
+      "dividend": "1.5"
+    },
+    {
+      "ticker": "T",
+      "dividend": "0.278"
+    },
+    {
+      "ticker": "VZ",
+      "dividend": "0.69"
+    }
+  ],
+  "2026-01-02": [
+    {
+      "ticker": "AXP",
+      "dividend": "0.82"
+    },
+    {
+      "ticker": "BMY",
+      "dividend": "0.63"
+    },
+    {
+      "ticker": "CSCO",
+      "dividend": "0.41"
+    }
+  ],
+  "2025-03-07": [
+    {
+      "ticker": "BAC",
+      "dividend": "0.26"
+    },
+    {
+      "ticker": "BKNG",
+      "dividend": "9.6"
+    },
+    {
+      "ticker": "BLK",
+      "dividend": "5.21"
+    },
+    {
+      "ticker": "GM",
+      "dividend": "0.12"
+    },
+    {
+      "ticker": "PEP",
+      "dividend": "1.355"
+    }
+  ],
+  "2025-06-06": [
+    {
+      "ticker": "BAC",
+      "dividend": "0.26"
+    },
+    {
+      "ticker": "BKNG",
+      "dividend": "9.6"
+    },
+    {
+      "ticker": "GM",
+      "dividend": "0.15"
+    },
+    {
+      "ticker": "PEP",
+      "dividend": "1.423"
+    }
+  ],
+  "2025-09-05": [
+    {
+      "ticker": "BAC",
+      "dividend": "0.28"
+    },
+    {
+      "ticker": "BKNG",
+      "dividend": "9.6"
+    },
+    {
+      "ticker": "BLK",
+      "dividend": "5.21"
+    },
+    {
+      "ticker": "GM",
+      "dividend": "0.15"
+    },
+    {
+      "ticker": "PEP",
+      "dividend": "1.423"
+    }
+  ],
+  "2025-12-05": [
+    {
+      "ticker": "BAC",
+      "dividend": "0.28"
+    },
+    {
+      "ticker": "BKNG",
+      "dividend": "9.6"
+    },
+    {
+      "ticker": "BLK",
+      "dividend": "5.21"
+    },
+    {
+      "ticker": "GM",
+      "dividend": "0.15"
+    },
+    {
+      "ticker": "PEP",
+      "dividend": "1.423"
+    },
+    {
+      "ticker": "UNP",
+      "dividend": "1.38"
+    }
+  ],
+  "2026-03-06": [
+    {
+      "ticker": "BAC",
+      "dividend": "0.28"
+    },
+    {
+      "ticker": "BKNG",
+      "dividend": "10.5"
+    },
+    {
+      "ticker": "BLK",
+      "dividend": "5.73"
+    },
+    {
+      "ticker": "GM",
+      "dividend": "0.18"
+    },
+    {
+      "ticker": "PEP",
+      "dividend": "1.423"
+    }
+  ],
+  "2025-01-27": [
+    {
+      "ticker": "BK",
+      "dividend": "0.47"
+    }
+  ],
+  "2025-04-21": [
+    {
+      "ticker": "BK",
+      "dividend": "0.47"
+    },
+    {
+      "ticker": "CAT",
+      "dividend": "1.41"
+    },
+    {
+      "ticker": "PG",
+      "dividend": "1.057"
+    }
+  ],
+  "2025-07-25": [
+    {
+      "ticker": "BK",
+      "dividend": "0.53"
+    },
+    {
+      "ticker": "PFE",
+      "dividend": "0.43"
+    }
+  ],
+  "2025-10-27": [
+    {
+      "ticker": "BK",
+      "dividend": "0.53"
+    }
+  ],
+  "2026-01-23": [
+    {
+      "ticker": "BK",
+      "dividend": "0.53"
+    },
+    {
+      "ticker": "PFE",
+      "dividend": "0.43"
+    },
+    {
+      "ticker": "PG",
+      "dividend": "1.057"
+    }
+  ],
+  "2025-06-05": [
+    {
+      "ticker": "BLK",
+      "dividend": "5.21"
+    },
+    {
+      "ticker": "HD",
+      "dividend": "2.3"
+    },
+    {
+      "ticker": "QCOM",
+      "dividend": "0.89"
+    }
+  ],
+  "2025-10-03": [
+    {
+      "ticker": "BMY",
+      "dividend": "0.62"
+    },
+    {
+      "ticker": "CSCO",
+      "dividend": "0.41"
+    },
+    {
+      "ticker": "PM",
+      "dividend": "1.47"
+    }
+  ],
+  "2025-02-03": [
+    {
+      "ticker": "C",
+      "dividend": "0.56"
+    },
+    {
+      "ticker": "KMI",
+      "dividend": "0.288"
+    }
+  ],
+  "2025-05-05": [
+    {
+      "ticker": "C",
+      "dividend": "0.56"
+    }
+  ],
+  "2025-08-04": [
+    {
+      "ticker": "C",
+      "dividend": "0.6"
+    }
+  ],
+  "2025-11-03": [
+    {
+      "ticker": "C",
+      "dividend": "0.6"
+    },
+    {
+      "ticker": "KMI",
+      "dividend": "0.293"
+    }
+  ],
+  "2026-02-02": [
+    {
+      "ticker": "C",
+      "dividend": "0.6"
+    },
+    {
+      "ticker": "KMI",
+      "dividend": "0.293"
+    }
+  ],
+  "2025-01-21": [
+    {
+      "ticker": "CAT",
+      "dividend": "1.41"
+    },
+    {
+      "ticker": "CL",
+      "dividend": "0.5"
+    }
+  ],
+  "2025-07-21": [
+    {
+      "ticker": "CAT",
+      "dividend": "1.51"
+    }
+  ],
+  "2025-10-20": [
+    {
+      "ticker": "CAT",
+      "dividend": "1.51"
+    }
+  ],
+  "2026-01-20": [
+    {
+      "ticker": "CAT",
+      "dividend": "1.51"
+    }
+  ],
+  "2025-04-17": [
+    {
+      "ticker": "CL",
+      "dividend": "0.52"
+    }
+  ],
+  "2025-07-18": [
+    {
+      "ticker": "CL",
+      "dividend": "0.52"
+    },
+    {
+      "ticker": "PG",
+      "dividend": "1.057"
+    }
+  ],
+  "2025-10-17": [
+    {
+      "ticker": "CL",
+      "dividend": "0.52"
+    }
+  ],
+  "2026-01-21": [
+    {
+      "ticker": "CL",
+      "dividend": "0.52"
+    },
+    {
+      "ticker": "LOW",
+      "dividend": "1.2"
+    }
+  ],
+  "2025-01-08": [
+    {
+      "ticker": "CMCSA",
+      "dividend": "0.290534"
+    }
+  ],
+  "2025-04-02": [
+    {
+      "ticker": "CMCSA",
+      "dividend": "0.309278"
+    }
+  ],
+  "2025-07-02": [
+    {
+      "ticker": "CMCSA",
+      "dividend": "0.309278"
+    }
+  ],
+  "2025-10-01": [
+    {
+      "ticker": "CMCSA",
+      "dividend": "0.309278"
+    }
+  ],
+  "2026-01-05": [
+    {
+      "ticker": "CMCSA",
+      "dividend": "1.866"
+    }
+  ],
+  "2026-01-14": [
+    {
+      "ticker": "CMCSA",
+      "dividend": "0.33"
+    }
+  ],
+  "2025-02-18": [
+    {
+      "ticker": "COF",
+      "dividend": "0.6"
+    },
+    {
+      "ticker": "F",
+      "dividend": "0.3"
+    },
+    {
+      "ticker": "JNJ",
+      "dividend": "1.24"
+    },
+    {
+      "ticker": "SO",
+      "dividend": "0.72"
+    },
+    {
+      "ticker": "UPS",
+      "dividend": "1.64"
+    }
+  ],
+  "2025-05-23": [
+    {
+      "ticker": "COF",
+      "dividend": "0.6"
+    },
+    {
+      "ticker": "MMM",
+      "dividend": "0.73"
+    },
+    {
+      "ticker": "RTX",
+      "dividend": "0.68"
+    }
+  ],
+  "2025-08-15": [
+    {
+      "ticker": "COF",
+      "dividend": "0.6"
+    },
+    {
+      "ticker": "DUK",
+      "dividend": "1.065"
+    },
+    {
+      "ticker": "EMR",
+      "dividend": "0.528"
+    },
+    {
+      "ticker": "HON",
+      "dividend": "1.065033"
+    },
+    {
+      "ticker": "LLY",
+      "dividend": "1.5"
+    },
+    {
+      "ticker": "RTX",
+      "dividend": "0.68"
+    },
+    {
+      "ticker": "SBUX",
+      "dividend": "0.61"
+    },
+    {
+      "ticker": "WMT",
+      "dividend": "0.235"
+    },
+    {
+      "ticker": "XOM",
+      "dividend": "0.99"
+    }
+  ],
+  "2025-11-17": [
+    {
+      "ticker": "COF",
+      "dividend": "0.8"
+    },
+    {
+      "ticker": "COP",
+      "dividend": "0.84"
+    },
+    {
+      "ticker": "SO",
+      "dividend": "0.74"
+    },
+    {
+      "ticker": "UPS",
+      "dividend": "1.64"
+    }
+  ],
+  "2026-02-19": [
+    {
+      "ticker": "COF",
+      "dividend": "0.8"
+    },
+    {
+      "ticker": "MSFT",
+      "dividend": "0.91"
+    }
+  ],
+  "2025-05-19": [
+    {
+      "ticker": "COP",
+      "dividend": "0.78"
+    },
+    {
+      "ticker": "CVX",
+      "dividend": "1.71"
+    },
+    {
+      "ticker": "SO",
+      "dividend": "0.74"
+    },
+    {
+      "ticker": "UPS",
+      "dividend": "1.64"
+    }
+  ],
+  "2025-08-18": [
+    {
+      "ticker": "COP",
+      "dividend": "0.78"
+    },
+    {
+      "ticker": "SO",
+      "dividend": "0.74"
+    },
+    {
+      "ticker": "UPS",
+      "dividend": "1.64"
+    }
+  ],
+  "2026-02-18": [
+    {
+      "ticker": "COP",
+      "dividend": "0.84"
+    }
+  ],
+  "2025-02-07": [
+    {
+      "ticker": "COST",
+      "dividend": "1.16"
+    },
+    {
+      "ticker": "WFC",
+      "dividend": "0.4"
+    }
+  ],
+  "2025-05-02": [
+    {
+      "ticker": "COST",
+      "dividend": "1.3"
+    }
+  ],
+  "2025-08-01": [
+    {
+      "ticker": "COST",
+      "dividend": "1.3"
+    }
+  ],
+  "2025-10-31": [
+    {
+      "ticker": "COST",
+      "dividend": "1.3"
+    },
+    {
+      "ticker": "MS",
+      "dividend": "1.0"
+    },
+    {
+      "ticker": "TXN",
+      "dividend": "1.42"
+    }
+  ],
+  "2026-01-30": [
+    {
+      "ticker": "COST",
+      "dividend": "1.3"
+    },
+    {
+      "ticker": "MS",
+      "dividend": "1.0"
+    },
+    {
+      "ticker": "TXN",
+      "dividend": "1.42"
+    }
+  ],
+  "2025-06-18": [
+    {
+      "ticker": "CRM",
+      "dividend": "0.416"
+    }
+  ],
+  "2025-09-17": [
+    {
+      "ticker": "CRM",
+      "dividend": "0.416"
+    }
+  ],
+  "2025-12-18": [
+    {
+      "ticker": "CRM",
+      "dividend": "0.416"
+    }
+  ],
+  "2025-04-03": [
+    {
+      "ticker": "CSCO",
+      "dividend": "0.41"
+    }
+  ],
+  "2025-01-23": [
+    {
+      "ticker": "CVS",
+      "dividend": "0.665"
+    }
+  ],
+  "2025-04-22": [
+    {
+      "ticker": "CVS",
+      "dividend": "0.665"
+    }
+  ],
+  "2025-07-22": [
+    {
+      "ticker": "CVS",
+      "dividend": "0.665"
+    }
+  ],
+  "2025-10-23": [
+    {
+      "ticker": "CVS",
+      "dividend": "0.665"
+    }
+  ],
+  "2026-01-22": [
+    {
+      "ticker": "CVS",
+      "dividend": "0.665"
+    }
+  ],
+  "2025-08-19": [
+    {
+      "ticker": "CVX",
+      "dividend": "1.71"
+    }
+  ],
+  "2025-11-18": [
+    {
+      "ticker": "CVX",
+      "dividend": "1.71"
+    }
+  ],
+  "2026-02-17": [
+    {
+      "ticker": "CVX",
+      "dividend": "1.78"
+    },
+    {
+      "ticker": "SO",
+      "dividend": "0.74"
+    },
+    {
+      "ticker": "UPS",
+      "dividend": "1.64"
+    }
+  ],
+  "2025-03-31": [
+    {
+      "ticker": "DE",
+      "dividend": "1.62"
+    },
+    {
+      "ticker": "MDLZ",
+      "dividend": "0.47"
+    },
+    {
+      "ticker": "USB",
+      "dividend": "0.5"
+    }
+  ],
+  "2025-06-30": [
+    {
+      "ticker": "DE",
+      "dividend": "1.62"
+    },
+    {
+      "ticker": "MDLZ",
+      "dividend": "0.47"
+    },
+    {
+      "ticker": "USB",
+      "dividend": "0.5"
+    }
+  ],
+  "2025-12-31": [
+    {
+      "ticker": "DE",
+      "dividend": "1.62"
+    },
+    {
+      "ticker": "MDLZ",
+      "dividend": "0.5"
+    },
+    {
+      "ticker": "USB",
+      "dividend": "0.52"
+    }
+  ],
+  "2025-03-28": [
+    {
+      "ticker": "DHR",
+      "dividend": "0.32"
+    },
+    {
+      "ticker": "MDT",
+      "dividend": "0.7"
+    }
+  ],
+  "2025-06-27": [
+    {
+      "ticker": "DHR",
+      "dividend": "0.32"
+    },
+    {
+      "ticker": "MDT",
+      "dividend": "0.71"
+    },
+    {
+      "ticker": "PM",
+      "dividend": "1.35"
+    }
+  ],
+  "2025-09-26": [
+    {
+      "ticker": "DHR",
+      "dividend": "0.32"
+    },
+    {
+      "ticker": "MDT",
+      "dividend": "0.71"
+    }
+  ],
+  "2025-12-26": [
+    {
+      "ticker": "DHR",
+      "dividend": "0.32"
+    },
+    {
+      "ticker": "MDT",
+      "dividend": "0.71"
+    },
+    {
+      "ticker": "MO",
+      "dividend": "1.06"
+    },
+    {
+      "ticker": "PM",
+      "dividend": "1.47"
+    }
+  ],
+  "2025-06-24": [
+    {
+      "ticker": "DIS",
+      "dividend": "0.5"
+    }
+  ],
+  "2025-12-15": [
+    {
+      "ticker": "DIS",
+      "dividend": "0.75"
+    },
+    {
+      "ticker": "FDX",
+      "dividend": "1.45"
+    },
+    {
+      "ticker": "GILD",
+      "dividend": "0.79"
+    },
+    {
+      "ticker": "META",
+      "dividend": "0.525"
+    },
+    {
+      "ticker": "MRK",
+      "dividend": "0.85"
+    },
+    {
+      "ticker": "TMO",
+      "dividend": "0.43"
+    }
+  ],
+  "2025-11-14": [
+    {
+      "ticker": "DUK",
+      "dividend": "1.065"
+    },
+    {
+      "ticker": "EMR",
+      "dividend": "0.555"
+    },
+    {
+      "ticker": "HON",
+      "dividend": "1.19"
+    },
+    {
+      "ticker": "LLY",
+      "dividend": "1.5"
+    },
+    {
+      "ticker": "MMM",
+      "dividend": "0.73"
+    },
+    {
+      "ticker": "SBUX",
+      "dividend": "0.62"
+    },
+    {
+      "ticker": "SCHW",
+      "dividend": "0.27"
+    },
+    {
+      "ticker": "XOM",
+      "dividend": "1.03"
+    }
+  ],
+  "2025-11-07": [
+    {
+      "ticker": "F",
+      "dividend": "0.15"
+    },
+    {
+      "ticker": "PFE",
+      "dividend": "0.43"
+    },
+    {
+      "ticker": "WFC",
+      "dividend": "0.45"
+    }
+  ],
+  "2025-03-10": [
+    {
+      "ticker": "FDX",
+      "dividend": "1.38"
+    },
+    {
+      "ticker": "GE",
+      "dividend": "0.36"
+    },
+    {
+      "ticker": "GOOG",
+      "dividend": "0.2"
+    },
+    {
+      "ticker": "GOOGL",
+      "dividend": "0.2"
+    },
+    {
+      "ticker": "SPG",
+      "dividend": "2.1"
+    },
+    {
+      "ticker": "UNH",
+      "dividend": "2.1"
+    }
+  ],
+  "2025-06-23": [
+    {
+      "ticker": "FDX",
+      "dividend": "1.45"
+    }
+  ],
+  "2025-09-08": [
+    {
+      "ticker": "FDX",
+      "dividend": "1.45"
+    },
+    {
+      "ticker": "GOOG",
+      "dividend": "0.21"
+    },
+    {
+      "ticker": "GOOGL",
+      "dividend": "0.21"
+    }
+  ],
+  "2026-03-09": [
+    {
+      "ticker": "FDX",
+      "dividend": "1.45"
+    },
+    {
+      "ticker": "GE",
+      "dividend": "0.47"
+    },
+    {
+      "ticker": "GOOG",
+      "dividend": "0.21"
+    },
+    {
+      "ticker": "GOOGL",
+      "dividend": "0.21"
+    },
+    {
+      "ticker": "UNH",
+      "dividend": "2.21"
+    }
+  ],
+  "2025-01-17": [
+    {
+      "ticker": "GD",
+      "dividend": "1.42"
+    }
+  ],
+  "2025-07-07": [
+    {
+      "ticker": "GE",
+      "dividend": "0.36"
+    }
+  ],
+  "2025-09-29": [
+    {
+      "ticker": "GE",
+      "dividend": "0.36"
+    }
+  ],
+  "2025-03-14": [
+    {
+      "ticker": "GILD",
+      "dividend": "0.79"
+    },
+    {
+      "ticker": "KO",
+      "dividend": "0.51"
+    },
+    {
+      "ticker": "META",
+      "dividend": "0.525"
+    },
+    {
+      "ticker": "TMO",
+      "dividend": "0.43"
+    }
+  ],
+  "2025-09-15": [
+    {
+      "ticker": "GILD",
+      "dividend": "0.79"
+    },
+    {
+      "ticker": "KO",
+      "dividend": "0.51"
+    },
+    {
+      "ticker": "MO",
+      "dividend": "1.06"
+    },
+    {
+      "ticker": "MRK",
+      "dividend": "0.81"
+    },
+    {
+      "ticker": "TMO",
+      "dividend": "0.43"
+    },
+    {
+      "ticker": "UNH",
+      "dividend": "2.21"
+    }
+  ],
+  "2026-03-13": [
+    {
+      "ticker": "GILD",
+      "dividend": "0.82"
+    },
+    {
+      "ticker": "KO",
+      "dividend": "0.53"
+    },
+    {
+      "ticker": "TMO",
+      "dividend": "0.47"
+    }
+  ],
+  "2025-06-09": [
+    {
+      "ticker": "GOOG",
+      "dividend": "0.21"
+    },
+    {
+      "ticker": "GOOGL",
+      "dividend": "0.21"
+    },
+    {
+      "ticker": "SPG",
+      "dividend": "2.1"
+    }
+  ],
+  "2025-12-08": [
+    {
+      "ticker": "GOOG",
+      "dividend": "0.21"
+    },
+    {
+      "ticker": "GOOGL",
+      "dividend": "0.21"
+    },
+    {
+      "ticker": "UNH",
+      "dividend": "2.21"
+    }
+  ],
+  "2025-02-28": [
+    {
+      "ticker": "GS",
+      "dividend": "3.0"
+    },
+    {
+      "ticker": "HON",
+      "dividend": "1.065033"
+    },
+    {
+      "ticker": "NEE",
+      "dividend": "0.567"
+    },
+    {
+      "ticker": "TMUS",
+      "dividend": "0.88"
+    },
+    {
+      "ticker": "UNP",
+      "dividend": "1.34"
+    }
+  ],
+  "2025-05-30": [
+    {
+      "ticker": "GS",
+      "dividend": "3.0"
+    },
+    {
+      "ticker": "TMUS",
+      "dividend": "0.88"
+    },
+    {
+      "ticker": "UNP",
+      "dividend": "1.34"
+    }
+  ],
+  "2025-08-29": [
+    {
+      "ticker": "GS",
+      "dividend": "4.0"
+    },
+    {
+      "ticker": "TMUS",
+      "dividend": "0.88"
+    },
+    {
+      "ticker": "UNP",
+      "dividend": "1.38"
+    }
+  ],
+  "2025-12-02": [
+    {
+      "ticker": "GS",
+      "dividend": "4.0"
+    }
+  ],
+  "2026-03-02": [
+    {
+      "ticker": "GS",
+      "dividend": "4.5"
+    },
+    {
+      "ticker": "LMT",
+      "dividend": "3.45"
+    },
+    {
+      "ticker": "NKE",
+      "dividend": "0.41"
+    }
+  ],
+  "2025-03-13": [
+    {
+      "ticker": "HD",
+      "dividend": "2.3"
+    },
+    {
+      "ticker": "LIN",
+      "dividend": "1.5"
+    }
+  ],
+  "2025-09-04": [
+    {
+      "ticker": "HD",
+      "dividend": "2.3"
+    },
+    {
+      "ticker": "LIN",
+      "dividend": "1.5"
+    },
+    {
+      "ticker": "QCOM",
+      "dividend": "0.89"
+    }
+  ],
+  "2025-12-04": [
+    {
+      "ticker": "HD",
+      "dividend": "2.3"
+    },
+    {
+      "ticker": "NVDA",
+      "dividend": "0.01"
+    },
+    {
+      "ticker": "QCOM",
+      "dividend": "0.89"
+    }
+  ],
+  "2026-03-12": [
+    {
+      "ticker": "HD",
+      "dividend": "2.33"
+    }
+  ],
+  "2025-10-30": [
+    {
+      "ticker": "HON",
+      "dividend": "12.3125"
+    }
+  ],
+  "2026-02-27": [
+    {
+      "ticker": "HON",
+      "dividend": "1.19"
+    },
+    {
+      "ticker": "NEE",
+      "dividend": "0.623"
+    },
+    {
+      "ticker": "TMUS",
+      "dividend": "1.02"
+    },
+    {
+      "ticker": "UNP",
+      "dividend": "1.38"
+    }
+  ],
+  "2025-05-09": [
+    {
+      "ticker": "IBM",
+      "dividend": "1.68"
+    },
+    {
+      "ticker": "PFE",
+      "dividend": "0.43"
+    },
+    {
+      "ticker": "SCHW",
+      "dividend": "0.27"
+    },
+    {
+      "ticker": "WFC",
+      "dividend": "0.4"
+    },
+    {
+      "ticker": "WMT",
+      "dividend": "0.235"
+    }
+  ],
+  "2025-08-08": [
+    {
+      "ticker": "IBM",
+      "dividend": "1.68"
+    },
+    {
+      "ticker": "SCHW",
+      "dividend": "0.27"
+    },
+    {
+      "ticker": "WFC",
+      "dividend": "0.45"
+    }
+  ],
+  "2026-02-10": [
+    {
+      "ticker": "IBM",
+      "dividend": "1.68"
+    },
+    {
+      "ticker": "V",
+      "dividend": "0.67"
+    }
+  ],
+  "2025-05-27": [
+    {
+      "ticker": "JNJ",
+      "dividend": "1.3"
+    }
+  ],
+  "2025-08-26": [
+    {
+      "ticker": "JNJ",
+      "dividend": "1.3"
+    }
+  ],
+  "2025-11-25": [
+    {
+      "ticker": "JNJ",
+      "dividend": "1.3"
+    }
+  ],
+  "2026-02-24": [
+    {
+      "ticker": "JNJ",
+      "dividend": "1.3"
+    }
+  ],
+  "2025-01-06": [
+    {
+      "ticker": "JPM",
+      "dividend": "1.25"
+    }
+  ],
+  "2025-10-06": [
+    {
+      "ticker": "JPM",
+      "dividend": "1.5"
+    }
+  ],
+  "2026-01-06": [
+    {
+      "ticker": "JPM",
+      "dividend": "1.5"
+    }
+  ],
+  "2025-04-30": [
+    {
+      "ticker": "KMI",
+      "dividend": "0.293"
+    },
+    {
+      "ticker": "MS",
+      "dividend": "0.925"
+    },
+    {
+      "ticker": "TXN",
+      "dividend": "1.36"
+    }
+  ],
+  "2025-07-31": [
+    {
+      "ticker": "KMI",
+      "dividend": "0.293"
+    },
+    {
+      "ticker": "MS",
+      "dividend": "1.0"
+    },
+    {
+      "ticker": "TXN",
+      "dividend": "1.36"
+    }
+  ],
+  "2025-12-01": [
+    {
+      "ticker": "KO",
+      "dividend": "0.51"
+    },
+    {
+      "ticker": "LMT",
+      "dividend": "3.45"
+    },
+    {
+      "ticker": "MCD",
+      "dividend": "1.86"
+    },
+    {
+      "ticker": "NKE",
+      "dividend": "0.41"
+    }
+  ],
+  "2025-06-04": [
+    {
+      "ticker": "LIN",
+      "dividend": "1.5"
+    }
+  ],
+  "2025-12-03": [
+    {
+      "ticker": "LIN",
+      "dividend": "1.5"
+    }
+  ],
+  "2026-03-11": [
+    {
+      "ticker": "LIN",
+      "dividend": "1.6"
+    },
+    {
+      "ticker": "NVDA",
+      "dividend": "0.01"
+    }
+  ],
+  "2025-03-03": [
+    {
+      "ticker": "LMT",
+      "dividend": "3.3"
+    },
+    {
+      "ticker": "MCD",
+      "dividend": "1.77"
+    },
+    {
+      "ticker": "NKE",
+      "dividend": "0.4"
+    }
+  ],
+  "2025-06-02": [
+    {
+      "ticker": "LMT",
+      "dividend": "3.3"
+    },
+    {
+      "ticker": "MCD",
+      "dividend": "1.77"
+    },
+    {
+      "ticker": "NEE",
+      "dividend": "0.567"
+    },
+    {
+      "ticker": "NKE",
+      "dividend": "0.4"
+    }
+  ],
+  "2025-09-02": [
+    {
+      "ticker": "LMT",
+      "dividend": "3.3"
+    },
+    {
+      "ticker": "MCD",
+      "dividend": "1.77"
+    },
+    {
+      "ticker": "NKE",
+      "dividend": "0.4"
+    }
+  ],
+  "2025-01-22": [
+    {
+      "ticker": "LOW",
+      "dividend": "1.15"
+    }
+  ],
+  "2025-04-23": [
+    {
+      "ticker": "LOW",
+      "dividend": "1.15"
+    }
+  ],
+  "2025-07-23": [
+    {
+      "ticker": "LOW",
+      "dividend": "1.2"
+    }
+  ],
+  "2025-10-22": [
+    {
+      "ticker": "LOW",
+      "dividend": "1.2"
+    }
+  ],
+  "2025-01-10": [
+    {
+      "ticker": "MA",
+      "dividend": "0.76"
+    },
+    {
+      "ticker": "ORCL",
+      "dividend": "0.4"
+    },
+    {
+      "ticker": "T",
+      "dividend": "0.278"
+    },
+    {
+      "ticker": "VZ",
+      "dividend": "0.678"
+    }
+  ],
+  "2025-04-09": [
+    {
+      "ticker": "MA",
+      "dividend": "0.76"
+    }
+  ],
+  "2025-07-09": [
+    {
+      "ticker": "MA",
+      "dividend": "0.76"
+    }
+  ],
+  "2025-10-09": [
+    {
+      "ticker": "MA",
+      "dividend": "0.76"
+    },
+    {
+      "ticker": "ORCL",
+      "dividend": "0.5"
+    }
+  ],
+  "2026-01-09": [
+    {
+      "ticker": "MA",
+      "dividend": "0.87"
+    },
+    {
+      "ticker": "ORCL",
+      "dividend": "0.5"
+    }
+  ],
+  "2026-03-03": [
+    {
+      "ticker": "MCD",
+      "dividend": "1.86"
+    }
+  ],
+  "2025-02-04": [
+    {
+      "ticker": "MET",
+      "dividend": "0.545"
+    }
+  ],
+  "2025-05-06": [
+    {
+      "ticker": "MET",
+      "dividend": "0.568"
+    }
+  ],
+  "2025-08-05": [
+    {
+      "ticker": "MET",
+      "dividend": "0.568"
+    }
+  ],
+  "2025-11-04": [
+    {
+      "ticker": "MET",
+      "dividend": "0.568"
+    }
+  ],
+  "2026-02-03": [
+    {
+      "ticker": "MET",
+      "dividend": "0.568"
+    }
+  ],
+  "2025-06-16": [
+    {
+      "ticker": "META",
+      "dividend": "0.525"
+    },
+    {
+      "ticker": "MO",
+      "dividend": "1.02"
+    },
+    {
+      "ticker": "MRK",
+      "dividend": "0.81"
+    },
+    {
+      "ticker": "UNH",
+      "dividend": "2.21"
+    }
+  ],
+  "2025-08-25": [
+    {
+      "ticker": "MMM",
+      "dividend": "0.73"
+    }
+  ],
+  "2025-03-25": [
+    {
+      "ticker": "MO",
+      "dividend": "1.02"
+    }
+  ],
+  "2025-01-31": [
+    {
+      "ticker": "MS",
+      "dividend": "0.925"
+    },
+    {
+      "ticker": "TXN",
+      "dividend": "1.36"
+    }
+  ],
+  "2025-02-20": [
+    {
+      "ticker": "MSFT",
+      "dividend": "0.83"
+    }
+  ],
+  "2025-05-15": [
+    {
+      "ticker": "MSFT",
+      "dividend": "0.83"
+    },
+    {
+      "ticker": "XOM",
+      "dividend": "0.99"
+    }
+  ],
+  "2025-08-21": [
+    {
+      "ticker": "MSFT",
+      "dividend": "0.83"
+    }
+  ],
+  "2025-11-20": [
+    {
+      "ticker": "MSFT",
+      "dividend": "0.91"
+    }
+  ],
+  "2025-08-28": [
+    {
+      "ticker": "NEE",
+      "dividend": "0.567"
+    }
+  ],
+  "2025-03-12": [
+    {
+      "ticker": "NVDA",
+      "dividend": "0.01"
+    }
+  ],
+  "2025-06-11": [
+    {
+      "ticker": "NVDA",
+      "dividend": "0.01"
+    }
+  ],
+  "2025-09-11": [
+    {
+      "ticker": "NVDA",
+      "dividend": "0.01"
+    }
+  ],
+  "2025-01-24": [
+    {
+      "ticker": "PFE",
+      "dividend": "0.43"
+    },
+    {
+      "ticker": "PG",
+      "dividend": "1.007"
+    }
+  ],
+  "2025-10-24": [
+    {
+      "ticker": "PG",
+      "dividend": "1.057"
+    }
+  ],
+  "2026-03-19": [
+    {
+      "ticker": "PM",
+      "dividend": "1.47"
+    }
+  ],
+  "2025-11-19": [
+    {
+      "ticker": "PYPL",
+      "dividend": "0.14"
+    }
+  ],
+  "2026-03-04": [
+    {
+      "ticker": "PYPL",
+      "dividend": "0.14"
+    }
+  ],
+  "2025-03-06": [
+    {
+      "ticker": "QCOM",
+      "dividend": "0.85"
+    }
+  ],
+  "2026-03-05": [
+    {
+      "ticker": "QCOM",
+      "dividend": "0.89"
+    }
+  ],
+  "2025-02-21": [
+    {
+      "ticker": "RTX",
+      "dividend": "0.63"
+    }
+  ],
+  "2026-02-20": [
+    {
+      "ticker": "RTX",
+      "dividend": "0.68"
+    }
+  ],
+  "2025-09-09": [
+    {
+      "ticker": "SPG",
+      "dividend": "2.15"
+    }
+  ],
+  "2025-12-10": [
+    {
+      "ticker": "SPG",
+      "dividend": "2.2"
+    }
+  ],
+  "2026-03-10": [
+    {
+      "ticker": "SPG",
+      "dividend": "2.2"
+    }
+  ],
+  "2026-01-12": [
+    {
+      "ticker": "T",
+      "dividend": "0.278"
+    },
+    {
+      "ticker": "VZ",
+      "dividend": "0.69"
+    }
+  ],
+  "2025-02-12": [
+    {
+      "ticker": "TGT",
+      "dividend": "1.12"
+    },
+    {
+      "ticker": "XOM",
+      "dividend": "0.99"
+    }
+  ],
+  "2025-05-14": [
+    {
+      "ticker": "TGT",
+      "dividend": "1.12"
+    }
+  ],
+  "2025-08-13": [
+    {
+      "ticker": "TGT",
+      "dividend": "1.14"
+    }
+  ],
+  "2025-11-12": [
+    {
+      "ticker": "TGT",
+      "dividend": "1.14"
+    },
+    {
+      "ticker": "V",
+      "dividend": "0.67"
+    }
+  ],
+  "2026-02-11": [
+    {
+      "ticker": "TGT",
+      "dividend": "1.14"
+    }
+  ],
+  "2025-11-26": [
+    {
+      "ticker": "TMUS",
+      "dividend": "1.02"
+    }
+  ],
+  "2025-02-11": [
+    {
+      "ticker": "V",
+      "dividend": "0.59"
+    }
+  ],
+  "2025-05-13": [
+    {
+      "ticker": "V",
+      "dividend": "0.59"
+    }
+  ],
+  "2025-08-12": [
+    {
+      "ticker": "V",
+      "dividend": "0.59"
+    }
+  ],
+  "2026-02-06": [
+    {
+      "ticker": "WFC",
+      "dividend": "0.45"
+    }
+  ],
+  "2025-03-21": [
+    {
+      "ticker": "WMT",
+      "dividend": "0.235"
+    }
+  ],
+  "2025-12-12": [
+    {
+      "ticker": "WMT",
+      "dividend": "0.235"
+    }
+  ],
+  "2026-03-20": [
+    {
+      "ticker": "WMT",
+      "dividend": "0.248"
+    }
+  ],
+  "2026-02-12": [
+    {
+      "ticker": "XOM",
+      "dividend": "1.03"
+    }
+  ]
+}
