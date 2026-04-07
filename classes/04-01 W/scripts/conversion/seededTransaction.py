@@ -9,7 +9,7 @@ import pandas as pd
 
 
 PRICING_CSV = "pricing.csv"
-MARKET_DATES_JSON = "market_dates.json"
+MARKET_DATES_JSON = "mkt_dates.json"
 TICKER_UNIVERSE_JSON = "ticker_universe.json"
 OUTPUT_CSV = "seeded_transactions.csv"
 
@@ -26,12 +26,12 @@ def yyyymmdd_to_iso(value: int) -> str:
     return f"{s[:4]}-{s[4:6]}-{s[6:]}"
 
 
-def load_market_dates(path: str) -> list[str]:
+def load_mkt_dates(path: str) -> list[str]:
     with open(path, "r", encoding="utf-8") as f:
         dates = json.load(f)
     dates = sorted(set(dates))
     if not dates:
-        raise ValueError("market_dates.json is empty")
+        raise ValueError("mkt_dates.json is empty")
     return dates
 
 
