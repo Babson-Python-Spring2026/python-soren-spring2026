@@ -1,0 +1,57 @@
+QUERY 1
+Using only the uploaded HTML, recreate the simple first-pass student transactions.py it describes. 
+Keep the code shape close to a typical student script: small helper functions, a simple transaction 
+entry session, typed transaction names (contribution, withdrawal, buy, sell), repeated entry for a 
+working date, and save to JSON after each transaction. Do not improve or redesign it. Stay as close 
+as possible to the code implied by the HTML.
+
+
+QUERY 2
+
+04-06 M/
+    data/
+        system/
+            transactions/
+    scripts/
+        functions/
+            transactions.py   
+
+cwd is class_repo. I'm running transactions.py in vs code. How do I place my data file in systems/transactions
+this TRANSACTIONS_FILE = Path(__file__).parent / "transactions.json" not working
+
+QUERY 3
+
+create a transactions.py file with the following requirements:
+
+The program should create and maintain a JSON file of manually entered transactions.
+The supported transaction types are:
+
+contribution
+withdrawal
+buy
+sell
+
+If the transactions file already exists, it should be loaded at startup.
+The user should be able to enter multiple transactions for a single date without re-entering the date each time.
+Every transaction should have the same fields:
+
+type
+ticker
+shares
+price
+
+Cash should be represented as a ticker $$$$ and always have a price of 1.00.
+
+Do you need any additional information before implementing this?
+
+QUERY 4
+In what ways would this implementation differ from the earlier version you generated based on the HTML design discussion?
+
+QUERY 5
+Which version is better and why?
+
+QUERY 6
+What kind of error checking can we add for date, ticker and price?
+assume that prices_dates.json is source of truth. Valid dates must be in
+that file. Valid tickers must be in that file and valid input prices must be
+with in plus or minus 15% of the price for that ticker on that day

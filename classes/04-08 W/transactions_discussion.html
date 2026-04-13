@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transactions Workbook - Student Version</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.6;
+      color: #1f2937;
+      max-width: 1020px;
+      margin: 0 auto;
+      padding: 36px;
+      background: #ffffff;
+    }
+    h1, h2, h3 {
+      color: #0f3b63;
+    }
+    h1 {
+      border-bottom: 3px solid #0f3b63;
+      padding-bottom: 10px;
+      margin-bottom: 22px;
+    }
+    h2 {
+      margin-top: 34px;
+      border-left: 6px solid #7aa6c2;
+      padding-left: 12px;
+    }
+    h3 {
+      margin-top: 26px;
+    }
+    .box {
+      background: #f7fbff;
+      border: 1px solid #d4e3ef;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 16px 0;
+    }
+    .question {
+      background: #fff8e8;
+      border: 1px solid #ecd9a6;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 16px 0;
+    }
+    .work {
+      background: #ffffff;
+      border: 1px dashed #9ca3af;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin: 16px 0;
+      min-height: 70px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 16px 0 22px 0;
+    }
+    th, td {
+      border: 1px solid #cfd8df;
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eef5fa;
+    }
+    code {
+      background: #f3f4f6;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-family: Consolas, Monaco, monospace;
+    }
+    .mono {
+      font-family: Consolas, Monaco, monospace;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      padding: 10px 12px;
+      border-radius: 8px;
+      white-space: pre-wrap;
+    }
+    ul {
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Transactions Workbook: Student Version</h1>
+
+  <p>
+    In this lab, the goal is not just to write code. The goal is to think carefully about what
+    should be stored, what should be reconstructed, what assumptions we are making, and how the
+    design of our data affects the functions we can build.
+  </p>
+
+  <p>
+    This version is for discussion and discovery. Do not rush to code. Work through the questions
+    and try to justify your design choices before looking at any polished summary.
+  </p>
+
+  <h2>1. Review of the pricing JSON files</h2>
+
+  <p>
+    Our market data is stored in two JSON files that contain the same underlying pricing facts in two different views.
+  </p>
+
+  <div class="box">
+    <strong>View 1: <code>prices_dates.json</code></strong><br>
+    Keyed by date.
+  </div>
+
+  <div class="box">
+    <strong>View 2: <code>prices_tickers.json</code></strong><br>
+    Keyed by ticker.
+  </div>
+
+  <p>Each pricing record contains the following fields:</p>
+
+  <table>
+    <tbody><tr>
+      <th>Field</th>
+      <th>Meaning</th>
+    </tr>
+    <tr>
+      <td><code>date</code></td>
+      <td>The trading date for the record.</td>
+    </tr>
+    <tr>
+      <td><code>ticker</code></td>
+      <td>The stock symbol.</td>
+    </tr>
+    <tr>
+      <td><code>raw_price</code></td>
+      <td>The actual closing price for that day.</td>
+    </tr>
+    <tr>
+      <td><code>dividend</code></td>
+      <td>The dividend on that day.</td>
+    </tr>
+    <tr>
+      <td><code>shares_in</code></td>
+      <td>The number of shares before a split.</td>
+    </tr>
+    <tr>
+      <td><code>shares_out</code></td>
+      <td>The number of shares after a split.</td>
+    </tr>
+  </tbody></table>
+
+  <div class="question">
+    <strong>Discussion prompt:</strong>
+    <ul>
+      <li>Why might it be useful to have both a date-keyed file and a ticker-keyed file?</li>
+      <li>What kinds of questions are easier to answer in each view?</li>
+      <li>What extra burden do we take on by keeping both?</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Notes:</strong></div>
+
+  <h2>2. State your assumptions</h2>
+
+  <p>
+    Before building functions, we should make our assumptions explicit.
+  </p>
+
+  <div class="question">
+    <strong>Write down the assumptions you think this system is making.</strong><br>
+    You may want to think about:
+    <ul>
+      <li>When dividends are recorded</li>
+      <li>What <code>shares_in</code> and <code>shares_out</code> mean</li>
+      <li>What values should appear when no dividend or no split occurs</li>
+      <li>What data should count as the source of truth for market events</li>
+      <li>What data should count as the source of truth for user actions</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Assumptions:</strong></div>
+
+  <h2>3. Pros and cons of this pricing-data design</h2>
+
+  <p>
+    The pricing records are deliberately uniform. Every record has the same fields, even on days when
+    no dividend or split occurs.
+  </p>
+
+  <div class="question">
+    <strong>Discussion prompt:</strong>
+    <ul>
+      <li>What are the advantages of storing every pricing record in the same shape?</li>
+      <li>What costs do we pay for doing that?</li>
+      <li>Does this design make processing easier? If so, how?</li>
+      <li>Does it make the files larger? Why?</li>
+    </ul>
+  </div>
+
+  <table>
+    <tbody><tr>
+      <th>Possible pros</th>
+      <th>Possible cons</th>
+    </tr>
+    <tr>
+      <td style="height: 120px;"></td>
+      <td></td>
+    </tr>
+  </tbody></table>
+
+  <h2>4. Why keep both a date view and a ticker view?</h2>
+
+  <div class="question">
+    <strong>Discussion prompt:</strong>
+    <ul>
+      <li>If we only had <code>prices_dates.json</code>, what would be easy to do?</li>
+      <li>If we only had <code>prices_dates.json</code>, what would be harder to do?</li>
+      <li>If we only had <code>prices_tickers.json</code>, what would be easy to do?</li>
+      <li>If we only had <code>prices_tickers.json</code>, what would be harder to do?</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Notes:</strong></div>
+
+  <h2>5. Data integrity check using line counts</h2>
+
+  <p>
+    Because the pricing files are highly regular, we can use line counts as a structural check.
+  </p>
+
+  <h3><code>prices_dates.json</code></h3>
+
+  <p>
+    This file contains <strong>214,055</strong> lines.
+  </p>
+
+  <p>
+    The expected number of lines can be written as:
+  </p>
+
+  <div class="mono">2 {} + B * 2 [] + B * C * 7   = 214,062</div>
+
+  <div class="question">
+    <strong>Discussion prompt:</strong>
+    <ul>
+      <li>Explain what each piece of this count means.</li>
+      <li>Why does a difference of 7 lines matter?</li>
+      <li>What does this suggest about the dataset?</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Notes:</strong></div>
+
+  <h3><code>prices_tickers.json</code></h3>
+
+  <p>
+    This file contains <strong>213,637</strong> lines.
+  </p>
+
+  <p>
+    The expected number of lines can be written as:
+  </p>
+
+  <div class="mono">2 {} + C * 2 [] + B * C * 7  = 213,644</div>
+
+  <div class="question">
+    <strong>Discussion prompt:</strong>
+    <ul>
+      <li>Explain why the ticker-keyed file has a different expected line count from the date-keyed file.</li>
+      <li>If the two files contain the same pricing facts, why are the total line counts different?</li>
+      <li>What do both files seem to be missing?</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Notes:</strong></div>
+
+  <h2>6. Should we add cash (symbol $$$$) to the pricing files?</h2>
+
+  <p>
+    Cash raises an important modeling question. We could imagine giving cash a fake ticker like
+    <code>$$$$</code> and assigning it a price of <code>1.00</code> every day.
+  </p>
+
+  <div class="question">
+    <strong>Discussion prompt:</strong>
+    <ul>
+      <li>What would be the advantages of treating cash like another ticker?</li>
+      <li>What would be the disadvantages?</li>
+      <li>Should cash live in the pricing dataset, or should it be managed separately?</li>
+      <li>Why?</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Your conclusion:</strong></div>
+
+  <h2>7. What should go into the transactions file?</h2>
+
+  <p>
+    We are about to build a transaction system. The first big design question is:
+  </p>
+
+  <div class="question">
+    <strong>What belongs in the transactions file?</strong>
+    <ul>
+      <li>Should it include only contribution, withdrawal, buy, and sell?</li>
+      <li>Should it also include dividends?</li>
+      <li>Should it also include split adjustments?</li>
+      <li>Why or why not?</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Notes:</strong></div>
+
+  <h2>8. What can we not do yet?</h2>
+
+  <p>
+    Early in the lab, we can record transactions, but we have not yet built the functions that reconstruct
+    cash and positions.
+  </p>
+
+  <div class="question">
+    <strong>Discussion prompt:</strong>
+    <ul>
+      <li>What checks would you eventually want <code>create_transaction(...)</code> to make?</li>
+      <li>Why can those checks be difficult to implement right away?</li>
+      <li>What information would you need in order to reject a buy, sell, or withdrawal?</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Notes:</strong></div>
+
+  <h2>9. Why postpone those checks?</h2>
+
+  <div class="question">
+    <strong>Discussion prompt:</strong>
+    <ul>
+      <li>Why might it make sense to first build a simple manual transaction ledger?</li>
+      <li>How do <code>get_cash_balance(as_of_date)</code> and <code>build_portfolio(as_of_date)</code> change what
+          <code>create_transaction(...)</code> will eventually be able to do?</li>
+      <li>Why is this a reasonable sequence for the lab?</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Notes:</strong></div>
+
+  <h2>10. User input design considerations</h2>
+
+  <p>
+    Good data design should lead to a reasonable user workflow.
+  </p>
+
+  <div class="question">
+    <strong>Discussion prompt:</strong>
+    <ul>
+      <li>When the program starts, should it try to load an existing transaction file? Why?</li>
+      <li>If no transaction file exists, what should the program do?</li>
+      <li>Should the user have to type the date for every transaction?</li>
+      <li>Would it help to choose one working date and then enter several transactions for that date?</li>
+      <li>What state should persist across runs, and what state should exist only during one session?</li>
+    </ul>
+  </div>
+
+  <table>
+    <tbody><tr>
+      <th>Design choice</th>
+      <th>Your reasoning</th>
+    </tr>
+    <tr>
+      <td>Load prior transactions from JSON if it exists</td>
+      <td style="height: 70px;"></td>
+    </tr>
+    <tr>
+      <td>Start with an empty list if no JSON file exists</td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Use a current working date for multiple entries</td>
+      <td></td>
+    </tr>
+  </tbody></table>
+
+  <h2>11. The four functions in this lab</h2>
+
+  <table>
+    <tbody><tr>
+      <th>Function</th>
+      <th>Purpose</th>
+    </tr>
+    <tr>
+      <td><code>create_transaction(...)</code></td>
+      <td>Create one of four transaction types: contribution, withdrawal, buy, or sell.</td>
+    </tr>
+    <tr>
+      <td><code>get_cash_balance(as_of_date)</code></td>
+      <td>Reconstruct the cash balance on a chosen day.</td>
+    </tr>
+    <tr>
+      <td><code>build_portfolio(as_of_date)</code></td>
+      <td>Reconstruct the portfolio on a chosen day from transaction history.</td>
+    </tr>
+    <tr>
+      <td><code>list_transactions_for_ticker(ticker)</code></td>
+      <td>Show the dated transaction history for one ticker.</td>
+    </tr>
+  </tbody></table>
+
+  <div class="question">
+    <strong>Final reflection:</strong>
+    <ul>
+      <li>Which functions create data?</li>
+      <li>Which functions reconstruct state from history?</li>
+      <li>What is the difference between a ledger and a portfolio snapshot?</li>
+    </ul>
+  </div>
+
+  <div class="work"><strong>Final notes:</strong></div>
+
+
+</body></html>
