@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Using AI While Staying in Control of the Code</title>
+  <style>
+    :root {
+      --bg: #f6f8fb;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #5b6472;
+      --line: #d7dde7;
+      --blue: #214f86;
+      --blue-soft: #eaf2ff;
+      --green: #275c3f;
+      --green-soft: #edf8f1;
+      --gold: #7a5a12;
+      --gold-soft: #fff8e6;
+      --code: #f4f6f8;
+      --danger: #8a2c2c;
+      --danger-soft: #fff1f1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Aptos, Segoe UI, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.45;
+    }
+    .page {
+      max-width: 980px;
+      margin: 32px auto;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+    header {
+      padding: 28px 34px 20px;
+      background: linear-gradient(135deg, var(--blue-soft), #f9fbff);
+      border-bottom: 1px solid var(--line);
+    }
+    h1, h2, h3 { margin: 0 0 10px; }
+    h1 { color: var(--blue); font-size: 2rem; }
+    h2 { color: var(--blue); font-size: 1.35rem; margin-top: 28px; }
+    h3 { color: var(--green); font-size: 1.05rem; margin-top: 20px; }
+    .subtitle { color: var(--muted); max-width: 780px; }
+    main { padding: 26px 34px 34px; }
+    p { margin: 10px 0; }
+    ul, ol { margin: 8px 0 14px 24px; }
+    li { margin: 6px 0; }
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin: 16px 0;
+      background: #fbfcfe;
+    }
+    .panel.blue { background: var(--blue-soft); }
+    .panel.green { background: var(--green-soft); }
+    .panel.gold { background: var(--gold-soft); }
+    .panel.danger { background: var(--danger-soft); }
+    .label {
+      display: inline-block;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 999px;
+      margin-bottom: 8px;
+      border: 1px solid var(--line);
+      background: white;
+      color: var(--muted);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 12px 0 18px;
+      font-size: 0.96rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      vertical-align: top;
+    }
+    th {
+      background: #f4f7fb;
+      color: var(--blue);
+      text-align: left;
+    }
+    code, pre {
+      font-family: Consolas, Courier New, monospace;
+    }
+    pre {
+      background: var(--code);
+      border: 1px solid #dfe5ec;
+      border-radius: 12px;
+      padding: 12px 14px;
+      overflow-x: auto;
+      margin: 12px 0;
+      font-size: 0.93rem;
+    }
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .quote {
+      border-left: 4px solid #b8c7dd;
+      padding: 8px 14px;
+      color: #374151;
+      background: #fbfdff;
+      margin: 12px 0;
+    }
+    .footer {
+      margin-top: 28px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    @media (max-width: 760px) {
+      .page { margin: 0; border-radius: 0; }
+      header, main { padding: 20px; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Using AI While Staying in Control of the Code</h1>
+      <p class="subtitle">
+        A cleaned-up guide based on a real iterative coding conversation. The point is not to let AI write everything.
+        The point is to use AI as a tool while the human remains responsible for the design, the rules, the invariants,
+        the naming, the file structure, and the final judgment about what is correct.
+      </p>
+    </header>
+
+    <main>
+      <div class="panel blue">
+        <div class="label">Central idea</div>
+        <p><strong>AI should not be the source of truth.</strong> The source of truth should be your files, your rules, your data model, and your reasoning.</p>
+        <p><strong>The human stays in control</strong> by specifying constraints, checking outputs, catching mistakes, and forcing the AI to justify or revise code.</p>
+      </div>
+
+      <h2>1. What this conversation demonstrated</h2>
+      <p>The conversation was not a case of saying, “Write the whole system,” and blindly accepting the answer. Instead, it showed a much healthier workflow:</p>
+      <ul>
+        <li>Start with a narrow function.</li>
+        <li>Clarify behavior before coding.</li>
+        <li>Refuse hidden assumptions.</li>
+        <li>Test against actual files.</li>
+        <li>Catch wrong reasoning quickly.</li>
+        <li>Refactor names and architecture as understanding improves.</li>
+        <li>Build the system in layers.</li>
+      </ul>
+
+      <div class="panel green">
+        <div class="label">Good pattern</div>
+        <p>Ask AI for <strong>one function</strong>, <strong>one rule</strong>, or <strong>one transformation</strong> at a time. That forces both the AI and the human to stay close to the state of the system.</p>
+      </div>
+
+      <h2>2. The control pattern: human first, AI second</h2>
+      <table>
+        <tr>
+          <th>Human controls</th>
+          <th>AI helps with</th>
+        </tr>
+        <tr>
+          <td>File structure, naming, requirements, invariants, edge cases, correctness checks</td>
+          <td>Drafting code, revising code, explaining syntax, spotting inconsistencies, cleaning formatting</td>
+        </tr>
+        <tr>
+          <td>Deciding what the program should do</td>
+          <td>Translating those decisions into Python</td>
+        </tr>
+        <tr>
+          <td>Deciding when an answer is wrong</td>
+          <td>Trying again under tighter constraints</td>
+        </tr>
+      </table>
+
+      <div class="quote">
+        <strong>Key principle:</strong> AI is not the designer. AI is a coding assistant working inside a design the human defines.
+      </div>
+
+      <h2>3. A better way to prompt AI for code</h2>
+      <p>The strongest parts of the conversation came from prompts like these:</p>
+      <ul>
+        <li><strong>“Do not make assumptions.”</strong></li>
+        <li><strong>“Do you have everything you need?”</strong></li>
+        <li><strong>“Restate the goal first.”</strong></li>
+        <li><strong>“What is still ambiguous?”</strong></li>
+        <li><strong>“This is not correct. Redo.”</strong></li>
+      </ul>
+
+      <div class="two-col">
+        <div class="panel gold">
+          <div class="label">Weak prompt</div>
+          <p>Write the whole portfolio system.</p>
+          <p>This invites guessing, overengineering, and hidden assumptions.</p>
+        </div>
+        <div class="panel green">
+          <div class="label">Strong prompt</div>
+          <p>Write only the function that lists transactions for a ticker. It should prompt until ticker input is valid, sort by date, print aligned columns, blank line every 5, pause every 15, and not clear the screen.</p>
+          <p>This keeps the AI inside a well-defined box.</p>
+        </div>
+      </div>
+
+      <h2>4. The most important habit: force assumptions into the open</h2>
+      <p>One of the strongest habits in the conversation was repeatedly asking whether the AI really had enough information to write correct code.</p>
+
+      <div class="panel danger">
+        <div class="label">Danger sign</div>
+        <p>If the AI starts inventing behavior that you never specified, the problem is usually not just the answer. The problem is that the design contract was still incomplete.</p>
+      </div>
+
+      <p>Examples of missing details that had to be pinned down before code could be trusted:</p>
+      <ul>
+        <li>Should a function print or return a value?</li>
+        <li>Should output be sorted?</li>
+        <li>What counts as a valid date?</li>
+        <li>How should splits affect shares?</li>
+        <li>How should splits affect average cost?</li>
+        <li>What happens when a position crosses through zero?</li>
+        <li>Should positions exist for all market dates or only transaction dates?</li>
+      </ul>
+
+      <h2>5. Build the system in layers, not all at once</h2>
+      <p>The conversation gradually moved toward a very strong architecture. Instead of trying to jump straight to “portfolio by date,” it decomposed the problem into intermediate artifacts.</p>
+
+      <pre>transactions.json
+   ↓
+stocks_by_date.json
+   ↓
+cash_by_date.json
+   ↓
+portfolio_&lt;date&gt;.json</pre>
+
+      <p>That is a much better teaching pattern than trying to compute everything in one giant function.</p>
+
+      <table>
+        <tr>
+          <th>Layer</th>
+          <th>Purpose</th>
+        </tr>
+        <tr>
+          <td><code>stocks_by_date.json</code></td>
+          <td>Reconstruct stock positions by market date, including split adjustments</td>
+        </tr>
+        <tr>
+          <td><code>cash_by_date.json</code></td>
+          <td>Reconstruct cash by market date using transactions, dividends, and prior stock state</td>
+        </tr>
+        <tr>
+          <td><code>portfolio_&lt;date&gt;.json</code></td>
+          <td>Combine stocks and cash for a requested date</td>
+        </tr>
+      </table>
+
+      <div class="panel blue">
+        <div class="label">Why this matters pedagogically</div>
+        <p>Students learn that large systems should be built from intermediate states and reusable components. That is computational thinking, not just syntax production.</p>
+      </div>
+
+      <h2>6. STI stayed in charge of the design</h2>
+      <p>The strongest conceptual thread in the conversation was the repeated use of STI: <strong>State, Transitions, Invariants</strong>.</p>
+
+      <h3>Example: stock positions by date</h3>
+      <ul>
+        <li><strong>State:</strong> for each ticker, shares and average cost</li>
+        <li><strong>Transitions:</strong> buys, sells, splits</li>
+        <li><strong>Invariant:</strong> at the end of each market date, the stored position reflects all prior transitions through that date</li>
+      </ul>
+
+      <h3>Example: cash by date</h3>
+      <ul>
+        <li><strong>State:</strong> one number, cash</li>
+        <li><strong>Transitions:</strong> contributions, withdrawals, buys, sells, dividends</li>
+        <li><strong>Invariant:</strong> cash on date <em>d</em> reflects all cash flows through that market date</li>
+      </ul>
+
+      <p>Using AI this way is much better than asking for code without a model. The model comes first. The code comes second.</p>
+
+      <h2>7. Human corrections made the design better</h2>
+      <p>The AI produced several drafts that were incomplete or wrong. That was not a failure of the process. It was part of the process. The important thing is that the human noticed the problems and tightened the rules.</p>
+
+      <p>Examples of corrections that improved the system:</p>
+      <ul>
+        <li>Removing transaction-entry code from a program that should only list transactions</li>
+        <li>Changing a self-import that caused a Python import error</li>
+        <li>Fixing the average-cost split rule so that total cost basis stays invariant</li>
+        <li>Requiring positions for every market date, not just transaction dates</li>
+        <li>Renaming <code>positions_by_date.json</code> to <code>stocks_by_date.json</code> for clarity</li>
+      </ul>
+
+      <div class="panel gold">
+        <div class="label">Important lesson</div>
+        <p>AI can draft quickly, but <strong>naming</strong>, <strong>decomposition</strong>, and <strong>correctness</strong> still require deliberate human judgment.</p>
+      </div>
+
+      <h2>8. Good reasons to slow AI down</h2>
+      <p>In the conversation, progress improved whenever the human forced the AI to go slower.</p>
+      <ul>
+        <li>Ask for one function, not the whole program.</li>
+        <li>Ask whether anything is still unspecified.</li>
+        <li>Ask the AI to restate the goal.</li>
+        <li>Check the file paths.</li>
+        <li>Check the exact output format.</li>
+        <li>Verify with real examples from the dataset.</li>
+      </ul>
+
+      <pre>Bad workflow:
+AI writes whole system → human glances at it → hidden errors survive
+
+Better workflow:
+Human defines one piece → AI drafts → human tests against files → human revises rules → AI updates</pre>
+
+      <h2>9. Good prompts for staying in control</h2>
+      <p>These are excellent control prompts for students and instructors:</p>
+      <pre>Restate the goal first.
+Do you have everything you need?
+What are you assuming?
+Do not make assumptions.
+What rule is still ambiguous?
+Write only the code for this function.
+Do not add any other functionality.
+Why is this answer correct?
+What exact lines need to change?</pre>
+
+      <h2>10. Why this is not “just letting AI do the work”</h2>
+      <p>If students simply paste a broad prompt and accept the result, that is weak learning. But the workflow shown here is different.</p>
+      <ul>
+        <li>It requires reading code.</li>
+        <li>It requires spotting errors.</li>
+        <li>It requires designing invariants.</li>
+        <li>It requires understanding edge cases.</li>
+        <li>It requires deciding what should happen before asking AI to write it.</li>
+      </ul>
+
+      <div class="panel green">
+        <div class="label">Better interpretation</div>
+        <p>AI is being used as a junior programmer whose work must be supervised, corrected, and constrained.</p>
+      </div>
+
+      <h2>11. A suggested classroom rule set</h2>
+      <ol>
+        <li>Define the state before asking for code.</li>
+        <li>Define the transitions before asking for code.</li>
+        <li>State at least one invariant before asking for code.</li>
+        <li>Ask for one function at a time.</li>
+        <li>Ask the AI whether anything is still ambiguous.</li>
+        <li>Check the answer against real data, not just plausibility.</li>
+        <li>Revise names and file structure when needed.</li>
+        <li>Treat generated code as a draft, not as truth.</li>
+      </ol>
+
+      <h2>12. What students should learn from this</h2>
+      <p>The point is not merely to get code that runs. The deeper lesson is that a good programmer:</p>
+      <ul>
+        <li>keeps control of the design,</li>
+        <li>thinks in terms of state and transitions,</li>
+        <li>builds systems in layers,</li>
+        <li>tests against real data,</li>
+        <li>and treats every answer, even an AI answer, as something to inspect.</li>
+      </ul>
+
+      <div class="panel blue">
+        <div class="label">Bottom line</div>
+        <p><strong>The best use of AI in programming is not surrender.</strong> It is disciplined collaboration under human control.</p>
+      </div>
+
+      <div class="footer">
+        This document was distilled from an iterative coding conversation centered on transactions, positions, splits, cash reconstruction, portfolio state, file naming, output formatting, and the disciplined use of AI during software development.
+      </div>
+    </main>
+  </div>
+</body>
+</html>

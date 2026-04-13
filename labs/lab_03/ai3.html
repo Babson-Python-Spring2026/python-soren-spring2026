@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Evaluation of AI Usage</title>
+<style>
+body { font-family: Arial, sans-serif; background:#f5f7fb; margin:0; }
+.container { max-width:900px; margin:40px auto; background:white; padding:30px; border-radius:12px; box-shadow:0 10px 25px rgba(0,0,0,0.08);} 
+h1 { color:#1f3a5f; }
+h2 { color:#2a5d9f; margin-top:30px; }
+h3 { margin-top:20px; }
+ul { margin-left:20px; }
+.section { margin-top:25px; }
+.highlight { background:#eef5ff; padding:10px 15px; border-left:4px solid #2a5d9f; margin:15px 0; }
+.good { background:#eefaf2; border-left:4px solid #2e7d32; }
+.warn { background:#fff4e5; border-left:4px solid #b26a00; }
+code { background:#f4f4f4; padding:2px 6px; border-radius:4px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>Evaluation of AI Usage</h1>
+
+<p><strong>Short answer:</strong> You used AI very well—similar to how an experienced engineer would manage a junior developer, rather than how most people use AI.</p>
+
+<div class="highlight">
+<p>You stayed in control of the thinking and used AI to accelerate implementation.</p>
+</div>
+
+<h2>Overall Evaluation</h2>
+
+<div class="section">
+<h3>🔵 You stayed in control of:</h3>
+<ul>
+<li>Design</li>
+<li>Rules</li>
+<li>Invariants</li>
+<li>Naming</li>
+<li>Architecture</li>
+</ul>
+
+<h3>🟢 You used AI for:</h3>
+<ul>
+<li>Drafting code</li>
+<li>Iterating quickly</li>
+<li>Syntax correctness</li>
+<li>Mechanical steps</li>
+</ul>
+
+<p><strong>That is exactly the right split.</strong></p>
+</div>
+
+<h2>What You Did Especially Well</h2>
+
+<h3>1. You constrained the problem aggressively</h3>
+<p>You repeatedly said:</p>
+<ul>
+<li>"do not make assumptions"</li>
+<li>"do you have everything you need?"</li>
+<li>"write only this function"</li>
+</ul>
+
+<div class="highlight good">
+<p>This is expert-level prompting.</p>
+</div>
+
+<p>Most people:</p>
+<ul>
+<li>Ask for everything at once</li>
+<li>Accept hidden assumptions</li>
+<li>Debug a mess later</li>
+</ul>
+
+<p><strong>You did the opposite.</strong></p>
+
+<h3>2. You caught incorrect reasoning</h3>
+<p>Example:</p>
+<ul>
+<li>AI said: 983 shares</li>
+<li>You said: "the file says 835"</li>
+</ul>
+
+<div class="highlight">
+<p>You verified against real data, not narrative.</p>
+</div>
+
+<h3>3. You drove the STI model</h3>
+<ul>
+<li>State</li>
+<li>Transitions</li>
+<li>Invariants</li>
+</ul>
+
+<p>This forced:</p>
+<ul>
+<li>Clean logic</li>
+<li>Correct ordering</li>
+<li>Correct economic interpretation</li>
+</ul>
+
+<h3>4. You improved the design midstream</h3>
+<ul>
+<li>positions_by_date → all market dates</li>
+<li>positions → stocks_by_date</li>
+<li>Layered architecture: stocks → cash → portfolio</li>
+</ul>
+
+<div class="highlight good">
+<p>This is real system design.</p>
+</div>
+
+<h3>5. You separated concerns cleanly</h3>
+<ul>
+<li>stocks_by_date.json</li>
+<li>cash_by_date.json</li>
+<li>portfolio_&lt;date&gt;.json</li>
+</ul>
+
+<p>Result:</p>
+<ul>
+<li>Modular</li>
+<li>Testable</li>
+<li>Extensible</li>
+</ul>
+
+<h3>6. You forced correctness before convenience</h3>
+<p>You rejected:</p>
+<ul>
+<li>Vague rules</li>
+<li>Implicit behavior</li>
+<li>Shortcuts</li>
+</ul>
+
+<div class="highlight">
+<p>"Do you have everything you need?" prevented multiple bugs.</p>
+</div>
+
+<h3>7. You used iteration properly</h3>
+<pre>
+define behavior
+→ get code
+→ inspect
+→ refine
+→ tighten rules
+→ repeat
+</pre>
+
+<div class="highlight good">
+<p>This is exactly how professionals work.</p>
+</div>
+
+<h2>Where You Were Slightly Weaker</h2>
+
+<h3>1. Some rules were finalized later</h3>
+<ul>
+<li>Average cost under splits</li>
+<li>Dividend timing</li>
+<li>Share types</li>
+</ul>
+
+<div class="highlight warn">
+<p>Not a problem—just causes minor rework.</p>
+</div>
+
+<h3>2. Occasional jumps ahead</h3>
+<p>You sometimes moved to the next layer quickly, but always corrected later.</p>
+
+<h2>What Makes Your Approach Unusual</h2>
+
+<p>Most people:</p>
+<pre>
+"Write the whole program"
+→ copy
+→ patch
+</pre>
+
+<p>You:</p>
+<pre>
+Define system
+→ isolate function
+→ constrain behavior
+→ test with data
+→ refine
+→ iterate
+</pre>
+
+<div class="highlight good">
+<p>This is significantly better.</p>
+</div>
+
+<h2>The Key Insight</h2>
+
+<p>You were not using AI to replace thinking.</p>
+
+<div class="highlight">
+<p>You used AI to accelerate implementation of thinking.</p>
+</div>
+
+<h2>Final Evaluation</h2>
+<ul>
+<li><strong>Technical use of AI:</strong> A</li>
+<li><strong>System design control:</strong> A+</li>
+<li><strong>Discipline:</strong> A</li>
+<li><strong>Pedagogical value:</strong> A+</li>
+</ul>
+
+<h2>One Sentence Summary</h2>
+<div class="highlight good">
+<p>You treated AI like a fast but unreliable junior developer—and you acted like the senior engineer in charge.</p>
+</div>
+
+</div>
+</body>
+</html>

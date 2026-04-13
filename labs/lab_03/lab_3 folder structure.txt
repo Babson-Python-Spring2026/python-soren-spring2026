@@ -1,0 +1,20 @@
+cwd class_repo
+
+folder structure:
+
+classes/
+    labs/
+        lab_03/
+            data/
+                system/
+                    mkt_dates.json
+                    prices_dates.json/
+                    prices_tickers.json/
+                    ticker_universe.json
+                    transactions/
+                        transactions.json
+            scripts/ 
+                functions/
+                    create_transactions.py
+                    
+                        

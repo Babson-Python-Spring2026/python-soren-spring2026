@@ -1,0 +1,210 @@
+[
+    {
+        "ticker": "$$$$",
+        "shares": -3740469.8,
+        "average_cost": 1.0,
+        "mkt_price": 1.0,
+        "total_avg_cost": -3740469.8,
+        "total_mkt_value": -3740469.8
+    },
+    {
+        "ticker": "AAPL",
+        "shares": 835,
+        "average_cost": 139.5,
+        "mkt_price": 236.0,
+        "total_avg_cost": 116482.41,
+        "total_mkt_value": 197059.99
+    },
+    {
+        "ticker": "ABBV",
+        "shares": 480,
+        "average_cost": 174.66,
+        "mkt_price": 183.87,
+        "total_avg_cost": 83836.36,
+        "total_mkt_value": 88259.56
+    },
+    {
+        "ticker": "ABT",
+        "shares": 470,
+        "average_cost": 117.96,
+        "mkt_price": 127.92,
+        "total_avg_cost": 55442.81,
+        "total_mkt_value": 60123.32
+    },
+    {
+        "ticker": "ACN",
+        "shares": 460,
+        "average_cost": 359.53,
+        "mkt_price": 384.96,
+        "total_avg_cost": 165383.14,
+        "total_mkt_value": 177081.97
+    },
+    {
+        "ticker": "ADBE",
+        "shares": 450,
+        "average_cost": 431.1,
+        "mkt_price": 437.45,
+        "total_avg_cost": 193995.3,
+        "total_mkt_value": 196852.51
+    },
+    {
+        "ticker": "AIG",
+        "shares": 440,
+        "average_cost": 73.6,
+        "mkt_price": 73.66,
+        "total_avg_cost": 32383.88,
+        "total_mkt_value": 32410.4
+    },
+    {
+        "ticker": "AMD",
+        "shares": 430,
+        "average_cost": 120.85,
+        "mkt_price": 115.95,
+        "total_avg_cost": 51966.3,
+        "total_mkt_value": 49858.5
+    },
+    {
+        "ticker": "AMGN",
+        "shares": 420,
+        "average_cost": 271.7,
+        "mkt_price": 285.42,
+        "total_avg_cost": 114114.94,
+        "total_mkt_value": 119876.41
+    },
+    {
+        "ticker": "AMT",
+        "shares": 410,
+        "average_cost": 183.52,
+        "mkt_price": 184.95,
+        "total_avg_cost": 75241.41,
+        "total_mkt_value": 75829.5
+    },
+    {
+        "ticker": "AMZN",
+        "shares": 400,
+        "average_cost": 228.94,
+        "mkt_price": 237.68,
+        "total_avg_cost": 91576.11,
+        "total_mkt_value": 95072.0
+    },
+    {
+        "ticker": "AVGO",
+        "shares": 390,
+        "average_cost": 229.11,
+        "mkt_price": 221.27,
+        "total_avg_cost": 89352.42,
+        "total_mkt_value": 86295.3
+    },
+    {
+        "ticker": "AXP",
+        "shares": 380,
+        "average_cost": 312.2,
+        "mkt_price": 317.46,
+        "total_avg_cost": 118635.11,
+        "total_mkt_value": 120636.0
+    },
+    {
+        "ticker": "BA",
+        "shares": 370,
+        "average_cost": 173.59,
+        "mkt_price": 176.52,
+        "total_avg_cost": 64227.35,
+        "total_mkt_value": 65312.4
+    },
+    {
+        "ticker": "BAC",
+        "shares": 360,
+        "average_cost": 46.22,
+        "mkt_price": 46.3,
+        "total_avg_cost": 16638.34,
+        "total_mkt_value": 16668.0
+    },
+    {
+        "ticker": "BK",
+        "shares": 350,
+        "average_cost": 82.74,
+        "mkt_price": 85.93,
+        "total_avg_cost": 28958.52,
+        "total_mkt_value": 30076.62
+    },
+    {
+        "ticker": "BKNG",
+        "shares": 340,
+        "average_cost": 4786.67,
+        "mkt_price": 4737.56,
+        "total_avg_cost": 1627468.41,
+        "total_mkt_value": 1610770.21
+    },
+    {
+        "ticker": "BLK",
+        "shares": 330,
+        "average_cost": 1018.95,
+        "mkt_price": 1075.5,
+        "total_avg_cost": 336253.62,
+        "total_mkt_value": 354914.97
+    },
+    {
+        "ticker": "BMY",
+        "shares": 320,
+        "average_cost": 57.56,
+        "mkt_price": 58.95,
+        "total_avg_cost": 18417.92,
+        "total_mkt_value": 18865.47
+    },
+    {
+        "ticker": "BRK-B",
+        "shares": 310,
+        "average_cost": 461.8,
+        "mkt_price": 468.67,
+        "total_avg_cost": 143157.43,
+        "total_mkt_value": 145287.7
+    },
+    {
+        "ticker": "C",
+        "shares": 300,
+        "average_cost": 78.77,
+        "mkt_price": 81.43,
+        "total_avg_cost": 23632.14,
+        "total_mkt_value": 24429.0
+    },
+    {
+        "ticker": "CAT",
+        "shares": 290,
+        "average_cost": 382.87,
+        "mkt_price": 371.49,
+        "total_avg_cost": 111032.37,
+        "total_mkt_value": 107731.22
+    },
+    {
+        "ticker": "CHTR",
+        "shares": 280,
+        "average_cost": 351.83,
+        "mkt_price": 345.49,
+        "total_avg_cost": 98511.22,
+        "total_mkt_value": 96737.2
+    },
+    {
+        "ticker": "CL",
+        "shares": 270,
+        "average_cost": 88.71,
+        "mkt_price": 86.7,
+        "total_avg_cost": 23951.45,
+        "total_mkt_value": 23409.06
+    },
+    {
+        "ticker": "CMCSA",
+        "shares": 260,
+        "average_cost": 34.15,
+        "mkt_price": 31.55,
+        "total_avg_cost": 8878.64,
+        "total_mkt_value": 8202.62
+    },
+    {
+        "ticker": "COF",
+        "shares": 250,
+        "average_cost": 196.65,
+        "mkt_price": 203.71,
+        "total_avg_cost": 49162.45,
+        "total_mkt_value": 50927.5
+    }
+]

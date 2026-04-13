@@ -1,0 +1,129 @@
+from __future__ import annotations
+
+from pathlib import Path
+import pandas as pd
+import numpy as np
+
+# --------------------------------------------------
+# PATHS
+# --------------------------------------------------
+BASE_DIR = Path(__file__).resolve().parent
+SOURCE_DIR = BASE_DIR.parent.parent / "data" / "source"
+
+PRICES_FILE = SOURCE_DIR / "sp100_daily_prices.csv"
+DIVIDENDS_FILE = SOURCE_DIR / "sp100_dividends.csv"
+SPLITS_FILE = SOURCE_DIR / "sp100_splits.csv"
+
+OUTPUT_FILE = SOURCE_DIR / "portfolio_prices_raw_and_split_adjusted_20260331b.csv"
+
+# --------------------------------------------------
+# LOAD ORIGINAL SOURCE FILES
+# --------------------------------------------------
+prices = pd.read_csv(PRICES_FILE, parse_dates=["Date"])
+divs = pd.read_csv(DIVIDENDS_FILE, parse_dates=["Date"])
+splits = pd.read_csv(SPLITS_FILE, parse_dates=["Date"])
+
+# --------------------------------------------------
+# ADD SYNTHETIC SPIN-OFFS AS DIVIDENDS
+# --------------------------------------------------
+synthetic = pd.DataFrame(
+    [
+        {"Date": pd.Timestamp("2025-10-30"), "Ticker": "HON", "Dividend": 12.3125},
+        {"Date": pd.Timestamp("2026-01-05"), "Ticker": "CMCSA", "Dividend": 1.8660},
+    ]
+)
+
+divs = divs.rename(columns={"Dividends": "Dividend"})
+divs = pd.concat([divs, synthetic], ignore_index=True)
+
+# --------------------------------------------------
+# KEEP ONLY TRUE SPLITS
+# --------------------------------------------------
+true_splits = splits[(splits["Ticker"] == "NFLX") & (splits["Split Ratio"] == 10.0)].copy()
+
+# --------------------------------------------------
+# KEEP ONLY THE COLUMNS WE NEED
+# --------------------------------------------------
+prices = prices[["Date", "Ticker", "Close", "Adj Close"]].copy()
+
+# Drop incomplete source rows
+prices = prices.dropna(subset=["Close", "Adj Close"])
+
+prices = prices.sort_values(["Ticker", "Date"]).reset_index(drop=True)
+divs = divs.sort_values(["Ticker", "Date"]).reset_index(drop=True)
+true_splits = true_splits.sort_values(["Ticker", "Date"]).reset_index(drop=True)
+
+# --------------------------------------------------
+# MERGE DIVIDENDS AND TRUE SPLITS INTO PRICE TABLE
+# --------------------------------------------------
+work = prices.merge(divs, on=["Date", "Ticker"], how="left")
+work = work.merge(true_splits, on=["Date", "Ticker"], how="left")
+
+work["Dividend"] = work["Dividend"].fillna(0.0)
+work["Split Ratio"] = work["Split Ratio"].fillna(1.0)
+
+# --------------------------------------------------
+# REBUILD PRICE FILE
+#
+# IDEA:
+# Yahoo Adj Close preserves total return.
+# We want to treat spin-offs as dividends.
+#
+# So for each ticker:
+#   total_return_t = AdjClose_t / AdjClose_{t-1}
+#
+# and we solve:
+#   split_only_adj_t = split_only_adj_{t-1} * total_return_t - dividend_t
+#
+# Then:
+#   raw_close_t = split_only_adj_t * future_split_factor_t
+#
+# where future_split_factor_t uses true splits strictly after date t.
+# --------------------------------------------------
+out_parts = []
+
+for ticker, g in work.groupby("Ticker", sort=False):
+    g = g.sort_values("Date").reset_index(drop=True).copy()
+
+    # Build future split factor:
+    # factor on date t includes only true splits AFTER date t
+    future_factor = np.ones(len(g), dtype=float)
+    running = 1.0
+    for i in range(len(g) - 1, -1, -1):
+        future_factor[i] = running
+        running *= float(g.loc[i, "Split Ratio"])
+
+    g["future_split_factor"] = future_factor
+
+    split_only_adj = np.zeros(len(g), dtype=float)
+
+    # Initial level:
+    # split-only adjusted close should equal Close divided by future split factor
+    split_only_adj[0] = float(g.loc[0, "Close"]) / float(g.loc[0, "future_split_factor"])
+
+    for i in range(1, len(g)):
+        total_return = float(g.loc[i, "Adj Close"]) / float(g.loc[i - 1, "Adj Close"])
+        dividend = float(g.loc[i, "Dividend"])
+
+        split_only_adj[i] = split_only_adj[i - 1] * total_return - dividend
+
+    g["adjusted_close"] = split_only_adj
+    g["raw_close"] = g["adjusted_close"] * g["future_split_factor"]
+
+    out_parts.append(g[["Date", "Ticker", "raw_close", "adjusted_close"]])
+
+out = pd.concat(out_parts, ignore_index=True)
+
+# Round for cleaner CSV output
+out["raw_close"] = out["raw_close"].round(6)
+out["adjusted_close"] = out["adjusted_close"].round(6)
+
+out = out.sort_values(["Ticker", "Date"]).reset_index(drop=True)
+
+# --------------------------------------------------
+# SAVE
+# --------------------------------------------------
+out.to_csv(OUTPUT_FILE, index=False)
+
+print(f"Wrote {len(out)} rows to:")
+print(OUTPUT_FILE)

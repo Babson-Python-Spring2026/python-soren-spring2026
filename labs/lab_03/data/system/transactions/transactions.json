@@ -1,0 +1,4010 @@
+[
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 1,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 243.850006
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 21,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 179.440002
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 41,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 113.440002
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 61,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 348.820007
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 81,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 441.0
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 101,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 72.980003
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 121,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 120.629997
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 141,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 259.279999
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 161,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 181.029999
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 181,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 220.220001
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 201,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 231.979996
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 221,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 298.429993
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 241,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 171.869995
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 261,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 44.290001
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 281,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 77.410004
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 301,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4925.290039
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 321,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 1017.400024
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 341,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 56.790001
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 361,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 451.100006
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 381,
+        "ticker": "C",
+        "shares": 50,
+        "price": 69.940002
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 401,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 359.769989
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 421,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 349.350006
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 441,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 90.550003
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 461,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 35.07029
+    },
+    {
+        "date": "2025-01-02",
+        "type": "buy",
+        "record_number": 481,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 178.710007
+    },
+    {
+        "date": "2025-01-02",
+        "type": "contribution",
+        "record_number": 501,
+        "ticker": "$$$$",
+        "shares": 4000000.0,
+        "price": 1.0
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 2,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 243.359993
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 22,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 181.220028
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 42,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 113.829997
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 62,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 353.850009
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 82,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 430.570007
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 102,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 72.809992
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 122,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 125.370003
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 142,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 261.219974
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 162,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 182.559993
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 182,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 224.190002
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 202,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 232.550011
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 222,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 303.092544
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 242,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 169.899994
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 262,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 44.810004
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 282,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 76.929988
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 302,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4903.84958
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 322,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 1020.830062
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 342,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 56.574415
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 362,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 453.559998
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 382,
+        "ticker": "C",
+        "shares": 20,
+        "price": 70.999996
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 402,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 363.789995
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 422,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 358.350006
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 442,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 90.149999
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 462,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 35.304591
+    },
+    {
+        "date": "2025-01-03",
+        "type": "sell",
+        "record_number": 482,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 180.429989
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 3,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 244.999992
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 23,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 180.100004
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 43,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 113.039991
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 63,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 351.330009
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 83,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 431.179993
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 103,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 72.469994
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 123,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 129.550003
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 143,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 258.589998
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 163,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 180.259995
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 183,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 227.610001
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 203,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 236.410019
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 223,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 301.892512
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 243,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 170.779999
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 263,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 45.399999
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 283,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 77.919988
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 303,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4909.78913
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 323,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 1012.739999
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 343,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 56.684427
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 363,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 451.410004
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 383,
+        "ticker": "C",
+        "shares": 50,
+        "price": 72.740003
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 403,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 364.199991
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 423,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 349.549988
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 443,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 87.539996
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 463,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 35.135899
+    },
+    {
+        "date": "2025-01-06",
+        "type": "buy",
+        "record_number": 483,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 183.520006
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 4,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 242.210008
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 24,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 179.529995
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 44,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 113.399998
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 64,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 356.390035
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 84,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 422.630005
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 104,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 72.589994
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 124,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 127.330002
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 144,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 262.059991
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 164,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 177.170014
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 184,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 222.110001
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 204,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 228.640011
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 224,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 302.03248
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 244,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 172.509995
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 264,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 46.080002
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 284,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 77.960007
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 304,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4796.099529
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 324,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 980.760058
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 344,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 57.144461
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 364,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 452.920013
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 384,
+        "ticker": "C",
+        "shares": 20,
+        "price": 73.679994
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 404,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 362.999997
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 424,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 347.630005
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 444,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 87.389994
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 464,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 34.84536
+    },
+    {
+        "date": "2025-01-07",
+        "type": "sell",
+        "record_number": 484,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 181.889997
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 5,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 242.700005
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 25,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 178.500011
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 45,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 114.249996
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 65,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 357.730003
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 85,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 419.579987
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 105,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 71.429986
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 125,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 121.839996
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 145,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 264.209983
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 165,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 179.19001
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 185,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 222.130005
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 205,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 229.310012
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 225,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 302.862512
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 245,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 171.759995
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 265,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 46.209998
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 285,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 77.949988
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 305,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4872.418825
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 325,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 986.099965
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 345,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 56.814437
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 365,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 451.839996
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 385,
+        "ticker": "C",
+        "shares": 50,
+        "price": 73.259998
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 405,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 361.069997
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 425,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 349.320007
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 445,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 87.459995
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 465,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 34.838356
+    },
+    {
+        "date": "2025-01-08",
+        "type": "buy",
+        "record_number": 485,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 180.139998
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 6,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 236.85
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 26,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 175.169994
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 46,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 112.310006
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 66,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 349.790021
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 86,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 405.920013
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 106,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 70.5
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 126,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 116.040001
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 146,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 262.229997
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 166,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 173.460011
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 186,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 218.940002
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 206,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 224.309989
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 226,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 293.312127
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 246,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 172.0
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 266,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 45.11
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 286,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 75.419984
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 306,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4739.549314
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 326,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 955.640003
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 346,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 55.834358
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 366,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 442.660004
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 386,
+        "ticker": "C",
+        "shares": 20,
+        "price": 71.399996
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 406,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 351.000002
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 426,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 334.890015
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 446,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 86.359999
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 466,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 34.079169
+    },
+    {
+        "date": "2025-01-10",
+        "type": "sell",
+        "record_number": 486,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 175.290007
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 7,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 234.399998
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 27,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 176.739995
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 47,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 113.189991
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 67,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 349.140002
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 87,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 408.5
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 107,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 70.839991
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 127,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 117.32
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 147,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 270.19
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 167,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 176.940033
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 187,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 218.460007
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 207,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 225.289987
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 227,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 297.032298
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 247,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 170.570007
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 267,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 45.060002
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 287,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 76.11
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 307,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4763.899151
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 327,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 955.01004
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 347,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 55.364325
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 367,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 443.910004
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 387,
+        "ticker": "C",
+        "shares": 50,
+        "price": 72.769986
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 407,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 362.499985
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 427,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 337.839996
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 447,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 87.099999
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 467,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 34.163524
+    },
+    {
+        "date": "2025-01-13",
+        "type": "buy",
+        "record_number": 487,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 180.329995
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 8,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 233.280006
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 28,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 175.549989
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 48,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 113.019989
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 68,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 348.990003
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 88,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 412.709991
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 108,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 72.589994
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 128,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 116.089996
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 148,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 267.100044
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 168,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 178.800001
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 188,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 217.759995
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 208,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 224.700002
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 228,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 300.372446
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 248,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 167.020004
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 268,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 45.780001
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 288,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 75.940003
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 308,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4778.809902
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 328,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 963.17
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 348,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 55.744353
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 368,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 450.029999
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 388,
+        "ticker": "C",
+        "shares": 20,
+        "price": 73.500002
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 408,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 371.569985
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 428,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 346.290009
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 448,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 87.669997
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 468,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 34.097909
+    },
+    {
+        "date": "2025-01-14",
+        "type": "sell",
+        "record_number": 488,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 184.719993
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 9,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 237.869991
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 29,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 171.32586
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 49,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 111.093017
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 69,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 349.730034
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 89,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 417.279999
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 109,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 73.069998
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 129,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 119.959999
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 149,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 268.939993
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 169,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 180.320029
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 189,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 223.350006
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 209,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 228.000017
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 229,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 312.332951
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 249,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 166.199997
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 269,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 47.099997
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 289,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 82.040001
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 309,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4829.639472
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 329,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 1013.179996
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 349,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 55.914368
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 369,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 458.51001
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 389,
+        "ticker": "C",
+        "shares": 50,
+        "price": 78.269989
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 409,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 374.89001
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 429,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 348.0
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 449,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 87.859991
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 469,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 34.210383
+    },
+    {
+        "date": "2025-01-15",
+        "type": "buy",
+        "record_number": 489,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 190.679983
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 10,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 228.26001
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 30,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 173.675515
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 50,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 113.902851
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 70,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 350.569828
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 90,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 426.929993
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 110,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 74.60999
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 130,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 118.440002
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 150,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 269.429989
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 170,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 190.070009
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 190,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 220.660004
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 210,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 229.410014
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 230,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 311.492926
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 250,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 168.929993
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 270,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 46.640002
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 290,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 82.250001
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 310,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4864.999195
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 330,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 995.719965
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 350,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 56.384405
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 370,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 462.809998
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 390,
+        "ticker": "C",
+        "shares": 20,
+        "price": 78.509994
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 410,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 380.549939
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 430,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 346.679993
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 450,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 88.559983
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 470,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 34.032302
+    },
+    {
+        "date": "2025-01-16",
+        "type": "sell",
+        "record_number": 490,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 188.43999
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 11,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 229.980003
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 31,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 171.535816
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 51,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 113.472877
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 71,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 352.599872
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 91,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 429.98999
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 111,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 75.089986
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 131,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 121.459999
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 151,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 272.110002
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 171,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 190.390002
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 191,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 225.940002
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 211,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 237.44001
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 231,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 312.572946
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 251,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 171.089996
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 271,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 46.530004
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 291,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 83.289991
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 311,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4926.799701
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 331,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 1004.960033
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 351,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 56.294396
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 371,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 467.950012
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 391,
+        "ticker": "C",
+        "shares": 50,
+        "price": 79.99
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 411,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 386.01999
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 431,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 351.369995
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 451,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 88.690008
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 471,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 34.285364
+    },
+    {
+        "date": "2025-01-17",
+        "type": "buy",
+        "record_number": 491,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 190.97002
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 12,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 222.640015
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 32,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 172.585663
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 52,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 116.782664
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 72,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 356.429988
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 92,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 436.359985
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 112,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 75.169995
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 132,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 122.279999
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 152,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 274.809973
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 172,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 189.930008
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 192,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 230.710007
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 212,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 240.310012
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 232,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 317.963176
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 252,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 175.559998
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 272,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 46.66
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 292,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 84.929997
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 312,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4686.409891
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 332,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 1012.089993
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 352,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 57.044452
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 372,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 468.570007
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 392,
+        "ticker": "C",
+        "shares": 20,
+        "price": 81.669986
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 412,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 398.410348
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 432,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 350.559998
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 452,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 88.23022
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 472,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 34.650901
+    },
+    {
+        "date": "2025-01-21",
+        "type": "sell",
+        "record_number": 492,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 193.209998
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 13,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 223.829997
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 33,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 169.176148
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 53,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 117.772599
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 73,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 359.120048
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 93,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 437.320007
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 113,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 74.749995
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 133,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 123.75
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 153,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 273.439998
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 173,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 185.290006
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 193,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 235.009995
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 213,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 240.910005
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 233,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 322.263361
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 253,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 174.800003
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 273,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 45.789999
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 293,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 84.330005
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 313,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4619.210197
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 333,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 1006.339965
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 353,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 57.094456
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 373,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 460.51001
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 393,
+        "ticker": "C",
+        "shares": 50,
+        "price": 81.690006
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 413,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 397.660298
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 433,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 352.799988
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 453,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 87.550222
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 473,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 34.782119
+    },
+    {
+        "date": "2025-01-22",
+        "type": "buy",
+        "record_number": 493,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 200.929992
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 14,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 223.660006
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 34,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 170.645956
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 54,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 123.212257
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 74,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 363.270201
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 94,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 437.279999
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 114,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 74.599988
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 134,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 123.040001
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 154,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 277.879971
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 174,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 186.390016
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 194,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 235.419998
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 214,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 240.280003
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 234,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 325.883507
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 254,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 178.5
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 274,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 46.390003
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 294,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 84.73
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 314,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4818.139514
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 334,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 1017.729975
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 354,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 59.144616
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 374,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 459.829987
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 394,
+        "ticker": "C",
+        "shares": 20,
+        "price": 81.980006
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 414,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 406.451369
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 434,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 359.959991
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 454,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 87.910222
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 474,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 35.119533
+    },
+    {
+        "date": "2025-01-23",
+        "type": "sell",
+        "record_number": 494,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 204.029984
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 15,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 222.779996
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 35,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 170.276012
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 55,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 125.022153
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 75,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 362.420129
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 95,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 435.380005
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 115,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 73.780002
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 135,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 122.839996
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 155,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 275.420032
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 175,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 185.080021
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 195,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 234.850006
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 215,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 244.699988
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 235,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 321.353321
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 255,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 176.059998
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 275,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 46.520003
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 295,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 85.789995
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 315,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4764.890145
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 335,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 1020.450067
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 355,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 59.674652
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 375,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 463.190002
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 395,
+        "ticker": "C",
+        "shares": 50,
+        "price": 81.480008
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 415,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 407.681537
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 435,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 367.579987
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 455,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 87.880227
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 475,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 35.260129
+    },
+    {
+        "date": "2025-01-24",
+        "type": "buy",
+        "record_number": 495,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 203.529984
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 16,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 229.859981
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 36,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 176.875058
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 56,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 129.421854
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 76,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 373.160459
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 96,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 438.600006
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 116,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 76.109998
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 136,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 115.010002
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 156,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 282.949961
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 176,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 192.040001
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 196,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 235.419998
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 216,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 202.130004
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 236,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 316.433116
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 256,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 175.160004
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 276,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 47.090004
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 296,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 85.903186
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 316,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4675.359577
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 336,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 1029.939978
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 356,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 60.604731
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 376,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 474.700012
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 396,
+        "ticker": "C",
+        "shares": 20,
+        "price": 81.069998
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 416,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 395.03
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 436,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 367.48999
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 456,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 91.210227
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 476,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 35.831866
+    },
+    {
+        "date": "2025-01-27",
+        "type": "sell",
+        "record_number": 496,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 202.509989
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 17,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 238.260004
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 37,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 174.785377
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 57,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 127.381991
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 77,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 378.400642
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 97,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 442.839996
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 117,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 75.169995
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 137,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 114.169998
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 157,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 280.299963
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 177,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 186.930023
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 197,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 238.149994
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 217,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 207.360007
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 237,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 317.053135
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 257,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 177.779999
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 277,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 46.840002
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 297,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 86.343204
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 317,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4684.679844
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 337,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 1051.199895
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 357,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 58.764588
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 377,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 469.970001
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 397,
+        "ticker": "C",
+        "shares": 50,
+        "price": 79.940005
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 417,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 390.339345
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 437,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 365.380005
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 457,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 89.860222
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 477,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 35.194518
+    },
+    {
+        "date": "2025-01-28",
+        "type": "buy",
+        "record_number": 497,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 203.120003
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 18,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 239.360005
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 38,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 175.235298
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 58,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 127.85196
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 78,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 374.430496
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 98,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 441.679993
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 118,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 75.409997
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 138,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 117.349998
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 158,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 281.680028
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 178,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 183.629993
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 198,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 237.070007
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 218,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 206.350001
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 238,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 315.263064
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 258,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 173.660004
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 278,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 46.749999
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 298,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 86.043193
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 318,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4721.859345
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 338,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 1052.60989
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 358,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 59.054611
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 378,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 469.26001
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 398,
+        "ticker": "C",
+        "shares": 20,
+        "price": 80.629997
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 418,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 393.279738
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 438,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 359.329987
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 458,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 89.570219
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 478,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 35.016437
+    },
+    {
+        "date": "2025-01-29",
+        "type": "sell",
+        "record_number": 498,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 203.91001
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 19,
+        "ticker": "AAPL",
+        "shares": 50,
+        "price": 237.589997
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 39,
+        "ticker": "ABBV",
+        "shares": 50,
+        "price": 175.625251
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 59,
+        "ticker": "ABT",
+        "shares": 50,
+        "price": 128.8019
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 79,
+        "ticker": "ACN",
+        "shares": 50,
+        "price": 380.760678
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 99,
+        "ticker": "ADBE",
+        "shares": 50,
+        "price": 446.0
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 119,
+        "ticker": "AIG",
+        "shares": 50,
+        "price": 75.419991
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 139,
+        "ticker": "AMD",
+        "shares": 50,
+        "price": 118.860001
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 159,
+        "ticker": "AMGN",
+        "shares": 50,
+        "price": 284.019967
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 179,
+        "ticker": "AMT",
+        "shares": 50,
+        "price": 185.820015
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 199,
+        "ticker": "AMZN",
+        "shares": 50,
+        "price": 234.639999
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 219,
+        "ticker": "AVGO",
+        "shares": 50,
+        "price": 215.660015
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 239,
+        "ticker": "AXP",
+        "shares": 50,
+        "price": 318.963218
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 259,
+        "ticker": "BA",
+        "shares": 50,
+        "price": 179.529999
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 279,
+        "ticker": "BAC",
+        "shares": 50,
+        "price": 46.720003
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 299,
+        "ticker": "BK",
+        "shares": 50,
+        "price": 86.503209
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 319,
+        "ticker": "BKNG",
+        "shares": 50,
+        "price": 4774.329725
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 339,
+        "ticker": "BLK",
+        "shares": 50,
+        "price": 1071.520065
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 359,
+        "ticker": "BMY",
+        "shares": 50,
+        "price": 59.144616
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 379,
+        "ticker": "BRK-B",
+        "shares": 50,
+        "price": 472.350006
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 399,
+        "ticker": "C",
+        "shares": 50,
+        "price": 81.859996
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 419,
+        "ticker": "CAT",
+        "shares": 50,
+        "price": 375.027466
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 439,
+        "ticker": "CHTR",
+        "shares": 50,
+        "price": 336.619995
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 459,
+        "ticker": "CL",
+        "shares": 50,
+        "price": 90.890228
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 479,
+        "ticker": "CMCSA",
+        "shares": 50,
+        "price": 31.164253
+    },
+    {
+        "date": "2025-01-30",
+        "type": "buy",
+        "record_number": 499,
+        "ticker": "COF",
+        "shares": 50,
+        "price": 204.619987
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 20,
+        "ticker": "AAPL",
+        "shares": 1,
+        "price": 235.999984
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 40,
+        "ticker": "ABBV",
+        "shares": 2,
+        "price": 183.874086
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 60,
+        "ticker": "ABT",
+        "shares": 3,
+        "price": 127.921963
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 80,
+        "ticker": "ACN",
+        "shares": 4,
+        "price": 384.960796
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 100,
+        "ticker": "ADBE",
+        "shares": 5,
+        "price": 437.450012
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 120,
+        "ticker": "AIG",
+        "shares": 6,
+        "price": 73.660001
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 140,
+        "ticker": "AMD",
+        "shares": 7,
+        "price": 115.949997
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 160,
+        "ticker": "AMGN",
+        "shares": 8,
+        "price": 285.420022
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 180,
+        "ticker": "AMT",
+        "shares": 9,
+        "price": 184.950002
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 200,
+        "ticker": "AMZN",
+        "shares": 10,
+        "price": 237.679993
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 220,
+        "ticker": "AVGO",
+        "shares": 11,
+        "price": 221.270008
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 240,
+        "ticker": "AXP",
+        "shares": 12,
+        "price": 317.46317
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 260,
+        "ticker": "BA",
+        "shares": 13,
+        "price": 176.520004
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 280,
+        "ticker": "BAC",
+        "shares": 14,
+        "price": 46.3
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 300,
+        "ticker": "BK",
+        "shares": 15,
+        "price": 85.933186
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 320,
+        "ticker": "BKNG",
+        "shares": 16,
+        "price": 4737.559439
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 340,
+        "ticker": "BLK",
+        "shares": 17,
+        "price": 1075.499895
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 360,
+        "ticker": "BMY",
+        "shares": 18,
+        "price": 58.954602
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 380,
+        "ticker": "BRK-B",
+        "shares": 19,
+        "price": 468.670013
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 400,
+        "ticker": "C",
+        "shares": 20,
+        "price": 81.429989
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 420,
+        "ticker": "CAT",
+        "shares": 21,
+        "price": 371.486965
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 440,
+        "ticker": "CHTR",
+        "shares": 22,
+        "price": 345.48999
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 460,
+        "ticker": "CL",
+        "shares": 23,
+        "price": 86.700219
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 480,
+        "ticker": "CMCSA",
+        "shares": 24,
+        "price": 31.548536
+    },
+    {
+        "date": "2025-01-31",
+        "type": "sell",
+        "record_number": 500,
+        "ticker": "COF",
+        "shares": 25,
+        "price": 203.709991
+    }
+]

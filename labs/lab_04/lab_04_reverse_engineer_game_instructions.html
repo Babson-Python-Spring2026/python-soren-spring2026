@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lab 04 - Reverse Engineer a Game with AI</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #d8dee6;
+      --accent: #264b7f;
+      --panel: #eef4ff;
+      --panel2: #f8fafc;
+      --warn: #fff7e6;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.58;
+    }
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+    header {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 30px;
+      margin-bottom: 22px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 2rem;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px 24px;
+      margin: 16px 0;
+    }
+    h2 {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 1.35rem;
+    }
+    h3 {
+      margin: 18px 0 8px;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+    p { margin: 8px 0 12px; }
+    ul, ol { margin: 8px 0 12px 24px; }
+    li { margin: 5px 0; }
+    .callout {
+      background: var(--panel);
+      border: 1px solid #c8d8f0;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+    .warning {
+      background: var(--warn);
+      border: 1px solid #ead7a3;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+    .tablewrap {
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.96rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--panel2);
+      color: var(--accent);
+    }
+    code, .mono {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.93rem;
+    }
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Lab 04 - Reverse Engineer a Game with AI</h1>
+      <div class="sub">Computational Thinking with Python</div>
+    </header>
+
+    <section>
+      <h2>Overview</h2>
+      <p>
+        In this lab you will be given a compiled Python game file in <span class="mono">labs/lab_04</span>.
+        Your job is to reverse engineer the game and recreate it as a readable Python source file.
+      </p>
+      <p>
+        You may use AI as part of the process. In fact, that is part of the point of the lab.
+        But AI is not being used here as a shortcut around thinking. It is being used as a tool to help you
+        analyze a system, describe its behavior, and reconstruct that behavior in code.
+      </p>
+      <div class="callout">
+        <strong>Main goal:</strong> Use computational thinking and AI together to infer how the game works,
+        then produce your own Python implementation of that same game.
+      </div>
+    </section>
+
+    <section>
+      <h2>What you are practicing</h2>
+      <ul>
+        <li>Program comprehension</li>
+        <li>System decomposition</li>
+        <li>Reasoning about state, transitions, and invariants</li>
+        <li>Using AI as a structured problem-solving tool</li>
+        <li>Translating observed behavior into Python code</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Your task</h2>
+      <p>You will start with the compiled game file provided in <span class="mono">labs/lab_04</span>.</p>
+      <p>You must determine:</p>
+      <ul>
+        <li>What kind of game it is</li>
+        <li>What the user sees and inputs</li>
+        <li>What data the program must be storing</li>
+        <li>What major operations or functions the game must perform</li>
+        <li>What rules must remain true throughout execution</li>
+      </ul>
+      <p>
+        Then you will write a Python source file that recreates the game.
+      </p>
+    </section>
+
+    <section>
+      <h2>Required deliverables</h2>
+      <p>Add the following two items to <span class="mono">labs/lab_04</span>:</p>
+      <ol>
+        <li>
+          <strong>Your Python source file for the game</strong><br />
+          This should be your reconstructed <span class="mono">.py</span> implementation.
+        </li>
+        <li>
+          <strong>A copy of your AI conversation or conversations</strong><br />
+          This should show how you used AI to help analyze and reconstruct the program.
+        </li>
+      </ol>
+      <div class="warning">
+        Both files are required. Submitting only the Python file is not enough.
+      </div>
+    </section>
+
+    <section>
+      <h2>Important constraint</h2>
+      <p>
+        The goal is <strong>not</strong> to ask AI to generate a generic version of the game from scratch.
+        The goal is to use AI to help you infer and rebuild <strong>this specific program</strong>.
+      </p>
+      <p>
+        In other words, the intellectual task is reverse engineering, not just code generation.
+      </p>
+    </section>
+
+    <section>
+      <h2>How to approach the lab</h2>
+
+      <h3>Step 1: Observe the program</h3>
+      <ul>
+        <li>Run the compiled game file.</li>
+        <li>Try different inputs.</li>
+        <li>Pay attention to prompts, outputs, symbols, win conditions, and loss conditions.</li>
+        <li>Take notes on what you think the program is doing.</li>
+      </ul>
+
+      <h3>Step 2: Infer the system</h3>
+      <p>Before writing code, describe the program in terms of STI:</p>
+      <ul>
+        <li><strong>State:</strong> What information must the program store?</li>
+        <li><strong>Transitions:</strong> What actions cause the state to change?</li>
+        <li><strong>Invariants:</strong> What must remain true while the program runs?</li>
+      </ul>
+
+      <h3>Step 3: Use AI well</h3>
+      <p>Use AI to help you think clearly. For example, you might ask AI to help you:</p>
+      <ul>
+        <li>Identify the likely state of the program</li>
+        <li>List the functions the game probably needs</li>
+        <li>Suggest a decomposition into smaller parts</li>
+        <li>Check whether your reasoning makes sense</li>
+        <li>Help write or revise code once you understand what the code should do</li>
+      </ul>
+
+      <h3>Step 4: Build your version</h3>
+      <ul>
+        <li>Write a readable Python implementation.</li>
+        <li>Use meaningful variable and function names.</li>
+        <li>Test your code carefully.</li>
+        <li>Revise until the behavior matches the original game as closely as possible.</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What your AI transcript should show</h2>
+      <p>Your transcript should make it clear that you were using AI as a problem-solving partner, not as a black box.</p>
+      <p>It should show evidence of things like:</p>
+      <ul>
+        <li>Describing observed behavior</li>
+        <li>Asking AI to help infer state and rules</li>
+        <li>Breaking the game into parts</li>
+        <li>Revising prompts when the first answer is vague or wrong</li>
+        <li>Checking whether generated code actually matches the target program</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>What to avoid</h2>
+      <ul>
+        <li>Do not submit a random or generic version of the game.</li>
+        <li>Do not submit code you do not understand.</li>
+        <li>Do not remove the AI transcript requirement.</li>
+        <li>Do not assume that because AI produced code, that code is correct.</li>
+      </ul>
+      <div class="warning">
+        You are responsible for the final code you submit, whether AI helped produce it or not.
+      </div>
+    </section>
+
+    <section>
+      <h2>How your work will be evaluated</h2>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Category</th>
+              <th>What I am looking for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Behavioral match</td>
+              <td>Your program behaves like the original game in its main features and rules.</td>
+            </tr>
+            <tr>
+              <td>Program understanding</td>
+              <td>Your reconstruction reflects understanding of what the system stores and how it changes.</td>
+            </tr>
+            <tr>
+              <td>Code quality</td>
+              <td>Your Python code is readable, organized, and reasonably well structured.</td>
+            </tr>
+            <tr>
+              <td>Use of AI</td>
+              <td>Your transcript shows thoughtful use of AI as part of analysis and reconstruction.</td>
+            </tr>
+            <tr>
+              <td>Completeness</td>
+              <td>You submitted both required deliverables in the correct folder.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>A good way to think about this lab</h2>
+      <p>
+        Imagine that someone handed you a working program but not the source code.
+        Could you figure out what system it implements?
+      </p>
+      <p>
+        That is what good programmers do all the time. They study behavior, infer structure,
+        identify assumptions, and reconstruct logic.
+      </p>
+      <div class="callout">
+        In this lab, AI can help you. But the real work is still yours:
+        observing carefully, reasoning clearly, and rebuilding the system.
+      </div>
+    </section>
+
+    <footer>
+      Prepared for Lab 04.
+    </footer>
+  </div>
+</body>
+</html>

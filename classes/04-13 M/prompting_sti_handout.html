@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompting as State, Transitions, Invariants</title>
+  <style>
+    :root {
+      --bg: #f6f7fb;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --line: #d8dee6;
+      --accent: #264b7f;
+      --panel: #eef4ff;
+      --panel2: #f8fafc;
+      --code: #111827;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height: 1.58;
+    }
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 80px;
+    }
+    header {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 28px 30px;
+      margin-bottom: 22px;
+    }
+    h1 {
+      margin: 0 0 8px;
+      color: var(--accent);
+      font-size: 2rem;
+    }
+    .sub {
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    section {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 22px 24px;
+      margin: 16px 0;
+    }
+    h2 {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 1.35rem;
+    }
+    h3 {
+      margin: 18px 0 8px;
+      color: var(--accent);
+      font-size: 1.05rem;
+    }
+    p { margin: 8px 0 12px; }
+    ul {
+      margin: 8px 0 12px 24px;
+    }
+    li { margin: 4px 0; }
+    .callout {
+      background: var(--panel);
+      border: 1px solid #c8d8f0;
+      border-radius: 12px;
+      padding: 12px 14px;
+      margin: 12px 0;
+    }
+    .tablewrap {
+      overflow-x: auto;
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.96rem;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px 12px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: var(--panel2);
+      color: var(--accent);
+    }
+    pre {
+      background: var(--code);
+      color: #f9fafb;
+      border-radius: 12px;
+      padding: 14px 16px;
+      overflow-x: auto;
+      font-size: 0.93rem;
+      line-height: 1.45;
+      margin: 10px 0 14px;
+    }
+    code {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 0.93rem;
+    }
+    .goodbad {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin: 10px 0 14px;
+    }
+    .box {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px 14px;
+      background: var(--panel2);
+    }
+    .label {
+      font-family: Arial, sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    footer {
+      margin-top: 24px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+    @media (max-width: 760px) {
+      .goodbad { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>Prompting as State, Transitions, Invariants</h1>
+      <div class="sub">A computational-thinking view of prompting</div>
+    </header>
+
+    <section>
+      <h2>Core idea</h2>
+      <p>Prompting can be framed the same way you frame programming problems:</p>
+      <div class="callout">
+        <strong>Prompting = building a system using State, Transitions, and Invariants.</strong>
+      </div>
+      <p>This makes prompting feel less like “magic phrasing” and more like system design.</p>
+    </section>
+
+    <section>
+      <h2>1. State — What exists right now?</h2>
+      <p>State is what you tell the model before it starts working. You are defining the objects, the structure, and the representation.</p>
+
+      <h3>Example</h3>
+      <pre><code>You are generating a transcript.
+
+The input consists of:
+- USER messages
+- AGENT messages
+
+Each message must be preserved exactly.</code></pre>
+
+      <div class="goodbad">
+        <div class="box">
+          <div class="label">Bad</div>
+          <pre><code>Make this into HTML</code></pre>
+        </div>
+        <div class="box">
+          <div class="label">Better</div>
+          <pre><code>The input is a sequence of USER and AGENT turns.
+Each turn must remain unchanged.</code></pre>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>2. Transitions — What is allowed to happen?</h2>
+      <p>Transitions are the operations the model is allowed to perform. This is your algorithm.</p>
+
+      <h3>Example</h3>
+      <pre><code>Perform the following steps:
+
+1. Remove any line that begins with "Thought"
+2. Preserve all other text exactly
+3. Wrap each USER turn in &lt;div class="user"&gt;
+4. Wrap each AGENT turn in &lt;div class="agent"&gt;</code></pre>
+
+      <div class="callout">
+        If you do not define transitions, the model invents them.
+      </div>
+    </section>
+
+    <section>
+      <h2>3. Invariants — What must never change?</h2>
+      <p>Invariants are the guardrails. These are often the most important part of a strong prompt.</p>
+
+      <h3>Example</h3>
+      <pre><code>Invariants:
+- Do not change wording
+- Do not reorder messages
+- Do not summarize
+- Do not combine turns</code></pre>
+
+      <p>If an output “sounds nicer” but violates these rules, it is still wrong.</p>
+    </section>
+
+    <section>
+      <h2>4. Output contract — What must the result look like?</h2>
+      <p>This is similar to a type system. You specify the required form of the output.</p>
+
+      <h3>Example</h3>
+      <pre><code>Output must be:
+- a single valid HTML file
+- with sections in this exact format:
+
+&lt;section class="user"&gt;
+...
+&lt;/section&gt;</code></pre>
+    </section>
+
+    <section>
+      <h2>Putting it together</h2>
+      <p>Here is a full STI-style prompt:</p>
+      <pre><code>STATE:
+The input is a sequence of messages labeled USER or AGENT.
+
+TRANSITIONS:
+1. Remove any line starting with "Thought"
+2. Do not modify any other content
+3. Wrap USER messages in &lt;div class="user"&gt;
+4. Wrap AGENT messages in &lt;div class="agent"&gt;
+
+INVARIANTS:
+- Do not change wording
+- Do not reorder messages
+- Do not summarize
+- Do not merge turns
+
+OUTPUT:
+Return a complete HTML file.</code></pre>
+    </section>
+
+    <section>
+      <h2>Useful advanced patterns</h2>
+
+      <h3>Pause control</h3>
+      <pre><code>Wait until I say "done" before processing</code></pre>
+
+      <h3>Verification step</h3>
+      <pre><code>First show me how you parsed the turns.
+Do not generate final output yet.</code></pre>
+
+      <h3>Mode switching</h3>
+      <pre><code>You are now a strict parser, not a writer.</code></pre>
+
+      <h3>Error detection</h3>
+      <pre><code>If anything is ambiguous, stop and ask.</code></pre>
+
+      <h3>Idempotence</h3>
+      <pre><code>Running this twice should produce identical output.</code></pre>
+    </section>
+
+    <section>
+      <h2>Programming ideas and prompting ideas</h2>
+      <div class="tablewrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Programming concept</th>
+              <th>Prompting equivalent</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>State</td><td>Context / input</td></tr>
+            <tr><td>Transition</td><td>Instructions / operations</td></tr>
+            <tr><td>Invariant</td><td>Constraints / rules that must hold</td></tr>
+            <tr><td>Function</td><td>Prompt</td></tr>
+            <tr><td>Type</td><td>Output format</td></tr>
+            <tr><td>Debugging</td><td>Iterative prompting and checking</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <h2>What students should learn</h2>
+      <ul>
+        <li>AI is not helpful just because it is powerful. It becomes useful when the problem is represented clearly.</li>
+        <li>Vague prompts create vague systems.</li>
+        <li>Good prompting depends on explicit state, clear transitions, and strong invariants.</li>
+        <li>Prompting can be taught as a computational-thinking skill, not just as “tips and tricks.”</li>
+      </ul>
+      <div class="callout">
+        Better prompts come from better system design.
+      </div>
+    </section>
+
+    <footer>
+      Prepared as a classroom handout.
+    </footer>
+  </div>
+</body>
+</html>

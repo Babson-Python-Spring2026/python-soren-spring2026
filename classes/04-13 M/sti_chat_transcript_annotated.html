@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>STI Chat Transcript with Teaching Notes</title>
+<style>
+  :root {
+    --bg:#f6f7fb;
+    --paper:#ffffff;
+    --ink:#1f2937;
+    --muted:#6b7280;
+    --line:#d8dee6;
+    --user:#eef6ff;
+    --agent:#ffffff;
+    --accent:#264b7f;
+    --note:#fff8e8;
+  }
+  * { box-sizing:border-box; }
+  body {
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:Georgia, "Times New Roman", serif;
+    line-height:1.58;
+  }
+  .page {
+    max-width:1280px;
+    margin:0 auto;
+    padding:28px 20px 80px;
+  }
+  header {
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:28px 30px;
+    margin-bottom:24px;
+  }
+  h1 {
+    margin:0 0 8px;
+    color:var(--accent);
+    font-size:2rem;
+  }
+  .sub {
+    color:var(--muted);
+    font-size:1rem;
+  }
+  .note {
+    margin-top:14px;
+    padding:12px 14px;
+    border:1px solid var(--line);
+    border-radius:12px;
+    background:#f8fafc;
+  }
+  .row {
+    display:grid;
+    grid-template-columns: minmax(0, 1fr) 320px;
+    gap:18px;
+    align-items:start;
+    margin:16px 0;
+  }
+  .turn .label {
+    font-family:Arial, sans-serif;
+    font-size:.82rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--muted);
+    font-weight:700;
+    margin:0 0 6px 10px;
+  }
+  .bubble {
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:18px 20px;
+    background:var(--paper);
+    box-shadow:0 1px 2px rgba(0,0,0,.04);
+  }
+  .user .bubble { background:var(--user); }
+  .agent .bubble { background:var(--agent); }
+  p { margin:0 0 12px; }
+  .annotation {
+    position:sticky;
+    top:16px;
+    border:1px solid #ead9a6;
+    background:var(--note);
+    border-radius:16px;
+    padding:14px 16px;
+  }
+  .annotation.empty {
+    visibility:hidden;
+  }
+  .ann-label {
+    font-family:Arial, sans-serif;
+    font-size:.76rem;
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    color:var(--muted);
+    font-weight:700;
+    margin-bottom:8px;
+  }
+  .ann-title {
+    font-weight:700;
+    color:var(--accent);
+    margin-bottom:8px;
+    font-size:1rem;
+  }
+  .ann-body {
+    font-size:.96rem;
+  }
+  footer {
+    margin-top:26px;
+    text-align:center;
+    color:var(--muted);
+    font-size:.9rem;
+  }
+  @media (max-width: 980px) {
+    .row {
+      grid-template-columns: 1fr;
+    }
+    .annotation, .annotation.empty {
+      visibility:visible;
+      position:static;
+    }
+  }
+</style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>STI Chat Transcript with Teaching Notes</h1>
+      <div class="sub">A transcript with commentary on good prompting and system-design moves</div>
+      <div class="note">
+        The main conversation is preserved on the left. Selected turns include short teaching notes on the right explaining
+        what students should notice about structure, ambiguity control, and computational thinking.
+      </div>
+    </header>
+    
+    <div class="row">
+      <section class="turn user">
+        <div class="label">USER</div>
+        <div class="bubble">
+          <p>besides shift enter what other useful chatbox commands are there</p>
+        </div>
+      </section>
+      
+        <aside class="annotation">
+            <div class="ann-label">Teaching note</div>
+            <div class="ann-title">Sets the task boundary</div>
+            <div class="ann-body">The user asks a specific question instead of giving a vague request. This narrows the search space immediately.</div>
+        </aside>
+        
+    </div>
+    
+    <div class="row">
+      <section class="turn agent">
+        <div class="label">AGENT</div>
+        <div class="bubble">
+          <p>Good question—but let’s be precise so you don’t get misled.</p>
+<p>👉 There really aren’t many “commands” in the chat box in the sense of hidden power features.</p>
+<p>What does exist falls into three categories:</p>
+<p>🧠 1. Keyboard shortcuts (actual useful ones)<br>Basic<br>Enter → send message<br>Shift + Enter → new line (you already know)<br>Editing / navigation (very useful)<br>↑ (up arrow) → jump to your previous message (in some interfaces)<br>Ctrl/Cmd + Enter → send (sometimes enabled depending on platform)<br>Ctrl/Cmd + Z → undo typing</p>
+<p>👉 These are minor, but helpful for long prompts.</p>
+<p>⚙️ 2. “Prompt structuring tricks” (these are the real power tools)</p>
+<p>These are not commands—but they act like commands.</p>
+<p>A. Role labeling (what you just did)<br>USER:<br>AGENT:</p>
+<p>👉 This is actually one of the most powerful techniques you used today.</p>
+<p>B. Explicit instructions<br>Step 1:<br>Step 2:<br>Do not do X<br>Only do Y</p>
+<p>👉 Prevents drift (you saw how important that was)</p>
+<p>C. Format forcing<br>Output exactly in this format:<br>...<br>D. Chunking control<br>Wait for me to say &quot;done&quot;</p>
+<p>👉 You used this—very effective.</p>
+<p>E. Mode setting<br>Act as a strict parser<br>Do not summarize<br>Preserve wording exactly</p>
+<p>👉 This avoids the “AI smoothing” problem you ran into</p>
+<p>🔧 3. Special UI features (not really commands)</p>
+<p>Depending on platform:</p>
+<p>file uploads (what you used)<br>code blocks with ```<br>download links (like the HTML file)<br>canvas / document editing (if enabled)<br>🚫 What does NOT exist (important)</p>
+<p>There are no hidden slash commands like:</p>
+<p>/export<br>/transcript<br>/verbatim</p>
+<p>👉 You have to simulate these with structured prompts</p>
+<p>💡 The real takeaway (this matters)</p>
+<p>What you discovered today is actually the key idea:</p>
+<p>The most powerful “commands” are not keyboard shortcuts<br>—they are constraints you impose on the model</p>
+<p>Examples from your session:</p>
+<p>“faithful transcript” ❌ (too vague)<br>“USER / AGENT labeling” ✅ (works)<br>“no reconstruction” ✅<br>“remove Thought lines” ✅<br>👍 My recommendation for your course</p>
+<p>You might actually want to teach students:</p>
+<p>“Prompting as control structures”</p>
+<p>Like:</p>
+<p>sequencing → like loops<br>constraints → like invariants<br>formatting → like types</p>
+<p>👉 It fits perfectly with your STI framework</p>
+<p>🔥 If you want</p>
+<p>I can give you:</p>
+<p>👉 a “cheat sheet” of prompting patterns<br>framed explicitly as:</p>
+<p>state<br>transitions<br>invariants</p>
+<p>That would plug directly into your course.</p>
+        </div>
+      </section>
+      
+        <aside class="annotation">
+            <div class="ann-label">Teaching note</div>
+            <div class="ann-title">Answers cleanly, then offers a next step</div>
+            <div class="ann-body">The response solves the immediate question first and only then suggests a follow-up. That keeps control with the user.</div>
+        </aside>
+        
+    </div>
+    
+    <div class="row">
+      <section class="turn user">
+        <div class="label">USER</div>
+        <div class="bubble">
+          <p>go</p>
+        </div>
+      </section>
+      
+        <aside class="annotation">
+            <div class="ann-label">Teaching note</div>
+            <div class="ann-title">Escalates from facts to system reasoning</div>
+            <div class="ann-body">The user shifts from &#x27;what are the functions?&#x27; to &#x27;what should this function really do?&#x27; That is a move from syntax to design.</div>
+        </aside>
+        
+    </div>
+    
+    <div class="row">
+      <section class="turn agent">
+        <div class="label">AGENT</div>
+        <div class="bubble">
+          <p>Good—this fits perfectly with what you’re teaching.</p>
+<p>I’m going to frame this exactly in your language:</p>
+<p>Prompting = building a system using State, Transitions, Invariants (STI)</p>
+<p>🧠 PROMPTING CHEAT SHEET (STI FRAMEWORK)<br>1. 🟦 STATE — “What exists right now?”</p>
+<p>This is what you tell the model before it starts working.</p>
+<p>Examples<br>You are generating a transcript.</p>
+<p>The input consists of:<br>- USER messages<br>- AGENT messages</p>
+<p>Each message must be preserved exactly.</p>
+<p>👉 You are defining:</p>
+<p>the objects<br>the structure<br>the representation<br>Good vs Bad</p>
+<p>❌ Bad (underspecified state)</p>
+<p>Make this into HTML</p>
+<p>✅ Good (explicit state)</p>
+<p>The input is a sequence of USER and AGENT turns.<br>Each turn must remain unchanged.<br>2. 🟨 TRANSITIONS — “What is allowed to happen?”</p>
+<p>These are the operations the model is allowed to perform.</p>
+<p>Examples<br>Perform the following steps:</p>
+<p>1. Remove any line that begins with &quot;Thought&quot;<br>2. Preserve all other text exactly<br>3. Wrap each USER turn in a &lt;div class=&quot;user&quot;&gt;<br>4. Wrap each AGENT turn in a &lt;div class=&quot;agent&quot;&gt;</p>
+<p>👉 This is your algorithm</p>
+<p>Key idea</p>
+<p>If you don’t define transitions, the model invents them</p>
+<p>That’s what happened earlier:</p>
+<p>it summarized<br>it compressed<br>it “improved” text<br>3. 🟥 INVARIANTS — “What must NEVER change?”</p>
+<p>This is the most important—and most underused.</p>
+<p>Examples<br>Invariants:<br>- Do not change wording<br>- Do not reorder messages<br>- Do not summarize<br>- Do not combine turns</p>
+<p>👉 These are your guardrails</p>
+<p>Your transcript problem was an invariant failure</p>
+<p>You wanted:</p>
+<p>exact wording<br>exact order</p>
+<p>But didn’t explicitly enforce it at first.</p>
+<p>4. 🟩 OUTPUT CONTRACT — “What must the result look like?”</p>
+<p>Think of this like a type system</p>
+<p>Example<br>Output must be:<br>- a single valid HTML file<br>- with sections in this exact format:</p>
+<p>&lt;section class=&quot;user&quot;&gt;<br>...<br>&lt;/section&gt;<br>Why this matters</p>
+<p>Without this, the model:</p>
+<p>changes formatting<br>mixes styles<br>introduces inconsistencies<br>🔁 Putting it together (full STI prompt)</p>
+<p>Here is a perfect version of what you were trying to do:</p>
+<p>STATE:<br>The input is a sequence of messages labeled USER or AGENT.</p>
+<p>TRANSITIONS:<br>1. Remove any line starting with &quot;Thought&quot;<br>2. Do not modify any other content<br>3. Wrap USER messages in &lt;div class=&quot;user&quot;&gt;<br>4. Wrap AGENT messages in &lt;div class=&quot;agent&quot;&gt;</p>
+<p>INVARIANTS:<br>- Do not change wording<br>- Do not reorder messages<br>- Do not summarize<br>- Do not merge turns</p>
+<p>OUTPUT:<br>Return a complete HTML file.<br>🔥 Advanced patterns (very useful)<br>Pattern 1: “Pause control”<br>Wait until I say &quot;done&quot; before processing</p>
+<p>👉 You used this — excellent</p>
+<p>Pattern 2: “Verification step”<br>First show me how you parsed the turns.<br>Do not generate final output yet.</p>
+<p>👉 This avoids silent errors</p>
+<p>Pattern 3: “Mode switching”<br>You are now a strict parser, not a writer.</p>
+<p>👉 Prevents creativity</p>
+<p>Pattern 4: “Error detection”<br>If anything is ambiguous, stop and ask<br>Pattern 5: “Idempotence”<br>Running this twice should produce identical output</p>
+<p>👉 This mirrors your code design thinking</p>
+<p>🧠 Mapping to your course (this is powerful)<br>Programming Concept	Prompting Equivalent<br>State	Context / Input<br>Transition	Instructions<br>Invariant	Constraints<br>Function	Prompt<br>Type	Output format<br>Debugging	Iterative prompting<br>🎯 What students should learn</p>
+<p>The key idea:</p>
+<p>AI is not “smart” — it is a system that follows poorly or well specified rules</p>
+<p>And:</p>
+<p>Better prompts = better system design</p>
+<p>👍 My recommendation for you</p>
+<p>You could literally teach:</p>
+<p>“Prompting as Programming”</p>
+<p>Week structure:</p>
+<p>Week 1: State (representation)<br>Week 2: Transitions (algorithms)<br>Week 3: Invariants (correctness)<br>Week 4: Debugging prompts<br>🚀 If you want next</p>
+<p>I can:</p>
+<p>turn this into a 1–2 page PDF handout<br>create in-class exercises<br>or build a lab where students break bad prompts and fix them</p>
+<p>This fits extremely well with everything you’re doing.</p>
+        </div>
+      </section>
+      
+        <aside class="annotation">
+            <div class="ann-label">Teaching note</div>
+            <div class="ann-title">Decomposes the problem</div>
+            <div class="ann-body">The reply organizes the answer into assumptions, inputs, outputs, correctness, and strategy. This is a good example of structured analysis.</div>
+        </aside>
+        
+    </div>
+    
+    <footer>Prepared for classroom discussion.</footer>
+  </div>
+</body>
+</html>
