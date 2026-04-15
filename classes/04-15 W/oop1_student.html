@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OOP Unit - Class 1 - Student Handout</title>
+  <style>
+    :root{
+      --ink:#1f2937;
+      --muted:#4b5563;
+      --line:#d1d5db;
+      --blue:#1d4ed8;
+      --bluebg:#eff6ff;
+      --green:#047857;
+      --greenbg:#ecfdf5;
+      --amber:#b45309;
+      --amberbg:#fffbeb;
+      --red:#b91c1c;
+      --redbg:#fef2f2;
+      --graybg:#f9fafb;
+    }
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.55;
+      max-width:1020px;
+      margin:36px auto;
+      padding:0 24px 64px 24px;
+      background:white;
+    }
+    h1{
+      font-size:2rem;
+      margin-bottom:8px;
+      border-bottom:4px solid var(--ink);
+      padding-bottom:10px;
+    }
+    h2{
+      margin-top:34px;
+      background:var(--bluebg);
+      border-left:8px solid var(--blue);
+      padding:10px 12px;
+      font-size:1.45rem;
+    }
+    h3{
+      margin-top:24px;
+      color:var(--blue);
+      font-size:1.12rem;
+    }
+    p, li{
+      font-size:1rem;
+    }
+    .subtitle{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+    .box{
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:14px 16px;
+      margin:14px 0;
+      background:var(--graybg);
+    }
+    .motivation{ background:var(--amberbg); border-left:8px solid var(--amber); }
+    .discussion{ background:#ecfeff; border-left:8px solid #0891b2; }
+    .exercise{ background:var(--greenbg); border-left:8px solid var(--green); }
+    .debug{ background:var(--redbg); border-left:8px solid var(--red); }
+    .title{
+      font-weight:bold;
+      margin-bottom:6px;
+      color:#111827;
+    }
+    pre{
+      background:#111827;
+      color:#f9fafb;
+      padding:14px;
+      border-radius:10px;
+      overflow-x:auto;
+      white-space:pre-wrap;
+      font-size:0.95rem;
+      line-height:1.45;
+    }
+    code{
+      font-family:Consolas, Menlo, Monaco, monospace;
+      font-size:0.95rem;
+    }
+    table{
+      border-collapse:collapse;
+      width:100%;
+      margin:14px 0;
+    }
+    th, td{
+      border:1px solid var(--line);
+      padding:10px 12px;
+      vertical-align:top;
+      text-align:left;
+    }
+    th{
+      background:#f3f4f6;
+    }
+    .twocol{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width: 760px){
+      .twocol{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>OOP Unit — Class 1</h1>
+<div class="subtitle">
+  <strong>Course:</strong> Computational Thinking with AI and Python<br>
+  <strong>Student Handout:</strong> use this during lecture and complete the coding work in VS Code
+</div>
+
+<div class="box motivation">
+  <div class="title">Main Goal</div>
+  Today we begin object-oriented programming. The goal is to see OOP as a continuation of the systems we have already been building with dictionaries, lists, and functions.
+</div>
+
+<h2>1. Opening Motivation</h2>
+
+<p>
+Up to this point, we have built systems using data structures and functions. That works. But as systems get larger, we often want a cleaner way to keep state and behavior together.
+</p>
+
+<div class="box discussion">
+  <div class="title">Class Discussion</div>
+  <ol>
+    <li>In our earlier portfolio work, where did the state live?</li>
+    <li>Where did the logic that updated the state live?</li>
+    <li>What became awkward once we had many functions and many data structures?</li>
+    <li>What kinds of mistakes were easy to make?</li>
+    <li>What would it mean for the system itself to own the data it needs?</li>
+  </ol>
+</div>
+
+<div class="box motivation">
+  <div class="title">Motivating Example</div>
+<pre>position = {
+    "ticker": "AAPL",
+    "shares": 100,
+    "avg_cost": 150.00
+}
+
+def buy(position, shares, price):
+    position["avg_cost"] = (
+        position["shares"] * position["avg_cost"] + shares * price
+    ) / (position["shares"] + shares)
+    position["shares"] += shares
+</pre>
+</div>
+
+<div class="box discussion">
+  <div class="title">Think About It</div>
+  <ul>
+    <li>What is the state here?</li>
+    <li>What is the transition?</li>
+    <li>What invariant might we want to protect?</li>
+    <li>What if a different function updates <code>shares</code> incorrectly?</li>
+  </ul>
+</div>
+
+<h2>2. Core Vocabulary</h2>
+
+<h3>Class</h3>
+<p>A class is a blueprint for creating objects.</p>
+
+<h3>Object</h3>
+<p>An object is a particular instance of a class.</p>
+
+<h3>Attributes</h3>
+<p>Attributes are values stored inside an object. They represent the object’s state.</p>
+
+<h3>Methods</h3>
+<p>Methods are functions attached to a class that operate on an object’s state.</p>
+
+<h3><code>__init__</code></h3>
+<p><code>__init__</code> runs when an object is created and sets up the object’s initial state.</p>
+
+<h3><code>self</code></h3>
+<p>Every instance method takes <code>self</code> first. <code>self</code> means the object the method is working on.</p>
+
+<div class="box discussion">
+  <div class="title">Quick Check</div>
+  <ul>
+    <li>What is the difference between a class and an object?</li>
+    <li>If attributes are state, what are methods?</li>
+    <li>What does <code>self</code> mean in this course?</li>
+  </ul>
+</div>
+
+<h2>3. First Live Example</h2>
+
+<pre>class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def birthday(self):
+        self.age += 1
+
+    def describe(self):
+        return f"{self.name} is {self.age} years old."
+
+
+dog1 = Dog("Fido", 3)
+dog2 = Dog("Spot", 5)
+
+print(dog1.describe())
+dog1.birthday()
+print(dog1.describe())
+print(dog2.describe())
+</pre>
+
+<div class="box discussion">
+  <div class="title">Questions</div>
+  <ul>
+    <li>What is the class?</li>
+    <li>What are the objects?</li>
+    <li>What are the attributes?</li>
+    <li>What are the methods?</li>
+    <li>Why does changing one object not automatically change the other?</li>
+  </ul>
+</div>
+
+<div class="box exercise">
+  <div class="title">Predict the Output 1</div>
+<pre>class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def birthday(self):
+        self.age += 1
+
+dog1 = Dog("Fido", 3)
+dog2 = Dog("Spot", 5)
+
+dog1.birthday()
+print(dog1.age)
+print(dog2.age)
+</pre>
+  Write your prediction before running the code.
+</div>
+
+<div class="box exercise">
+  <div class="title">Predict the Output 2</div>
+<pre>class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+dog1 = Dog("Fido", 3)
+dog2 = Dog("Spot", 5)
+
+dog2.name = "Rex"
+print(dog1.name)
+print(dog2.name)
+</pre>
+  Write your prediction before running the code.
+</div>
+
+<h2>4. Minimal Rules</h2>
+
+<table>
+  <tr>
+    <th>Rule</th>
+    <th>Meaning</th>
+  </tr>
+  <tr>
+    <td>Every instance method begins with <code>self</code></td>
+    <td>The method is working on a particular object.</td>
+  </tr>
+  <tr>
+    <td>Attributes are usually written as <code>self.attribute_name</code></td>
+    <td>The data is stored on the object.</td>
+  </tr>
+  <tr>
+    <td><code>__init__</code> sets the object up</td>
+    <td>This is where we establish initial state.</td>
+  </tr>
+  <tr>
+    <td>A method call uses dot notation</td>
+    <td><code>dog1.birthday()</code> asks that object to perform that action.</td>
+  </tr>
+</table>
+
+<h2>5. Guided Build 1 — Book</h2>
+
+<pre>class Book:
+    def __init__(self, title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+
+    def describe(self):
+        return f"{self.title} by {self.author}, {self.pages} pages"
+</pre>
+
+<div class="box discussion">
+  <div class="title">Questions</div>
+  <ul>
+    <li>What are the three pieces of state?</li>
+    <li>What does <code>describe</code> do?</li>
+    <li>Does <code>describe</code> change state?</li>
+  </ul>
+</div>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 1 — Build the Book Class Yourself</div>
+  In VS Code, write a class called <code>Book</code> from scratch.
+  <ul>
+    <li>attributes: <code>title</code>, <code>author</code>, <code>pages</code></li>
+    <li><code>__init__</code></li>
+    <li>a method called <code>describe</code></li>
+  </ul>
+</div>
+
+<div class="box debug">
+  <div class="title">Debug Task 1</div>
+<pre>class Book:
+    def __init__(title, author, pages):
+        self.title = title
+        self.author = author
+        self.pages = pages
+</pre>
+  Fix the code and explain the mistake.
+</div>
+
+<div class="box debug">
+  <div class="title">Debug Task 2</div>
+<pre>class Book:
+    def __init__(self, title, author, pages):
+        title = title
+        author = author
+        pages = pages
+</pre>
+  Fix the code and explain why it does not work as intended.
+</div>
+
+<h2>6. Guided Build 2 — Rectangle</h2>
+
+<pre>class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+</pre>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 2 — Prediction and Testing</div>
+  In VS Code:
+  <ol>
+    <li>Create a rectangle object.</li>
+    <li>Print its area.</li>
+    <li>Print its perimeter.</li>
+    <li>Create a second rectangle with different dimensions.</li>
+    <li>Verify that the objects have independent state.</li>
+  </ol>
+</div>
+
+<div class="box discussion">
+  <div class="title">Questions</div>
+  <ul>
+    <li>Do <code>area</code> and <code>perimeter</code> change the state?</li>
+    <li>Are these still methods even though they only read state?</li>
+    <li>What invariant might we want here?</li>
+  </ul>
+</div>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 3 — Add One Method</div>
+  Add one of the following methods:
+  <ul>
+    <li><code>is_square()</code></li>
+    <li><code>double_size()</code></li>
+    <li><code>describe()</code></li>
+  </ul>
+</div>
+
+<h2>7. Guided Build 3 — Counter</h2>
+
+<pre>class Counter:
+    def __init__(self, start):
+        self.count = start
+
+    def increment(self):
+        self.count += 1
+
+    def decrement(self):
+        self.count -= 1
+
+    def reset(self):
+        self.count = 0
+</pre>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 4 — Trace the State</div>
+  Predict the final value before you run the code:
+<pre>c = Counter(10)
+c.increment()
+c.increment()
+c.decrement()
+c.reset()
+c.increment()
+print(c.count)
+</pre>
+</div>
+
+<div class="box discussion">
+  <div class="title">Questions</div>
+  <ul>
+    <li>Why is this a better example than just using a plain integer?</li>
+    <li>What makes this object stateful?</li>
+    <li>What transitions are available?</li>
+    <li>What invariant might we add if we wanted the counter never to go below zero?</li>
+  </ul>
+</div>
+
+<div class="box motivation">
+  <div class="title">Interesting Observation</div>
+  Integers are immutable. When we do:
+<pre>self.count += 1</pre>
+  the old integer is not being changed in place. Instead, a new value is created and the object’s attribute is updated to refer to that new value.
+</div>
+
+<div class="box debug">
+  <div class="title">Debug Task 3</div>
+<pre>class Counter:
+    def __init__(self, start):
+        self.count = start
+
+    def increment():
+        self.count += 1
+</pre>
+  Fix the code and explain why it fails.
+</div>
+
+<h2>8. Self Practice Block</h2>
+
+<div class="box exercise">
+  <div class="title">Quick Rewrite 1</div>
+  Rewrite this function as a method:
+<pre>def add_one(x):
+    x.value += 1
+</pre>
+  Use a class called <code>Box</code> with one attribute called <code>value</code>.
+</div>
+
+<div class="box exercise">
+  <div class="title">Quick Rewrite 2</div>
+  Turn this dictionary into a class:
+<pre>student = {
+    "name": "Ana",
+    "score": 92
+}
+</pre>
+  Add a method that returns a sentence describing the student.
+</div>
+
+<div class="box exercise">
+  <div class="title">Quick Rewrite 3</div>
+  Turn this into a class named <code>BankAccount</code>:
+<pre>balance = 1000
+
+def deposit(balance, amount):
+    return balance + amount
+</pre>
+  Make the method actually update the object’s balance.
+</div>
+
+<h2>9. Common Mistakes Mini-Lab</h2>
+
+<div class="twocol">
+
+<div class="box debug">
+  <div class="title">Mistake A</div>
+<pre>class Dog:
+    def __init__(name, age):
+        self.name = name
+        self.age = age
+</pre>
+  Fix it.
+</div>
+
+<div class="box debug">
+  <div class="title">Mistake B</div>
+<pre>class Dog:
+    def __init__(self, name, age):
+        name = name
+        age = age
+</pre>
+  Fix it.
+</div>
+
+<div class="box debug">
+  <div class="title">Mistake C</div>
+<pre>class Dog:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def birthday(self):
+        age += 1
+</pre>
+  Fix it.
+</div>
+
+<div class="box debug">
+  <div class="title">Mistake D</div>
+<pre>class Dog:
+    def __init__(self, name):
+        self.name = name
+
+dog = Dog()
+</pre>
+  Explain what will happen.
+</div>
+
+<div class="box debug">
+  <div class="title">Mistake E</div>
+<pre>class Dog:
+    def __init__(self, name):
+        self.name = name
+
+dog = Dog("Fido")
+print(name)
+</pre>
+  Explain what is wrong.
+</div>
+
+<div class="box debug">
+  <div class="title">Mistake F</div>
+<pre>class Dog:
+    def __init__(self, name):
+        self.name = name
+
+    def rename(self, new_name):
+        name = new_name
+</pre>
+  Fix it.
+</div>
+
+</div>
+
+<h2>10. Bridge Back to the Portfolio System</h2>
+
+<pre>class PortfolioSystem:
+    def __init__(self, prices_dates, prices_tickers, ticker_universe, mkt_dates):
+        self.prices_dates = prices_dates
+        self.prices_tickers = prices_tickers
+        self.ticker_universe = ticker_universe
+        self.mkt_dates = mkt_dates
+
+    def get_num_market_dates(self):
+        return len(self.mkt_dates)
+
+    def get_num_tickers(self):
+        return len(self.ticker_universe)
+
+    def is_valid_ticker(self, ticker):
+        return ticker in self.ticker_universe
+</pre>
+
+<div class="box discussion">
+  <div class="title">Questions</div>
+  <ul>
+    <li>What is the state of this object?</li>
+    <li>Which methods simply report on the state?</li>
+    <li>Why might this be cleaner than passing the same data to many functions?</li>
+    <li>How does this connect to STI?</li>
+  </ul>
+</div>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 5 — PortfolioSystemLite</div>
+  Build a smaller version with only:
+  <ul>
+    <li><code>ticker_universe</code></li>
+    <li><code>mkt_dates</code></li>
+  </ul>
+  Required methods:
+  <ul>
+    <li><code>get_num_tickers()</code></li>
+    <li><code>get_num_market_dates()</code></li>
+    <li><code>is_valid_ticker(ticker)</code></li>
+  </ul>
+</div>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 6 — Add a Method</div>
+  Add one more method of your own choice:
+  <ul>
+    <li><code>is_market_date(date)</code></li>
+    <li><code>get_first_market_date()</code></li>
+    <li><code>get_last_market_date()</code></li>
+    <li><code>describe()</code></li>
+  </ul>
+</div>
+
+<div class="box debug">
+  <div class="title">Debug Task 4 — PortfolioSystem</div>
+<pre>class PortfolioSystem:
+    def __init__(self, ticker_universe, mkt_dates):
+        ticker_universe = ticker_universe
+        mkt_dates = mkt_dates
+
+    def get_num_tickers(self):
+        return len(self.ticker_universe)
+</pre>
+  Fix the code and explain the problem.
+</div>
+
+<h2>11. Translating Old Code into OOP</h2>
+
+<div class="box exercise">
+  <div class="title">Translate to OOP 1</div>
+  Start with:
+<pre>position = {
+    "ticker": "AAPL",
+    "shares": 100,
+    "avg_cost": 150.0
+}
+</pre>
+  Design a class called <code>Position</code> with:
+  <ul>
+    <li><code>ticker</code></li>
+    <li><code>shares</code></li>
+    <li><code>avg_cost</code></li>
+  </ul>
+  Add a simple <code>describe()</code> method.
+</div>
+
+<div class="box exercise">
+  <div class="title">Translate to OOP 2</div>
+  Start with:
+<pre>cash_balance = 5000
+
+def contribution(cash_balance, amount):
+    return cash_balance + amount
+</pre>
+  Turn this into a <code>CashAccount</code> class with a method that changes the balance.
+</div>
+
+<div class="box exercise">
+  <div class="title">Translate to OOP 3</div>
+  Start with:
+<pre>def is_valid_ticker(ticker, universe):
+    return ticker in universe
+</pre>
+  Decide where this belongs:
+  <ul>
+    <li>a system-level class</li>
+    <li>a portfolio class</li>
+    <li>somewhere else</li>
+  </ul>
+  Be ready to justify your answer.
+</div>
+
+<h2>12. STI Tie-Back</h2>
+
+<table>
+  <tr>
+    <th>STI Idea</th>
+    <th>OOP Version</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>State</td>
+    <td>Attributes</td>
+    <td><code>self.shares</code>, <code>self.avg_cost</code>, <code>self.mkt_dates</code></td>
+  </tr>
+  <tr>
+    <td>Transition</td>
+    <td>Method</td>
+    <td><code>increment()</code>, <code>deposit()</code>, <code>is_valid_ticker()</code></td>
+  </tr>
+  <tr>
+    <td>Invariant</td>
+    <td>Rule the object should protect</td>
+    <td>valid shares, valid dates, nonnegative count</td>
+  </tr>
+</table>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 7 — Identify the STI</div>
+  For each of these classes:
+  <ul>
+    <li><code>Counter</code></li>
+    <li><code>Rectangle</code></li>
+    <li><code>PortfolioSystemLite</code></li>
+  </ul>
+  Write:
+  <ol>
+    <li>the state</li>
+    <li>one method that reads state</li>
+    <li>one method that changes state, if any</li>
+    <li>one possible invariant</li>
+  </ol>
+</div>
+
+<h2>13. Prediction Block</h2>
+
+<div class="box exercise">
+  <div class="title">Predict the Output 3</div>
+<pre>class Counter:
+    def __init__(self, start):
+        self.count = start
+
+    def increment(self):
+        self.count += 1
+
+c1 = Counter(1)
+c2 = Counter(10)
+c1.increment()
+c1.increment()
+print(c1.count)
+print(c2.count)
+</pre>
+  Write your prediction before running the code.
+</div>
+
+<div class="box exercise">
+  <div class="title">Predict the Output 4</div>
+<pre>class Rectangle:
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+
+    def area(self):
+        return self.width * self.height
+
+r = Rectangle(3, 7)
+print(r.area())
+</pre>
+  Write your prediction before running the code.
+</div>
+
+<div class="box exercise">
+  <div class="title">Predict the Output 5</div>
+<pre>class Book:
+    def __init__(self, title):
+        self.title = title
+
+b1 = Book("Hamlet")
+b2 = Book("Dune")
+b1.title = "Macbeth"
+print(b1.title)
+print(b2.title)
+</pre>
+  Write your prediction before running the code.
+</div>
+
+<h2>14. Design Discussion</h2>
+
+<div class="box discussion">
+  <div class="title">Design Question 1</div>
+  Suppose you are building a larger portfolio system. Which of these should probably become its own class eventually?
+  <ul>
+    <li>client</li>
+    <li>portfolio</li>
+    <li>position</li>
+    <li>cash account</li>
+    <li>market data system</li>
+  </ul>
+</div>
+
+<div class="box discussion">
+  <div class="title">Design Question 2</div>
+  If a portfolio contains many positions, is that still one object? What does it mean for one object to contain other objects?
+</div>
+
+<div class="box discussion">
+  <div class="title">Design Question 3</div>
+  What would make an object well designed in this course? Your answer should include state, transitions, and invariants.
+</div>
+
+<h2>15. Optional Extra Practice</h2>
+
+<div class="box exercise">
+  <div class="title">Extra Practice 1 — Add Validation</div>
+  Modify <code>Rectangle</code> so width and height cannot be negative.
+</div>
+
+<div class="box exercise">
+  <div class="title">Extra Practice 2 — Add a Summary Method</div>
+  Add a method called <code>describe()</code> to <code>Counter</code> or <code>PortfolioSystemLite</code>.
+</div>
+
+<div class="box exercise">
+  <div class="title">Extra Practice 3 — Complete the Class</div>
+<pre>class Student:
+    def __init__(self, name, grade):
+        self.name = name
+        self.grade = grade
+
+    def improve(self, amount):
+        # complete this
+</pre>
+</div>
+
+<div class="box exercise">
+  <div class="title">Extra Practice 4 — Build from a Verbal Description</div>
+  Create a class called <code>Thermometer</code> that stores a temperature and has methods to raise it, lower it, and report it.
+</div>
+
+<h2>16. End-of-Class Summary</h2>
+
+<p>By the end of class, you should be able to:</p>
+<ul>
+  <li>define class, object, attribute, and method</li>
+  <li>write a small class with <code>__init__</code></li>
+  <li>use <code>self.attribute</code> correctly</li>
+  <li>create objects from a class</li>
+  <li>call methods on those objects</li>
+  <li>debug common beginner mistakes</li>
+  <li>connect OOP back to STI</li>
+</ul>
+
+<div class="box motivation">
+  <div class="title">Takeaway Sentence</div>
+  <strong>Object-oriented programming bundles state and behavior into a single organized system.</strong>
+</div>
+
+</body>
+</html>

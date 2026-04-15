@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Homework - AI + STI - Analyze Runs</title>
+  <style>
+    :root{
+      --bg:#f4f6fb;
+      --paper:#ffffff;
+      --ink:#1f2937;
+      --muted:#6b7280;
+      --line:#d7deea;
+      --accent:#234a7d;
+      --accent-soft:#eef4fb;
+      --warn:#fff8e6;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font-family: Georgia, "Times New Roman", serif;
+      line-height:1.5;
+    }
+    .page{
+      max-width:980px;
+      margin:0 auto;
+      padding:28px 20px 48px;
+    }
+    .sheet{
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:34px 38px;
+      box-shadow:0 1px 3px rgba(0,0,0,.05);
+    }
+    h1,h2,h3{color:var(--accent); margin-top:0}
+    h1{font-size:2rem; margin-bottom:8px}
+    h2{
+      font-size:1.25rem;
+      margin-top:28px;
+      border-top:1px solid var(--line);
+      padding-top:20px;
+    }
+    h3{font-size:1.02rem; margin-top:18px; margin-bottom:8px}
+    p{margin:0 0 12px}
+    .sub{color:var(--muted); margin-bottom:18px}
+    .panel{
+      background:var(--accent-soft);
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px 16px;
+      margin:14px 0 16px;
+    }
+    .warning{
+      background:var(--warn);
+      border:1px solid #ead9a5;
+      border-radius:14px;
+      padding:14px 16px;
+      margin:14px 0 16px;
+    }
+    code, pre{
+      font-family: Consolas, "Courier New", monospace;
+      font-size:.95rem;
+    }
+    pre{
+      background:#111827;
+      color:#f9fafb;
+      border-radius:12px;
+      padding:14px 16px;
+      overflow:auto;
+      line-height:1.4;
+      margin:12px 0 16px;
+    }
+    ul{
+      margin:8px 0 14px 22px;
+      padding:0;
+    }
+    li{margin:6px 0}
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .box{
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:14px 16px;
+      background:#fbfcfe;
+    }
+    .footer{
+      margin-top:28px;
+      color:var(--muted);
+      font-size:.95rem;
+      text-align:center;
+    }
+    @media print{
+      body{background:white}
+      .page{padding:0}
+      .sheet{box-shadow:none; border:none; border-radius:0; padding:0}
+      h2{page-break-after:avoid}
+      pre,.panel,.warning,.box{break-inside:avoid}
+    }
+    @media (max-width:760px){
+      .sheet{padding:24px 20px}
+      .two-col{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="sheet">
+      <h1>Homework: AI + STI + Python</h1>
+      <div class="sub">Student handout — Analyze Runs</div>
+
+      <div class="panel">
+        <p><strong>Main idea:</strong> In this assignment, you must use AI, but you must use it well. You are not being graded only on the final code. You are also being graded on whether you stayed in control of the thinking.</p>
+      </div>
+
+      <h2>The Problem</h2>
+      <p>Write a function:</p>
+      <pre>analyze_runs(nums)</pre>
+      <p>where <code>nums</code> is a list of integers.</p>
+
+      <p>Your function should return a dictionary with this structure:</p>
+      <pre>{
+    "longest_increasing_run": ?,   # length of longest strictly increasing contiguous run
+    "longest_decreasing_run": ?,   # length of longest strictly decreasing contiguous run
+    "num_increasing_runs": ?,      # number of increasing runs
+    "num_decreasing_runs": ?,      # number of decreasing runs
+    "longest_run_values": ?        # the actual values of the longest run (either type)
+}</pre>
+
+      <h3>Definition</h3>
+      <p>A <strong>run</strong> is a contiguous sequence of values.</p>
+      <p>For example, in the list below:</p>
+      <pre>[3, 5, 7, 2, 1, 4]</pre>
+      <p>the increasing runs are <code>[3, 5, 7]</code> and <code>[1, 4]</code>, and the decreasing run is <code>[7, 2, 1]</code>.</p>
+
+      <h3>Example</h3>
+      <pre>nums = [3, 5, 7, 2, 1, 4]</pre>
+      <p>One valid return value would be:</p>
+      <pre>{
+    "longest_increasing_run": 3,
+    "longest_decreasing_run": 3,
+    "num_increasing_runs": 2,
+    "num_decreasing_runs": 1,
+    "longest_run_values": [3, 5, 7]
+}</pre>
+      <p>If there is a tie for the longest run, you may return either tied run in <code>longest_run_values</code>.</p>
+
+      <h2>Part 1: Solve the Problem Using STI First</h2>
+      <p>Before you ask AI for code, you must first think about the problem using the <strong>State–Transition–Invariant (STI)</strong> framework.</p>
+
+      <div class="two-col">
+        <div class="box">
+          <h3>State</h3>
+          <p>What variables must be tracked while scanning through the list?</p>
+          <p>For example, you may need to track the current run, its direction, its length, and the best answers seen so far.</p>
+        </div>
+        <div class="box">
+          <h3>Transitions</h3>
+          <p>What happens when the next number causes the run to continue, end, or switch direction?</p>
+          <p>Think carefully about what should happen when two adjacent values are equal.</p>
+        </div>
+      </div>
+
+      <div class="box" style="margin-top:18px;">
+        <h3>Invariants</h3>
+        <p>State at least <strong>4 invariants</strong> that should remain true throughout your algorithm.</p>
+        <p>Examples of the kind of thing you should think about:</p>
+        <ul>
+          <li>The current run length is always at least 1 once a run has started.</li>
+          <li>The longest run found so far is never shorter than the current best answer already recorded.</li>
+          <li>Run counts should only increase when a run has been clearly identified.</li>
+          <li>The values stored in <code>longest_run_values</code> should match the recorded longest run length.</li>
+        </ul>
+      </div>
+
+      <h2>Part 2: How to Use AI Correctly</h2>
+      <p>You are required to use AI for this homework. But you should use AI as a <strong>thinking partner</strong>, not as a machine that simply writes code for you.</p>
+
+      <h3>What good AI use looks like</h3>
+      <ul>
+        <li>Start with the <strong>problem</strong>, not the code.</li>
+        <li>Tell the AI what you think the state variables might be.</li>
+        <li>Ask the AI what assumptions it is making.</li>
+        <li>Ask the AI what edge cases you may be missing.</li>
+        <li>Refine the model before you ask for implementation.</li>
+        <li>If the AI gives code, ask it to explain the code line by line.</li>
+      </ul>
+
+      <h3>What poor AI use looks like</h3>
+      <ul>
+        <li>Pasting the problem and saying, “solve this.”</li>
+        <li>Submitting code you do not understand.</li>
+        <li>Skipping STI and jumping directly to implementation.</li>
+        <li>Letting the AI make hidden assumptions for you.</li>
+      </ul>
+
+      <div class="warning">
+        <p><strong>Key takeaway:</strong> Strong AI use means <strong>you</strong> drive the design. The AI should help you test ideas, expose ambiguity, and explain reasoning. It should not be the one in control.</p>
+      </div>
+
+      <h2>How to Label Your Chat Transcript</h2>
+      <p>At the <strong>start</strong> of your AI session, type this instruction:</p>
+      <pre>For the rest of this conversation, prefix every one of my messages with "USER:"
+and every one of your responses with "AGENT:".</pre>
+
+      <p>This usually works well, but it is <strong>not perfect</strong>. The AI may occasionally forget. Because of that, when you copy and paste your transcript for submission, you must check that the labels were added correctly.</p>
+
+      <h3>Before submitting your transcript, check the following:</h3>
+      <ul>
+        <li>Each of your prompts begins with <code>USER:</code></li>
+        <li>Each AI response begins with <code>AGENT:</code></li>
+        <li>The conversation is in the correct order</li>
+        <li>No large sections are missing</li>
+        <li>The transcript clearly shows your thinking and your interaction with the AI</li>
+      </ul>
+
+      <h2>Part 3: Implementation Requirements</h2>
+      <p>Your Python solution must:</p>
+      <ul>
+        <li>Use a loop</li>
+        <li>Track state explicitly</li>
+        <li>Correctly detect increasing and decreasing runs</li>
+        <li>Handle edge cases carefully, especially equal adjacent values</li>
+        <li>Return the dictionary in the required format</li>
+      </ul>
+
+      <h3>Suggested test cases</h3>
+      <pre>print(analyze_runs([3, 5, 7, 2, 1, 4]))
+print(analyze_runs([1, 2, 3, 4]))
+print(analyze_runs([5, 4, 3, 2]))
+print(analyze_runs([1, 1, 1]))
+print(analyze_runs([4]))
+print(analyze_runs([2, 5, 5, 4, 3, 6]))</pre>
+
+      <p>You should test your program before submitting it to make sure it runs without errors.</p>
+
+      <h2>What to Submit</h2>
+      <ul>
+        <li><strong>One Python file</strong> containing your solution and at least a few tests</li>
+        <li><strong>One transcript file</strong> containing your AI conversation(s), clearly labeled with <code>USER:</code> and <code>AGENT:</code></li>
+      </ul>
+
+      <h2>How This Assignment Will Be Evaluated</h2>
+      <ul>
+        <li><strong>STI analysis</strong>: Did you identify the state, transitions, and invariants clearly?</li>
+        <li><strong>Correctness</strong>: Does your code run and produce sensible answers?</li>
+        <li><strong>Use of AI</strong>: Does your transcript show that you were in control of the reasoning?</li>
+      </ul>
+
+      <div class="panel">
+        <p><strong>Final reminder:</strong> Do not treat AI as the answer. Treat it as a tool that helps you think more clearly. The goal is not just to get working code. The goal is to show that you can guide the process intelligently.</p>
+      </div>
+
+      <div class="footer">End of assignment handout</div>
+    </div>
+  </div>
+</body>
+</html>
