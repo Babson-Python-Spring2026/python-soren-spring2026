@@ -14,12 +14,17 @@ print(my_int.value)
 STI commentary
 
 State:
-
+The variables that must be tracked are: longest_increasing_run(length of the run), longest_decreasing_run(length of the run), num_increasing_runs(count of the increasing runs),
+num_decreasing_runs(count of decreasing runs), and technically longest_run_values(what the run contains) but that can be determined at the end
 
 Transitions:
-
+When a run continues the count increases for length. This must happen while not duplicating or repeating the 
+previous items of the run. When a run ends it must be tested for the longest.
 
 Invariants:
+The input must include integers, the input must be a list, for a run to qualify it must be 2 numbers or longers,
+runs must be increasing or decreasing they cannot be equal, the values of longest run should also be the length
+of the of the longest run
 
 '''
 
