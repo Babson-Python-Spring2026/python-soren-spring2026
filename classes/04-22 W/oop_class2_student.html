@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OOP Unit - Class 2 - Student Handout (Revised)</title>
+  <style>
+    :root{
+      --ink:#1f2937;
+      --muted:#4b5563;
+      --line:#d1d5db;
+      --blue:#1d4ed8;
+      --bluebg:#eff6ff;
+      --green:#047857;
+      --greenbg:#ecfdf5;
+      --amber:#b45309;
+      --amberbg:#fffbeb;
+      --red:#b91c1c;
+      --redbg:#fef2f2;
+      --graybg:#f9fafb;
+      --purple:#6d28d9;
+      --purplebg:#f5f3ff;
+      --teal:#0f766e;
+      --tealbg:#ecfeff;
+    }
+    body{
+      font-family: Arial, Helvetica, sans-serif;
+      color:var(--ink);
+      line-height:1.55;
+      max-width:1020px;
+      margin:36px auto;
+      padding:0 24px 64px 24px;
+      background:white;
+    }
+    h1{
+      font-size:2rem;
+      margin-bottom:8px;
+      border-bottom:4px solid var(--ink);
+      padding-bottom:10px;
+    }
+    h2{
+      margin-top:34px;
+      background:var(--bluebg);
+      border-left:8px solid var(--blue);
+      padding:10px 12px;
+      font-size:1.45rem;
+    }
+    h3{
+      margin-top:24px;
+      color:var(--blue);
+      font-size:1.12rem;
+    }
+    p, li{
+      font-size:1rem;
+    }
+    .subtitle{
+      color:var(--muted);
+      margin-bottom:18px;
+    }
+    .box{
+      border:1px solid var(--line);
+      border-radius:10px;
+      padding:14px 16px;
+      margin:14px 0;
+      background:var(--graybg);
+    }
+    .motivation{ background:var(--amberbg); border-left:8px solid var(--amber); }
+    .discussion{ background:var(--tealbg); border-left:8px solid var(--teal); }
+    .exercise{ background:var(--greenbg); border-left:8px solid var(--green); }
+    .debug{ background:var(--redbg); border-left:8px solid var(--red); }
+    .ai{ background:var(--purplebg); border-left:8px solid var(--purple); }
+    .title{
+      font-weight:bold;
+      margin-bottom:6px;
+      color:#111827;
+    }
+    pre{
+      background:#111827;
+      color:#f9fafb;
+      padding:14px;
+      border-radius:10px;
+      overflow-x:auto;
+      white-space:pre-wrap;
+      font-size:0.95rem;
+      line-height:1.45;
+    }
+    code{
+      font-family:Consolas, Menlo, Monaco, monospace;
+      font-size:0.95rem;
+    }
+    table{
+      border-collapse:collapse;
+      width:100%;
+      margin:14px 0;
+    }
+    th, td{
+      border:1px solid var(--line);
+      padding:10px 12px;
+      vertical-align:top;
+      text-align:left;
+    }
+    th{
+      background:#f3f4f6;
+    }
+    .twocol{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:16px;
+    }
+    .substep{
+      margin-top:16px;
+      font-weight:bold;
+      color:#111827;
+    }
+    @media (max-width: 760px){
+      .twocol{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>OOP Unit — Class 2</h1>
+<div class="subtitle">
+  <strong>Course:</strong> Computational Thinking with AI and Python<br>
+  <strong>Student Handout:</strong> use this during lecture and complete the coding work in VS Code
+</div>
+
+<div class="box motivation">
+  <div class="title">Main Goal</div>
+  Today we move from writing simple classes to designing classes that:
+  <ul>
+    <li>represent object state clearly</li>
+    <li>use classes inside other classes</li>
+    <li>protect important rules about their own data</li>
+    <li>become easier to use with special methods like <code>__str__</code> and <code>__add__</code></li>
+  </ul>
+</div>
+
+<h2>1. Reading Object State in JSON</h2>
+
+<p>
+Last class we learned how to build simple classes. A natural next question is: how might those objects be represented as plain data?
+</p>
+
+<div class="box discussion">
+  <div class="title">Example Structure</div>
+<pre>{
+  "schools": [
+    {
+      "name": "Babson",
+      "students": [
+        {"name": "Alice", "student_id": 1},
+        {"name": "Bob", "student_id": 2}
+      ]
+    },
+    {
+      "name": "MIT",
+      "students": [
+        {"name": "Eve", "student_id": 3}
+      ]
+    }
+  ]
+}</pre>
+</div>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 1 — Building Objects from Structure</div>
+  <p><strong>Goal:</strong> understand how real systems are built from nested data, classes that contain other classes, and invariants that protect the system.</p>
+
+  <div class="substep">Part 1 — Read the Structure (No Coding)</div>
+  <p>Answer these questions in plain English:</p>
+  <ol>
+    <li>How many <code>School</code> objects are represented?</li>
+    <li>How many <code>Student</code> objects are represented?</li>
+    <li>Which parts correspond to lists of objects?</li>
+    <li>If this were Python:
+      <ul>
+        <li>which class would contain a list?</li>
+        <li>what would that list contain?</li>
+      </ul>
+    </li>
+    <li>Where are the methods?</li>
+  </ol>
+
+  <div class="substep">Part 2 — Build the Classes (Coding)</div>
+  <p>Now translate the structure into Python.</p>
+  <p>Create these classes:</p>
+<pre>class Student:
+    ...
+
+class School:
+    ...</pre>
+  <p>Rules:</p>
+  <ul>
+    <li><code>Student</code> stores <code>name</code> and <code>student_id</code></li>
+    <li><code>School</code> stores <code>name</code> and a list of <code>Student</code> objects</li>
+    <li><code>School</code> must have a method <code>add_student(student)</code></li>
+  </ul>
+
+  <p>Test your code with something like:</p>
+<pre>s1 = Student("Alice", 1)
+s2 = Student("Bob", 2)
+
+school = School("Babson")
+school.add_student(s1)
+school.add_student(s2)
+
+print(school.students)</pre>
+
+  <p>Then answer:</p>
+  <ol>
+    <li>What is the <strong>state</strong> of <code>School</code>?</li>
+    <li>What is the <strong>state</strong> of <code>Student</code>?</li>
+    <li>What type of object goes into <code>school.students</code>?</li>
+    <li>What would go wrong if we allowed <code>school.add_student("not a student")</code>?</li>
+  </ol>
+
+  <div class="substep">Part 3 — Add an Invariant (Design + Coding)</div>
+  <p>We now add a rule:</p>
+  <p><strong>A school cannot have duplicate student IDs.</strong></p>
+
+  <p>Before coding, discuss:</p>
+  <ol>
+    <li>What is the invariant?</li>
+    <li>Where should it be enforced:
+      <ul>
+        <li>inside <code>Student</code>?</li>
+        <li>inside <code>School</code>?</li>
+      </ul>
+    </li>
+    <li>Why?</li>
+  </ol>
+
+  <p>Update <code>add_student()</code> so this should fail:</p>
+<pre>s1 = Student("Alice", 1)
+s2 = Student("Bob", 1)
+
+school.add_student(s1)
+school.add_student(s2)</pre>
+
+  <p>Final questions:</p>
+  <ol>
+    <li>What is the <strong>state</strong> involved in enforcing the invariant?</li>
+    <li>What is the <strong>transition</strong>?</li>
+    <li>What would happen if we did not enforce this rule?</li>
+  </ol>
+</div>
+
+<div class="box motivation">
+  <div class="title">Important Observation</div>
+  JSON can store state, but it cannot store methods. JSON tells us <em>what the data is</em>. It does not enforce whether the data is valid.
+</div>
+
+<h2>2. Classes That Use Other Classes</h2>
+
+<p>
+When one object contains other objects, the designer must decide what belongs where, who owns what data, and where important rules should be enforced.
+</p>
+
+<div class="box discussion">
+  <div class="title">Class Relationship</div>
+  <ul>
+    <li><code>Student</code> objects represent individual students.</li>
+    <li><code>School</code> objects contain collections of students.</li>
+    <li>In larger systems, we often build objects out of other objects rather than keeping everything as loose dictionaries and lists.</li>
+  </ul>
+</div>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 2 — Objects Interacting</div>
+  <p><strong>Goal:</strong> understand how objects work together through methods, not just sit inside each other.</p>
+
+  <div class="substep">Part 1 — Start from Existing Classes</div>
+  <p>Use your existing <code>Student</code> and <code>School</code> classes from Exercise 1.</p>
+
+  <div class="substep">Part 2 — Add Behavior</div>
+  <p>Add this method to <code>School</code>:</p>
+<pre>get_student_by_id(student_id)</pre>
+  <p>Requirements:</p>
+  <ul>
+    <li>return the matching <code>Student</code> object if found</li>
+    <li>return <code>None</code> if not found</li>
+  </ul>
+
+  <p>Test with something like:</p>
+<pre>s = school.get_student_by_id(1)
+print(s)</pre>
+
+  <div class="substep">Part 3 — Add a New Class</div>
+  <p>Create a new class:</p>
+<pre>class Course:
+    ...</pre>
+  <p>State:</p>
+  <ul>
+    <li><code>name</code></li>
+    <li>a list of <code>Student</code> objects</li>
+  </ul>
+  <p>Add:</p>
+<pre>add_student(student)</pre>
+
+  <p>Test scenario:</p>
+<pre>course = Course("Finance")
+
+s = school.get_student_by_id(1)
+course.add_student(s)
+
+print(course.students)</pre>
+
+  <div class="substep">Part 4 — Think</div>
+  <ol>
+    <li>Is the <code>Student</code> inside <code>Course</code> a copy or the same object?</li>
+    <li>What happens if you run <code>s.name = "Changed Name"</code>?</li>
+    <li>Where will that change appear?</li>
+  </ol>
+</div>
+
+<h2>3. Protecting Data with Properties</h2>
+
+<div class="box motivation">
+  <div class="title">Definition</div>
+  An <strong>invariant</strong> is a rule that should always remain true for an object.
+</div>
+
+<table>
+  <tr>
+    <th>Object</th>
+    <th>Possible Invariant</th>
+  </tr>
+  <tr>
+    <td><code>Position</code></td>
+    <td>shares should be a non-negative integer</td>
+  </tr>
+  <tr>
+    <td><code>CashAccount</code></td>
+    <td>balance should stay non-negative (if overdrafts are not allowed)</td>
+  </tr>
+  <tr>
+    <td><code>School</code></td>
+    <td>student IDs should be unique within one school</td>
+  </tr>
+</table>
+
+<div class="box discussion">
+  <div class="title">Class Discussion</div>
+  <ol>
+    <li>Which invariants are facts about the real world?</li>
+    <li>Which invariants are design choices?</li>
+    <li>Where should invariants be enforced?</li>
+  </ol>
+</div>
+
+<p>
+One weak approach is to write special setter methods and hope people use them. A stronger approach is to control the normal path of access itself.
+</p>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 3 — Protecting Shares in a <code>Position</code> Object</div>
+  <p><strong>Goal:</strong> see why direct attribute access can break an object, and then redesign the class so shares are controlled.</p>
+
+  <div class="substep">Part 1 — Start with an Unprotected Class</div>
+<pre>class Position:
+    def __init__(self, ticker, shares):
+        self.ticker = ticker
+        self.shares = shares</pre>
+
+  <p>Run:</p>
+<pre>p = Position("AAPL", 10)
+p.shares = -50
+print(p.shares)</pre>
+
+  <p>Questions:</p>
+  <ol>
+    <li>Did Python stop you?</li>
+    <li>What rule seems to have been violated?</li>
+    <li>Write the invariant in words.</li>
+  </ol>
+
+  <div class="substep">Part 2 — Try a Weak Fix</div>
+  <p>Add a method like this:</p>
+<pre>def set_shares(self, shares):
+    if shares &lt; 0:
+        raise ValueError("Shares must be non-negative")
+    self.shares = shares</pre>
+
+  <p>Then test:</p>
+<pre>p = Position("AAPL", 10)
+p.set_shares(20)
+p.shares = -5</pre>
+
+  <p>Questions:</p>
+  <ol>
+    <li>Which line enforced the rule?</li>
+    <li>Which line bypassed it?</li>
+    <li>Why is this not enough?</li>
+  </ol>
+
+  <div class="substep">Part 3 — Redesign with Protection</div>
+  <p>Rewrite the class so:</p>
+  <ul>
+    <li>the real stored value is <code>_shares</code></li>
+    <li>the public interface is <code>shares</code></li>
+    <li>invalid assignments are rejected</li>
+  </ul>
+
+  <p>Requirements:</p>
+  <ul>
+    <li><code>__init__</code> should still accept <code>shares</code></li>
+    <li>reading <code>p.shares</code> should work</li>
+    <li>assigning <code>p.shares = value</code> should validate</li>
+    <li>shares must be non-negative</li>
+  </ul>
+
+  <div class="substep">Part 4 — Reflection</div>
+  <ol>
+    <li>What is the difference between <code>_shares</code> and <code>shares</code>?</li>
+    <li>Which one is storage?</li>
+    <li>Which one is part of the interface?</li>
+    <li>Why is this design stronger?</li>
+  </ol>
+</div>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 4 — Protecting Balance in a <code>CashAccount</code></div>
+  <p><strong>Goal:</strong> design and enforce an invariant using controlled access.</p>
+
+  <div class="substep">Part 1 — Start with a Simple Class</div>
+<pre>class CashAccount:
+    def __init__(self, balance):
+        self.balance = balance</pre>
+
+  <p>Run:</p>
+<pre>acct = CashAccount(100)
+acct.balance = -300
+print(acct.balance)</pre>
+
+  <p>Questions:</p>
+  <ol>
+    <li>What went wrong?</li>
+    <li>Should this be allowed?</li>
+    <li>Is “balance must stay non-negative” a fact of the world or a design choice?</li>
+  </ol>
+
+  <div class="substep">Part 2 — Add Behavior</div>
+  <p>Extend the class with:</p>
+  <ul>
+    <li><code>deposit(amount)</code></li>
+    <li><code>withdraw(amount)</code></li>
+  </ul>
+
+  <p>Before coding, decide:</p>
+  <ul>
+    <li>Will overdrafts be allowed?</li>
+    <li>What invariant are you choosing?</li>
+  </ul>
+
+  <div class="substep">Part 3 — Protect the State</div>
+  <p>Redesign the class so:</p>
+  <ul>
+    <li><code>_balance</code> stores the actual value</li>
+    <li><code>balance</code> is the controlled interface</li>
+    <li>invalid balances are rejected</li>
+  </ul>
+
+  <p>Requirements:</p>
+  <ul>
+    <li><code>deposit(amount)</code> must reject zero or negative deposits</li>
+    <li><code>withdraw(amount)</code> must follow your invariant</li>
+    <li>direct assignment to <code>balance</code> should also follow the invariant</li>
+  </ul>
+
+  <div class="substep">Part 4 — Test Cases</div>
+  <p>Test at least these:</p>
+<pre>acct = CashAccount(100)
+acct.deposit(50)
+acct.withdraw(30)
+print(acct.balance)</pre>
+
+  <p>Also test one invalid case such as:</p>
+<pre>acct.balance = -100</pre>
+
+  <div class="substep">Part 5 — Reflection</div>
+  <ol>
+    <li>What is the state?</li>
+    <li>What are the transitions?</li>
+    <li>What is the invariant?</li>
+    <li>Where is the invariant enforced?</li>
+  </ol>
+</div>
+
+<div class="box motivation">
+  <div class="title">Interface vs. Storage</div>
+  <p>In a property-based design, names like <code>_shares</code> and <code>_balance</code> are the stored values inside the object.</p>
+  <p>Names like <code>shares</code> and <code>balance</code> are part of the interface. They are the normal path by which outside code reads and updates the state.</p>
+  <p>One useful way to say this is:</p>
+  <ul>
+    <li><strong>Storage:</strong> <code>_shares</code>, <code>_balance</code></li>
+    <li><strong>Interface:</strong> <code>shares</code>, <code>balance</code></li>
+  </ul>
+</div>
+
+<h2>4. Nice Object Behavior: <code>__str__</code> and <code>__add__</code></h2>
+
+<p>
+Objects are easier to work with if they can describe themselves clearly and define meaningful operations.
+</p>
+
+<div class="box discussion">
+  <div class="title">Example: <code>__str__</code></div>
+<pre>class Student:
+    def __init__(self, name, student_id):
+        self.name = name
+        self.student_id = student_id
+
+    def __str__(self):
+        return f"{self.name} ({self.student_id})"</pre>
+  <p>Now <code>print(student)</code> produces a useful description.</p>
+</div>
+
+<div class="box exercise">
+  <div class="title">In-Class Exercise 5 — Making Objects Easier to Use</div>
+  <div class="substep">Part 1 — Add <code>__str__</code></div>
+  <p>Add a <code>__str__</code> method to one of these classes:</p>
+  <ul>
+    <li><code>Student</code></li>
+    <li><code>Position</code></li>
+    <li><code>CashAccount</code></li>
+  </ul>
+  <p>Then test:</p>
+<pre>print(your_object)</pre>
+
+  <div class="substep">Part 2 — Define What <code>+</code> Means</div>
+  <p>Choose one of the following:</p>
+  <ul>
+    <li>for <code>CashAccount</code>, adding two accounts returns the sum of their balances</li>
+    <li>for a small <code>Counter</code> class, adding two counters returns a new counter</li>
+  </ul>
+
+  <p>Before coding, answer:</p>
+  <ol>
+    <li>What should <code>+</code> mean for this class?</li>
+    <li>Why does that meaning make sense?</li>
+    <li>Should the result be a number or a new object?</li>
+  </ol>
+</div>
+
+<h2>5. Bridge to STI</h2>
+
+<table>
+  <tr>
+    <th>STI Idea</th>
+    <th>Example</th>
+  </tr>
+  <tr>
+    <td>State</td>
+    <td><code>students</code>, <code>_shares</code>, <code>_balance</code></td>
+  </tr>
+  <tr>
+    <td>Transition</td>
+    <td><code>add_student()</code>, assigning to <code>shares</code>, assigning to <code>balance</code>, <code>deposit()</code>, <code>withdraw()</code></td>
+  </tr>
+  <tr>
+    <td>Invariant</td>
+    <td>no duplicate IDs, non-negative shares, chosen balance rule</td>
+  </tr>
+</table>
+
+<div class="box discussion">
+  <div class="title">Class Discussion</div>
+  In each class today, where do we see state, transition, and invariant?
+</div>
+
+<h2>6. Homework — AI-Assisted Design Problem</h2>
+
+<div class="box ai">
+  <div class="title">Homework Problem: Design a School Enrollment System</div>
+  Build a small system using these classes:
+  <ul>
+    <li><code>Student</code></li>
+    <li><code>School</code></li>
+    <li><code>Schools</code></li>
+  </ul>
+  <p>Minimum requirements:</p>
+  <ol>
+    <li><code>Student</code> should store <code>name</code> and <code>student_id</code>.</li>
+    <li><code>School</code> should store <code>name</code> and a list of students.</li>
+    <li><code>Schools</code> should store a list of schools.</li>
+    <li><code>School</code> should have a method <code>add_student(student)</code>.</li>
+    <li><code>Schools</code> should have a method <code>add_school(school)</code>.</li>
+    <li>Add <strong>one invariant of your own choice</strong>. Example: no duplicate student IDs within the same school.</li>
+    <li>Write a short test script that creates at least two schools and at least three students total.</li>
+  </ol>
+</div>
+
+<div class="box ai">
+  <div class="title">Required AI Process</div>
+  You may use AI, but you must use it as a design assistant, not as a machine that writes the whole solution for you.
+  <p>Your submission must include three parts:</p>
+  <ol>
+    <li><strong>Your Python solution</strong></li>
+    <li><strong>A transcript or screenshots of your AI interaction</strong></li>
+    <li><strong>A short reflection</strong> (about 1 page) answering the questions below</li>
+  </ol>
+</div>
+
+<div class="box ai">
+  <div class="title">How to Use AI Correctly on This Assignment</div>
+  <p>Your AI interaction must show that you are designing the process. The goal is not to have AI produce a finished answer. The goal is to use AI to support decisions that <em>you</em> are making.</p>
+  <p>Before asking AI for code, you should already be thinking about:</p>
+  <ul>
+    <li>what classes you need</li>
+    <li>what state each class should store</li>
+    <li>what transitions the system should support</li>
+    <li>what invariant must remain true</li>
+  </ul>
+  <p>Good prompts often do things like:</p>
+  <ul>
+    <li>ask AI to help you identify the state of each class</li>
+    <li>ask AI to suggest possible invariants</li>
+    <li>ask AI to critique a design that you already drafted</li>
+    <li>ask AI to help debug one small part after you have already written it</li>
+    <li>ask AI to compare two design choices that you are considering</li>
+  </ul>
+  <p>Weak prompts give away the design work. Prompts like the ones below are a problem not only because they are too general, but because they hand control of the process to the AI:</p>
+  <ul>
+    <li>“Write the whole program for me”</li>
+    <li>“Implement the complete solution”</li>
+    <li>“Give me the final answer”</li>
+    <li>“Do this for me”</li>
+    <li>“Write the code”</li>
+  </ul>
+  <p><strong>Your job is to design the process and stay in control of the code.</strong> AI should help you refine, test, or improve your design. It should not replace the design work itself.</p>
+</div>
+
+<div class="box ai">
+  <div class="title">Reflection Questions</div>
+  <ol>
+    <li>What was your invariant, and why did you choose it?</li>
+    <li>What part of the design did you decide before asking AI anything?</li>
+    <li>What question did you ask AI that was genuinely useful?</li>
+    <li>What suggestion from AI did you reject or modify?</li>
+    <li>How does your final design show that you controlled the process rather than delegating it?</li>
+  </ol>
+</div>
+
+<div class="box ai">
+  <div class="title">Suggested Workflow</div>
+  <ol>
+    <li>Sketch the classes and state on paper or in comments.</li>
+    <li>Write a first draft yourself.</li>
+    <li>Ask AI for feedback on a small part of the design.</li>
+    <li>Revise your code.</li>
+    <li>Test your code with at least one invalid case.</li>
+    <li>Submit code, AI transcript, and reflection together.</li>
+  </ol>
+</div>
+
+<h2>7. End-of-Class Summary</h2>
+
+<p>By the end of class, you should be able to:</p>
+<ul>
+  <li>describe how object state can appear in JSON</li>
+  <li>build classes that use other classes</li>
+  <li>explain the difference between interface and storage</li>
+  <li>use properties to protect important invariants</li>
+  <li>add useful special methods such as <code>__str__</code> and <code>__add__</code></li>
+  <li>use AI as a design assistant rather than a replacement for thinking</li>
+</ul>
+
+<div class="box motivation">
+  <div class="title">Takeaway Sentence</div>
+  <strong>A good object does not merely store state. A good object protects the rules that make that state meaningful.</strong>
+</div>
+
+</body>
+</html>
