@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OOP Lecture: Special Methods, Class Methods, Static Methods, and Inheritance</title>
+  <style>
+    :root {
+      --bg: #f7f8fb;
+      --paper: #ffffff;
+      --ink: #1f2937;
+      --muted: #6b7280;
+      --blue: #2563eb;
+      --blue-soft: #e8f0ff;
+      --green: #047857;
+      --green-soft: #e8f8f1;
+      --amber: #b45309;
+      --amber-soft: #fff4df;
+      --red: #b91c1c;
+      --red-soft: #feecec;
+      --purple: #6d28d9;
+      --purple-soft: #f2ebff;
+      --border: #d9dee8;
+      --code-bg: #111827;
+      --code-ink: #f9fafb;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.55;
+      font-size: 17px;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 36px 24px 70px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e3a8a, #2563eb);
+      color: white;
+      border-radius: 24px;
+      padding: 42px 46px;
+      box-shadow: 0 18px 40px rgba(37, 99, 235, 0.25);
+      margin-bottom: 28px;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: 42px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+
+    header p {
+      margin: 0;
+      max-width: 850px;
+      font-size: 20px;
+      color: #e8efff;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin: 22px 0 34px;
+    }
+
+    .meta-card {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 8px 24px rgba(31, 41, 55, 0.06);
+    }
+
+    .meta-card strong {
+      display: block;
+      color: var(--blue);
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .toc {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 24px 28px;
+      margin-bottom: 34px;
+      box-shadow: 0 8px 24px rgba(31, 41, 55, 0.05);
+    }
+
+    .toc h2 {
+      margin-top: 0;
+    }
+
+    .toc ol {
+      margin-bottom: 0;
+    }
+
+    section {
+      background: var(--paper);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 30px 34px;
+      margin: 28px 0;
+      box-shadow: 0 10px 26px rgba(31, 41, 55, 0.05);
+    }
+
+    h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+      letter-spacing: -0.02em;
+      color: #111827;
+    }
+
+    h3 {
+      margin-top: 26px;
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: #1f2937;
+    }
+
+    .time {
+      display: inline-block;
+      background: var(--blue-soft);
+      color: #1d4ed8;
+      border: 1px solid #c7d9ff;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .callout {
+      border-radius: 16px;
+      padding: 16px 18px;
+      margin: 18px 0;
+      border: 1px solid var(--border);
+    }
+
+    .concept { background: var(--green-soft); border-color: #b7ebd2; }
+    .mental { background: var(--purple-soft); border-color: #d7c5ff; }
+    .warning { background: var(--red-soft); border-color: #ffc7c7; }
+    .exercise { background: var(--amber-soft); border-color: #f6d494; }
+
+    .callout strong.label {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .concept strong.label { color: var(--green); }
+    .mental strong.label { color: var(--purple); }
+    .warning strong.label { color: var(--red); }
+    .exercise strong.label { color: var(--amber); }
+
+    pre {
+      background: var(--code-bg);
+      color: var(--code-ink);
+      padding: 18px 20px;
+      border-radius: 16px;
+      overflow-x: auto;
+      font-size: 15px;
+      line-height: 1.5;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    }
+
+    p code, li code {
+      background: #eef2ff;
+      color: #1e3a8a;
+      border: 1px solid #dbe4ff;
+      padding: 2px 6px;
+      border-radius: 7px;
+      font-size: 0.93em;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 16px 0;
+      overflow: hidden;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+    }
+
+    th, td {
+      text-align: left;
+      padding: 11px 12px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0f4fb;
+      color: #111827;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
+
+    .checkpoint {
+      background: #f8fafc;
+      border-left: 5px solid var(--blue);
+      padding: 14px 18px;
+      margin: 18px 0;
+      border-radius: 12px;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: 14px;
+      margin-top: 32px;
+      text-align: center;
+    }
+
+    @media print {
+      body { background: white; }
+      .page { max-width: none; padding: 0.5in; }
+      header, section, .toc, .meta-card {
+        box-shadow: none;
+      }
+      pre {
+        white-space: pre-wrap;
+      }
+    }
+
+    @media (max-width: 800px) {
+      .meta-grid, .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 30px;
+      }
+
+      header h1 {
+        font-size: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <header>
+      <h1>Object-Oriented Python: From Special Methods to Inheritance</h1>
+      <p>
+        A 90-minute core lecture with enough optional depth and exercises to support a 120-minute class.
+        The focus is not memorizing syntax. The focus is building a reliable mental model of objects, methods,
+        class-level behavior, and inheritance.
+      </p>
+    </header>
+
+    <div class="meta-grid">
+      <div class="meta-card">
+        <strong>Target</strong>
+        Upper-level introductory Python students
+      </div>
+      <div class="meta-card">
+        <strong>Core length</strong>
+        90 minutes
+      </div>
+      <div class="meta-card">
+        <strong>Extended length</strong>
+        120 minutes with all exercises
+      </div>
+    </div>
+
+    <div class="toc">
+      <h2>Class Flow</h2>
+      <ol>
+        <li><strong>Special methods:</strong> <code>__str__</code> and <code>__add__</code></li>
+        <li><strong>Object vs class behavior:</strong> instance methods, class methods, static methods</li>
+        <li><strong>Inheritance:</strong> parent/child classes, <code>super()</code>, overriding, polymorphism</li>
+        <li><strong>Five in-class exercises</strong> with increasing design control</li>
+      </ol>
+    </div>
+
+    <section>
+      <span class="time">0–10 minutes</span>
+      <h2>Opening Mental Model: What Is an Object?</h2>
+
+      <div class="concept callout">
+        <strong class="label">Concept</strong>
+        An object combines <strong>state</strong> and <strong>behavior</strong>.
+        State is the data the object remembers. Behavior is what the object can do.
+      </div>
+
+      <pre><code>class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+account = BankAccount("Luna", 1250.50)</code></pre>
+
+      <div class="mental callout">
+        <strong class="label">Mental model</strong>
+        <code>account</code> is a reference to one object. That object has state:
+        <code>owner</code> and <code>balance</code>. Methods are functions that operate on that object through <code>self</code>.
+      </div>
+
+      <h3>STI framing</h3>
+      <table>
+        <tr>
+          <th>STI Part</th>
+          <th>Meaning in OOP</th>
+        </tr>
+        <tr>
+          <td>State</td>
+          <td>Attributes such as <code>self.balance</code>, <code>self.owner</code>, <code>self.name</code></td>
+        </tr>
+        <tr>
+          <td>Transitions</td>
+          <td>Methods that change or use state, such as <code>deposit()</code>, <code>withdraw()</code>, <code>speak()</code></td>
+        </tr>
+        <tr>
+          <td>Invariants</td>
+          <td>Rules that should remain true, such as balance should not become negative unless overdrafts are allowed</td>
+        </tr>
+      </table>
+    </section>
+
+    <section>
+      <span class="time">10–35 minutes</span>
+      <h2>Part 1: Special Methods — <code>__str__</code> and <code>__add__</code></h2>
+
+      <div class="concept callout">
+        <strong class="label">Concept</strong>
+        Special methods let our objects work naturally with Python syntax.
+        <code>__str__</code> controls printing. <code>__add__</code> controls what <code>+</code> means.
+      </div>
+
+      <h3>1.1 <code>__str__</code>: How should this object print?</h3>
+
+      <pre><code>class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    def __str__(self):
+        return f"{self.owner}'s balance is ${self.balance:,.2f}"
+
+account = BankAccount("Luna", 1250.5)
+print(account)</code></pre>
+
+      <div class="checkpoint">
+        Expected output:
+        <pre><code>Luna's balance is $1,250.50</code></pre>
+      </div>
+
+      <div class="warning callout">
+        <strong class="label">Warning</strong>
+        <code>__str__</code> must return a string. It should usually not print directly.
+      </div>
+
+      <h3>1.2 <code>__add__</code>: What should <code>+</code> mean?</h3>
+
+      <pre><code>class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    def __str__(self):
+        return f"{self.owner}'s balance is ${self.balance:,.2f}"
+
+    def __add__(self, other):
+        return self.balance + other.balance
+
+a1 = BankAccount("Luna", 1250.50)
+a2 = BankAccount("Rex", 300.25)
+
+print(a1 + a2)</code></pre>
+
+      <div class="mental callout">
+        <strong class="label">Mental model</strong>
+        <code>a1 + a2</code> becomes <code>a1.__add__(a2)</code>.
+        Python passes <code>a1</code> as <code>self</code> and <code>a2</code> as <code>other</code>.
+      </div>
+
+      <h3>Design choice: should <code>__add__</code> return a number or an object?</h3>
+
+      <div class="two-col">
+        <div>
+          <h3>Return a number</h3>
+          <pre><code>def __add__(self, other):
+    return self.balance + other.balance</code></pre>
+          <p>Good when <code>+</code> means “calculate a total.”</p>
+        </div>
+        <div>
+          <h3>Return a new object</h3>
+          <pre><code>def __add__(self, other):
+    return BankAccount(
+        "Combined",
+        self.balance + other.balance
+    )</code></pre>
+          <p>Good when <code>+</code> means “combine into a new object.”</p>
+        </div>
+      </div>
+
+      <div class="exercise callout">
+        <strong class="label">Exercise 1 — Item display and total</strong>
+        Create an <code>Item</code> class with <code>description</code>, <code>quantity</code>, and <code>price</code>.
+        Add a <code>line_total()</code> method and a <code>__str__</code> method.
+        <br><br>
+        Example output:
+        <pre><code>3 x Notebook @ $4.50 = $13.50</code></pre>
+      </div>
+
+      <div class="exercise callout">
+        <strong class="label">Exercise 2 — Add two items</strong>
+        Add <code>__add__</code> to <code>Item</code>. Decide whether <code>item1 + item2</code>
+        should return a number or a new object. Write one sentence defending your design.
+      </div>
+    </section>
+
+    <section>
+      <span class="time">35–60 minutes</span>
+      <h2>Part 2: Instance Methods, Class Methods, and Static Methods</h2>
+
+      <div class="concept callout">
+        <strong class="label">Concept</strong>
+        Python methods differ by what they receive automatically:
+        <code>self</code>, <code>cls</code>, or neither.
+      </div>
+
+      <table>
+        <tr>
+          <th>Method type</th>
+          <th>First parameter</th>
+          <th>Best use</th>
+        </tr>
+        <tr>
+          <td>Instance method</td>
+          <td><code>self</code></td>
+          <td>Use or change one object’s state</td>
+        </tr>
+        <tr>
+          <td>Class method</td>
+          <td><code>cls</code></td>
+          <td>Use or change class-level data, or create objects in alternate ways</td>
+        </tr>
+        <tr>
+          <td>Static method</td>
+          <td>None automatically</td>
+          <td>Utility function logically connected to the class</td>
+        </tr>
+      </table>
+
+      <h3>2.1 Instance method</h3>
+
+      <pre><code>class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    def deposit(self, amount):
+        self.balance += amount</code></pre>
+
+      <p><code>deposit()</code> needs <code>self</code> because it changes one specific account.</p>
+
+      <h3>2.2 Class method</h3>
+
+      <pre><code>class BankAccount:
+    bank_name = "Babson Bank"
+
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    @classmethod
+    def change_bank_name(cls, new_name):
+        cls.bank_name = new_name</code></pre>
+
+      <p><code>change_bank_name()</code> works at the class level. It changes data shared by the class.</p>
+
+      <h3>2.3 Class method as an alternate constructor</h3>
+
+      <pre><code>class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    @classmethod
+    def open_empty_account(cls, owner):
+        return cls(owner, 0)</code></pre>
+
+      <div class="mental callout">
+        <strong class="label">Mental model</strong>
+        <code>cls</code> means “the class being used.” This is often better than hard-coding
+        <code>BankAccount(...)</code>, especially when inheritance is introduced later.
+      </div>
+
+      <h3>2.4 Static method</h3>
+
+      <pre><code>class BankAccount:
+    def __init__(self, owner, balance):
+        self.owner = owner
+        self.balance = balance
+
+    @staticmethod
+    def is_valid_amount(amount):
+        return amount >= 0</code></pre>
+
+      <p>
+        <code>is_valid_amount()</code> does not need one object and does not need the class.
+        It is attached to the class because it belongs conceptually with bank account logic.
+      </p>
+
+      <div class="exercise callout">
+        <strong class="label">Exercise 3 — Method classification</strong>
+        For each method below, decide whether it should be an instance method, class method, or static method:
+        <ol>
+          <li><code>deposit(amount)</code></li>
+          <li><code>from_string("Luna,1250.50")</code></li>
+          <li><code>is_valid_owner_name(name)</code></li>
+          <li><code>change_interest_rate(rate)</code></li>
+        </ol>
+      </div>
+
+      <div class="exercise callout">
+        <strong class="label">Exercise 4 — Build class and static methods</strong>
+        Add two methods to <code>BankAccount</code>:
+        <ol>
+          <li>A class method <code>from_string(cls, text)</code> that converts <code>"Luna,1250.50"</code> into an account.</li>
+          <li>A static method <code>is_valid_amount(amount)</code> that returns <code>True</code> only for non-negative numbers.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <span class="time">60–90 minutes</span>
+      <h2>Part 3: Inheritance</h2>
+
+      <div class="concept callout">
+        <strong class="label">Concept</strong>
+        Inheritance represents an <strong>is-a</strong> relationship.
+        A <code>Cat</code> is an <code>Animale</code>. A <code>Dog</code> is an <code>Animale</code>.
+      </div>
+
+      <pre><code>class Animale:
+    def __init__(self, name):
+        self.name = name
+
+    def __str__(self):
+        return f"My name is {self.name}"
+
+    def speak(self):
+        return "The mighty animale roars"
+
+
+class Cat(Animale):
+    def speak(self):
+        return "meow meow meow"
+
+
+class Dog(Animale):
+    def speak(self):
+        return "Bow wow"</code></pre>
+
+      <h3>3.1 One object, initialized in layers</h3>
+
+      <pre><code>class Animale:
+    def __init__(self, name):
+        self.name = name
+        print("Animale init")
+
+
+class Cat(Animale):
+    def __init__(self, name):
+        print("Cat init starts")
+        super().__init__(name)
+        print("Cat init ends")
+
+
+c = Cat("Luna")</code></pre>
+
+      <div class="checkpoint">
+        Output:
+        <pre><code>Cat init starts
+Animale init
+Cat init ends</code></pre>
+      </div>
+
+      <div class="mental callout">
+        <strong class="label">Mental model</strong>
+        <code>Cat("Luna")</code> creates one object. <code>super().__init__(name)</code>
+        does not create another object. It initializes the parent part of the same object.
+      </div>
+
+      <h3>3.2 Overriding</h3>
+
+      <p>If a child class defines a method with the same name as the parent, the child method wins.</p>
+
+      <pre><code>c = Cat("Luna")
+d = Dog("Rover")
+
+print(c.speak())   # Cat version
+print(d.speak())   # Dog version</code></pre>
+
+      <h3>3.3 Calling the parent method explicitly</h3>
+
+      <pre><code>c = Cat("Luna")
+
+print(c.speak())            # Cat.speak(c)
+print(Animale.speak(c))     # force Animale.speak(c)</code></pre>
+
+      <div class="concept callout">
+        <strong class="label">Concept</strong>
+        An instance method can be called through the class if you manually pass the object:
+        <code>Animale.speak(c)</code>. Here, <code>c</code> is supplied as <code>self</code>.
+      </div>
+
+      <h3>3.4 Polymorphism</h3>
+
+      <pre><code>animals = [Cat("Luna"), Dog("Rover")]
+
+for animal in animals:
+    print(animal.speak())</code></pre>
+
+      <div class="mental callout">
+        <strong class="label">Mental model</strong>
+        The list is “just a list of objects,” but the design idea is stronger:
+        it is a list of objects that share the same interface. Each object responds to
+        <code>speak()</code> in its own way.
+      </div>
+
+      <h3>3.5 Multiple inheritance and MRO</h3>
+
+      <pre><code>class A:
+    def speak(self):
+        return "A"
+
+class B:
+    def speak(self):
+        return "B"
+
+class C(A, B):
+    pass
+
+print(C().speak())   # A
+print(C.__mro__)</code></pre>
+
+      <div class="warning callout">
+        <strong class="label">Warning</strong>
+        In simple inheritance, <code>super()</code> usually feels like “call the parent.”
+        More precisely, <code>super()</code> calls the next method in the MRO.
+      </div>
+
+      <div class="exercise callout">
+        <strong class="label">Exercise 5 — Inheritance, overriding, and polymorphism</strong>
+        Build this hierarchy:
+        <pre><code>Vehicle
+Car(Vehicle)
+Boat(Vehicle)</code></pre>
+        Requirements:
+        <ol>
+          <li><code>Vehicle</code> has <code>name</code>, <code>__str__</code>, and <code>move()</code>.</li>
+          <li><code>Car</code> overrides <code>move()</code> to return <code>"drives"</code>.</li>
+          <li><code>Boat</code> overrides <code>move()</code> to return <code>"sails"</code>.</li>
+          <li>Create a list with one car and one boat.</li>
+          <li>Loop through the list and call <code>move()</code> on each object.</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <span class="time">90–120 minutes optional</span>
+      <h2>Optional Extension: Design Control and Discussion</h2>
+
+      <h3>Discussion questions</h3>
+      <ol>
+        <li>When should <code>__add__</code> return a number?</li>
+        <li>When should <code>__add__</code> return a new object?</li>
+        <li>Why is <code>from_string()</code> usually a class method rather than a static method?</li>
+        <li>Why is <code>is_valid_amount()</code> usually a static method?</li>
+        <li>Why is <code>Animale.speak(c)</code> not polymorphism?</li>
+        <li>What is the difference between “inherits a method” and “overrides a method”?</li>
+      </ol>
+
+      <div class="exercise callout">
+        <strong class="label">Optional challenge</strong>
+        Create a <code>ShoppingCart</code> class that stores a list of <code>Item</code> objects.
+        Add:
+        <ol>
+          <li><code>add_item()</code></li>
+          <li><code>cart_total()</code></li>
+          <li><code>__str__()</code></li>
+          <li>A static method that validates quantity</li>
+          <li>A class method that creates an empty cart for a named customer</li>
+        </ol>
+      </div>
+    </section>
+
+    <section>
+      <h2>Instructor Timing Guide</h2>
+      <table>
+        <tr>
+          <th>Time</th>
+          <th>Topic</th>
+          <th>Notes</th>
+        </tr>
+        <tr>
+          <td>0–10</td>
+          <td>Object mental model</td>
+          <td>State, transitions, invariants</td>
+        </tr>
+        <tr>
+          <td>10–35</td>
+          <td><code>__str__</code>, <code>__add__</code></td>
+          <td>Exercises 1–2</td>
+        </tr>
+        <tr>
+          <td>35–60</td>
+          <td>Instance, class, static methods</td>
+          <td>Exercises 3–4</td>
+        </tr>
+        <tr>
+          <td>60–90</td>
+          <td>Inheritance, overriding, polymorphism</td>
+          <td>Exercise 5</td>
+        </tr>
+        <tr>
+          <td>90–120</td>
+          <td>Optional challenge and design discussion</td>
+          <td>Use if class has extra time or stronger students</td>
+        </tr>
+      </table>
+    </section>
+
+    <p class="footer-note">
+      Prepared as a student-facing lecture handout. Designed for live coding, discussion, and in-class exercises.
+    </p>
+  </div>
+</body>
+</html>
