@@ -1,6 +1,11 @@
 '''
 Notes and comments:
 
+the core of develop of the game is understanding that like tictactoe, this game's state is centered around the board
+the board is initialized at the beginning, but what is uncovered changes during the game. In my view, the state
+of the board remains the same while what is being shown to the user changes.
+
+Some invariants: no more bombs than number of cells, you cannot guess outside the board
 '''
 
 import random

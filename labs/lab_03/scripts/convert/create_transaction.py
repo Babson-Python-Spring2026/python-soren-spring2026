@@ -29,7 +29,7 @@ def save_json(path, data):
 
 # validation
 def get_valid_date():
-    """Prompt until the user enters a valid market date (YYYY-MM-DD)."""
+    
     mkt_dates = load_json(MKT_DATES_FILE)
     while True:
         date = input("  Enter date (YYYY-MM-DD): ").strip()
@@ -38,7 +38,7 @@ def get_valid_date():
         print(f"    '{date}' is not a valid market date. Please try again.")
 
 def get_valid_ticker():
-    """Prompt until the user enters a valid ticker from the universe."""
+    
     tickers = load_json(TICKER_FILE)
     while True:
         ticker = input("  Enter ticker: ").strip().upper()
@@ -47,7 +47,6 @@ def get_valid_ticker():
         print(f"    '{ticker}' is not in the ticker universe. Please try again.")
 
 def get_valid_transaction_type():
-    """Prompt until the user enters one of the four allowed transaction types."""
     valid = {"buy", "sell", "contribution", "withdrawal"}
     while True:
         t = input("  Enter type (buy / sell / contribution / withdrawal): ").strip().lower()
@@ -56,7 +55,6 @@ def get_valid_transaction_type():
         print(f"    '{t}' is not valid. Choose: buy, sell, contribution, withdrawal.")
 
 def get_valid_shares(txn_type):
-    """Prompt until the user enters a positive number of shares or dollars."""
     label = "amount ($)" if txn_type in ("contribution", "withdrawal") else "shares"
     while True:
         raw = input(f"  Enter {label}: ").strip()
@@ -69,11 +67,6 @@ def get_valid_shares(txn_type):
             print("    Please enter a number.")
 
 def get_valid_price(ticker, date, txn_type):
-    """
-    For buy/sell: prompt until the user enters a price within +/-15% of
-    the market price for that ticker on that date.
-    For contribution/withdrawal: price is always 1.0.
-    """
     if txn_type in ("contribution", "withdrawal"):
         return 1.0
 
@@ -107,26 +100,18 @@ def get_valid_price(ticker, date, txn_type):
                 print("    Please enter a number.")
 
 def next_record_number(transactions):
-    """Return max existing record_number + 1, or 1 if the list is empty."""
     if not transactions:
         return 1
     return max(t["record_number"] for t in transactions) + 1
 
 def confirm(prompt="  Confirm? (y/n): "):
-    """Ask the user to confirm an action. Returns True if yes."""
     return input(prompt).strip().lower() in ("y", "yes")
 
 # create transaction
-def create_transaction():
-    """
-    Interactively create one transaction of type:
-        contribution, withdrawal, buy, or sell.
 
-    State read   : transactions.json, mkt_dates.json,
-                   ticker_universe.json, prices_dates.json
-    Transition   : appends one validated record; re-sorts by date then record_number
-    Invariant    : every record has a unique record_number; list stays sorted
-    """
+def create_transaction():
+    
+    
     transactions = load_json(TRANSACTIONS_FILE)
 
     print("\n-- New Transaction ------------------------------------------")
@@ -177,12 +162,10 @@ def create_transaction():
 
 # transaction details recording
 def get_transactions_for_ticker(ticker):
-    """Return all transactions for the given ticker, in date order."""
     transactions = load_json(TRANSACTIONS_FILE)
     return [t for t in transactions if t["ticker"] == ticker]
 
 def print_transactions_table(ticker, rows):
-    """Print a clean table of transactions for one ticker."""
     if not rows:
         print(f"\n  No transactions found for {ticker}.\n")
         return
@@ -227,28 +210,13 @@ def print_transactions_table(ticker, rows):
     print()
 
 def list_transactions_for_ticker():
-    """
-    Interactively show all transactions for a user-selected ticker.
-
-    State read   : transactions.json, ticker_universe.json
-    Transition   : none (read-only)
-    Invariant    : output matches stored records exactly
-    """
     ticker = get_valid_ticker()
     rows   = get_transactions_for_ticker(ticker)
     print_transactions_table(ticker, rows)
 
 #building tools
 def build_stocks_by_date():
-    """
-    Reconstruct share positions for every market date.
-
-    State read   : transactions.json, prices_dates.json, mkt_dates.json
-    Transition   : for each date: carry forward -> apply splits -> apply trades
-    Invariant    : stocks_by_date[d][ticker]["shares"] reflects all buys/sells
-                   and splits up to and including date d
-    Returns      : dict  {date: [{"ticker", "shares", "average_cost"}, ...]}
-    """
+: dict  {date: [{"ticker", "shares", "average_cost"}, ...]}
     transactions = load_json(TRANSACTIONS_FILE)
     prices_dates = load_json(PRICES_DATES_FILE)
     mkt_dates    = load_json(MKT_DATES_FILE)
@@ -326,6 +294,7 @@ def build_stocks_by_date():
 
     return result
 
+
 def build_cash_by_date(stocks_by_date=None):
     """
     Reconstruct the cash balance for every market date.
@@ -387,13 +356,7 @@ def build_cash_by_date(stocks_by_date=None):
 
 # retrieve cash balance
 def get_cash_balance(as_of_date=None):
-    """
-    Print the cash balance as of a chosen market date.
 
-    State read   : transactions.json, prices_dates.json, mkt_dates.json
-    Transition   : none (read-only)
-    Invariant    : displayed value equals cumulative net cash through as_of_date
-    """
     if as_of_date is None:
         as_of_date = get_valid_date()
 
@@ -409,19 +372,7 @@ def get_cash_balance(as_of_date=None):
 
 # build portfolio
 def build_portfolio(as_of_date=None):
-    """
-    Build and display the full portfolio snapshot for a chosen market date.
-
-    Each row contains:
-        ticker, shares, average_cost, mkt_price,
-        total_avg_cost, total_mkt_value, gain/loss ($), gain/loss (%)
-
-    The cash row uses ticker "$$$$", average_cost=1.0, mkt_price=1.0.
-
-    State read   : transactions.json, prices_dates.json, mkt_dates.json
-    Transition   : none (read-only)
-    Invariant    : total_mkt_value = shares x mkt_price for every row
-    """
+    
     if as_of_date is None:
         as_of_date = get_valid_date()
 
